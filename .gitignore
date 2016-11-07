@@ -1,0 +1,13 @@
+# projeto-estagio
+# Check out https://help.github.com/articles/ignoring-files for how to set that up.
+
+
+.Gemfile
+.ruby-version
+debug.log
+pkg
+/.bundle
+/dist
+/doc/rdoc
+/*/doc
+/*/test/tmp
