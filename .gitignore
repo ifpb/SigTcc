@@ -1,4 +1,3 @@
-# projeto-estagio
 # Check out https://help.github.com/articles/ignoring-files for how to set that up.
 
 
@@ -11,3 +10,4 @@ pkg
 /doc/rdoc
 /*/doc
 /*/test/tmp
+.idea/
