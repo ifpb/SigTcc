@@ -1,0 +1,1 @@
+json.partial! "tccs/tcc", tcc: @tcc
