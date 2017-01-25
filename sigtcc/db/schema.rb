@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(version: 20170124172942) do
     t.string   "nome"
     t.string   "siape"
     t.string   "email"
+    t.integer  "tcc_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tcc_id"], name: "index_professors_on_tcc_id"
   end
 
   create_table "tccs", force: :cascade do |t|
@@ -34,8 +36,10 @@ ActiveRecord::Schema.define(version: 20170124172942) do
     t.string   "palavras_chaves"
     t.string   "tema"
     t.integer  "tipo",            default: 1
+    t.integer  "aluno_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["aluno_id"], name: "index_tccs_on_aluno_id"
   end
 
 end

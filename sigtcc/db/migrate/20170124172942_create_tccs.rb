@@ -6,7 +6,8 @@ class CreateTccs < ActiveRecord::Migration[5.0]
       t.string :palavras_chaves, array: true
       t.string :tema
       t.column :tipo, :integer, default: 1
-
+      t.belongs_to :aluno, index: true
+      
       t.timestamps
     end
   end
