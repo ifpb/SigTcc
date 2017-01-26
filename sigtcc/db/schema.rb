@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126000237) do
+ActiveRecord::Schema.define(version: 20170126014213) do
 
   create_table "alunos", force: :cascade do |t|
     t.string   "nome"
@@ -44,11 +44,15 @@ ActiveRecord::Schema.define(version: 20170126000237) do
     t.string   "titulo"
     t.string   "periodo"
     t.string   "tema"
-    t.integer  "tipo",         default: 1
+    t.integer  "tipo",                 default: 1
     t.integer  "aluno_id"
     t.integer  "professor_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "arquivo_file_name"
+    t.string   "arquivo_content_type"
+    t.integer  "arquivo_file_size"
+    t.datetime "arquivo_updated_at"
     t.index ["aluno_id"], name: "index_tccs_on_aluno_id"
     t.index ["professor_id"], name: "index_tccs_on_professor_id"
   end

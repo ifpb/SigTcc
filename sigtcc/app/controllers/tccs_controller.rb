@@ -25,6 +25,8 @@ class TccsController < ApplicationController
   # POST /tccs.json
   def create
     @tcc = Tcc.new(tcc_params)
+    @tcc.aluno = Aluno.create()
+    @tcc.professor = Professor.create()
 
     respond_to do |format|
       if @tcc.save
@@ -69,6 +71,6 @@ class TccsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tcc_params
-      params.require(:tcc).permit(:titulo, :periodo)
+      params.require(:tcc).permit(:titulo, :periodo, :arquivo)
     end
 end

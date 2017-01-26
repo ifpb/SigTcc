@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :arquivo %>
+    <%= f.file_field :arquivo %>
+  </div>
+
+  <div class="field">
     <%= f.label :titulo %>
     <%= f.text_field :titulo %>
   </div>
@@ -19,6 +24,16 @@
   <div class="field">
     <%= f.label :periodo %>
     <%= f.text_field :periodo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo %>
+    <%= f.text_field :tipo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tema %>
+    <%= f.text_field :tema %>
   </div>
 
   <div class="actions">
