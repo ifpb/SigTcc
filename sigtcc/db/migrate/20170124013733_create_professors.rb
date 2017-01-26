@@ -4,7 +4,6 @@ class CreateProfessors < ActiveRecord::Migration[5.0]
       t.string :nome
       t.string :siape
       t.string :email
-      t.belongs_to :tcc, index: true
 
       t.timestamps
     end

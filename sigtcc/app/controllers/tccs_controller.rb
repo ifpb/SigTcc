@@ -28,7 +28,7 @@ class TccsController < ApplicationController
 
     respond_to do |format|
       if @tcc.save
-        format.html { redirect_to @tcc, notice: 'Tcc was successfully created.' }
+        format.html { redirect_to @tcc, notice: 'Tcc cadastrado com sucesso!' }
         format.json { render :show, status: :created, location: @tcc }
       else
         format.html { render :new }

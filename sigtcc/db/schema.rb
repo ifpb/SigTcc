@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124172942) do
+ActiveRecord::Schema.define(version: 20170126000237) do
 
   create_table "alunos", force: :cascade do |t|
     t.string   "nome"
@@ -20,26 +20,37 @@ ActiveRecord::Schema.define(version: 20170124172942) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "palavras", force: :cascade do |t|
+    t.string   "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "palavras_tccs", id: false, force: :cascade do |t|
+    t.integer "tcc_id",     null: false
+    t.integer "palavra_id", null: false
+    t.index ["tcc_id", "palavra_id"], name: "index_palavras_tccs_on_tcc_id_and_palavra_id"
+  end
+
   create_table "professors", force: :cascade do |t|
     t.string   "nome"
     t.string   "siape"
     t.string   "email"
-    t.integer  "tcc_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tcc_id"], name: "index_professors_on_tcc_id"
   end
 
   create_table "tccs", force: :cascade do |t|
     t.string   "titulo"
     t.string   "periodo"
-    t.string   "palavras_chaves"
     t.string   "tema"
-    t.integer  "tipo",            default: 1
+    t.integer  "tipo",         default: 1
     t.integer  "aluno_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "professor_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["aluno_id"], name: "index_tccs_on_aluno_id"
+    t.index ["professor_id"], name: "index_tccs_on_professor_id"
   end
 
 end
