@@ -26,15 +26,24 @@
     <%= f.text_field :periodo %>
   </div>
 
+
   <div class="field">
-    <%= f.label :tipo %>
-    <%= f.text_field :tipo %>
+    <%= f.label :tipos %>
+    <%= f.text_field :tipos %>
   </div>
 
   <div class="field">
     <%= f.label :tema %>
     <%= f.text_field :tema %>
   </div>
+  <%= f.select :tipos, options_for_select(Tcc.tipos.keys) %>
+
+<%= f.label "palavras-chaves" %>
+<%= text_field_tag "palavras[]", "value", :class => "class" %>
+<%= f.label "palavras-chaves" %>
+<%= text_field_tag "palavras[]", "value", :class => "class" %>
+<%= f.label "palavras-chaves" %>
+<%= text_field_tag "palavras[]", "value", :class => "class" %>
 
   <div class="actions">
     <%= f.submit %>

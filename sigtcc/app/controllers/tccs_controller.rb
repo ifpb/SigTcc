@@ -15,6 +15,7 @@ class TccsController < ApplicationController
   # GET /tccs/new
   def new
     @tcc = Tcc.new
+    @palavras = @tcc.palavras.build
   end
 
   # GET /tccs/1/edit
@@ -25,12 +26,17 @@ class TccsController < ApplicationController
   # POST /tccs.json
   def create
     @tcc = Tcc.new(tcc_params)
+    #@tcc.palavras << Palavra.create(palavras_params)
     @tcc.aluno = Aluno.create()
     @tcc.professor = Professor.create()
+    params[:palavras].each{ |palavra|
+      Palavra.new(:nome => palavra).save
+    }
+##adicionar find_or_create;
 
     respond_to do |format|
       if @tcc.save
-        format.html { redirect_to @tcc, notice: 'Tcc cadastrado com sucesso!' }
+        format.html { redirect_to @tcc, notice: Palavra.all }
         format.json { render :show, status: :created, location: @tcc }
       else
         format.html { render :new }
@@ -71,6 +77,10 @@ class TccsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tcc_params
-      params.require(:tcc).permit(:titulo, :periodo, :arquivo)
+      params.require(:tcc).permit(:titulo, :periodo, :arquivo, :tema, :tipo)
+    end
+
+    def palavras_params
+      params.require(:tcc).permit(:palavra => [:nome])
     end
 end

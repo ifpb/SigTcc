@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170126014213) do
     t.string   "titulo"
     t.string   "periodo"
     t.string   "tema"
-    t.integer  "tipo",                 default: 1
+    t.integer  "tipos",                default: 1
     t.integer  "aluno_id"
     t.integer  "professor_id"
     t.datetime "created_at",                       null: false
