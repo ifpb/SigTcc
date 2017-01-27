@@ -31,21 +31,23 @@ class TccsController < ApplicationController
     @tcc = Tcc.new(tcc_params)
     @tcc.aluno = Aluno.create()
     @tcc.professor = Professor.create()
-    @tcc.agendad = true
 #tcc.errors.full_messages
-
+  @palavras = []
       params[:palavras].each { |palavra|
-      if palavra.blank?
-
-        Palavra.new(:nome => palavra).save
-      end
-
+        if palavra.blank?
+          flash[:alert] = 'Preencha todas as palavras-chaves!'
+          render template: "tccs/new"
+          return ;
+        end
+    #    Palavra.new(:nome => palavra).save
+        palavra_bd  = Palavra.find_or_create_by(nome: palavra)
+        @tcc.palavras << palavra_bd
       }
 ##adicionar find_or_create; falta associar palavras com tcc.
 
     respond_to do |format|
       if @tcc.save
-        format.html { redirect_to @tcc, notice: @contador   }
+        format.html { redirect_to @tcc, notice: 'Tcc cadastrado com sucesso!' }
         format.json { render :show, status: :created, location: @tcc }
       else
         format.html { render :new }

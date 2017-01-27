@@ -5,16 +5,22 @@
 
       <ul>
       <% tcc.errors.full_messages.each do |message| %>
-        algo
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+  <% if ! alert.blank? %>
+      <div>
+        <strong style="color:red">Erro! <%= alert %> </strong>
+      </div>
+  <% end %>
+
+
   <div class="field">
     <%= f.label :arquivo %>
-    <%= f.file_field :arquivo %>
+    <%= f.file_field :arquivo %><strong style="color: red"> (Só serão permitidos arquivos pdf's)</strong>
   </div>
 
   <div class="field">
@@ -34,13 +40,13 @@
   <%= f.select :tipos, options_for_select(Tcc.tipos.keys) %>
 
 <%= f.label "palavras-chaves" %>
-<%= text_field_tag "palavras[]", :class => "class" %>
+<%= text_field_tag "palavras[]", "", :class => "class" %>
 <%= f.label "palavras-chaves" %>
-<%= text_field_tag "palavras[]", :class => "class" %>
+<%= text_field_tag "palavras[]","" ,:class => "class" %>
 <%= f.label "palavras-chaves" %>
-<%= text_field_tag "palavras[]", :class => "class" %>
+<%= text_field_tag "palavras[]","" ,:class => "class" %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Salvar" %>
   </div>
 <% end %>

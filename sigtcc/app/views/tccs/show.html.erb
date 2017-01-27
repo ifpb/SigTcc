@@ -19,6 +19,12 @@
   <strong>Tipos:</strong>
   <%= @tcc.tipos %>
 </p>
+<p>
+  <strong>Palavras-Chaves:</strong>
+  <% @tcc.palavras.each do |palavra| %>
+     <%= palavra.nome %> | 
+  <% end -%>
+</p>
 
 <%= link_to 'Voltar', tccs_path %> |
 <%= link_to 'Atualizar', edit_tcc_path(@tcc) %> |
