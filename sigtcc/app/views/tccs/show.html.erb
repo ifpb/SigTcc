@@ -22,8 +22,12 @@
 <p>
   <strong>Palavras-Chaves:</strong>
   <% @tcc.palavras.each do |palavra| %>
-     <%= palavra.nome %> | 
+     <%= palavra.nome %> |
   <% end -%>
+</p>
+<p>
+  <strong>Agendado:</strong>
+  <%= @tcc.agendad %>
 </p>
 
 <%= link_to 'Voltar', tccs_path %> |

@@ -37,14 +37,19 @@
     <%= f.label :tema %>
     <%= f.text_field :tema %>
   </div>
+  <%= f.label "Tipo:" %>
   <%= f.select :tipos, options_for_select(Tcc.tipos.keys) %>
+  <%= f.label "palavras-chaves" %>
+  <%= text_field_tag "palavras[]", "", :class => "class" %>
+  <%= f.label "palavras-chaves" %>
+  <%= text_field_tag "palavras[]","" ,:class => "class" %>
+  <%= f.label "palavras-chaves" %>
+  <%= text_field_tag "palavras[]","" ,:class => "class" %>
+  <br>
+  <span>Tcc agendado:</span>
+  <span>Sim</span><%= radio_button_tag 'agendado', true %>
+  <span>Não</span><%= radio_button_tag 'agendado', false %>
 
-<%= f.label "palavras-chaves" %>
-<%= text_field_tag "palavras[]", "", :class => "class" %>
-<%= f.label "palavras-chaves" %>
-<%= text_field_tag "palavras[]","" ,:class => "class" %>
-<%= f.label "palavras-chaves" %>
-<%= text_field_tag "palavras[]","" ,:class => "class" %>
 
   <div class="actions">
     <%= f.submit "Salvar" %>
