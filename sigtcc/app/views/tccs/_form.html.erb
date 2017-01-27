@@ -5,6 +5,7 @@
 
       <ul>
       <% tcc.errors.full_messages.each do |message| %>
+        algo
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -26,12 +27,6 @@
     <%= f.text_field :periodo %>
   </div>
 
-
-  <div class="field">
-    <%= f.label :tipos %>
-    <%= f.text_field :tipos %>
-  </div>
-
   <div class="field">
     <%= f.label :tema %>
     <%= f.text_field :tema %>
@@ -39,11 +34,11 @@
   <%= f.select :tipos, options_for_select(Tcc.tipos.keys) %>
 
 <%= f.label "palavras-chaves" %>
-<%= text_field_tag "palavras[]", "value", :class => "class" %>
+<%= text_field_tag "palavras[]", :class => "class" %>
 <%= f.label "palavras-chaves" %>
-<%= text_field_tag "palavras[]", "value", :class => "class" %>
+<%= text_field_tag "palavras[]", :class => "class" %>
 <%= f.label "palavras-chaves" %>
-<%= text_field_tag "palavras[]", "value", :class => "class" %>
+<%= text_field_tag "palavras[]", :class => "class" %>
 
   <div class="actions">
     <%= f.submit %>

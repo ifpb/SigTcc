@@ -4,6 +4,7 @@ class CreateTccs < ActiveRecord::Migration[5.0]
       t.string :titulo
       t.string :periodo
       t.string :tema
+      t.boolean :agendad, default: false
       t.column :tipos, :integer, default: 1
       t.belongs_to :aluno, index: true
       t.belongs_to :professor, index: true

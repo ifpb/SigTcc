@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<h1>Meu TCC</h1>
 <p>
   <strong>Titulo:</strong>
   <%= @tcc.titulo %>
@@ -10,5 +10,16 @@
   <%= @tcc.periodo %>
 </p>
 
-<%= link_to 'Edit', edit_tcc_path(@tcc) %> |
-<%= link_to 'Back', tccs_path %>
+<p>
+  <strong>Titulo:</strong>
+  <%= @tcc.tema %>
+</p>
+
+<p>
+  <strong>Tipos:</strong>
+  <%= @tcc.tipos %>
+</p>
+
+<%= link_to 'Voltar', tccs_path %> |
+<%= link_to 'Atualizar', edit_tcc_path(@tcc) %> |
+<%= link_to 'Visualizar arquivo TCC', @tcc.arquivo.url %>

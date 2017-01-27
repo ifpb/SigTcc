@@ -44,11 +44,12 @@ ActiveRecord::Schema.define(version: 20170126014213) do
     t.string   "titulo"
     t.string   "periodo"
     t.string   "tema"
+    t.boolean  "agendad",              default: false
     t.integer  "tipos",                default: 1
     t.integer  "aluno_id"
     t.integer  "professor_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "arquivo_file_name"
     t.string   "arquivo_content_type"
     t.integer  "arquivo_file_size"

@@ -15,28 +15,37 @@ class TccsController < ApplicationController
   # GET /tccs/new
   def new
     @tcc = Tcc.new
-    @palavras = @tcc.palavras.build
   end
 
   # GET /tccs/1/edit
   def edit
+    if @tcc.agendad
+      flash[:alert] = 'Tcc não pode ser editado devido ao angendamento ter sido realizado!'
+      redirect_to tccs_url
+    end
   end
 
   # POST /tccs
   # POST /tccs.json
   def create
     @tcc = Tcc.new(tcc_params)
-    #@tcc.palavras << Palavra.create(palavras_params)
     @tcc.aluno = Aluno.create()
     @tcc.professor = Professor.create()
-    params[:palavras].each{ |palavra|
-      Palavra.new(:nome => palavra).save
-    }
-##adicionar find_or_create;
+    @tcc.agendad = true
+#tcc.errors.full_messages
+
+      params[:palavras].each { |palavra|
+      if palavra.blank?
+
+        Palavra.new(:nome => palavra).save
+      end
+
+      }
+##adicionar find_or_create; falta associar palavras com tcc.
 
     respond_to do |format|
       if @tcc.save
-        format.html { redirect_to @tcc, notice: Palavra.all }
+        format.html { redirect_to @tcc, notice: @contador   }
         format.json { render :show, status: :created, location: @tcc }
       else
         format.html { render :new }
@@ -48,24 +57,29 @@ class TccsController < ApplicationController
   # PATCH/PUT /tccs/1
   # PATCH/PUT /tccs/1.json
   def update
-    respond_to do |format|
-      if @tcc.update(tcc_params)
-        format.html { redirect_to @tcc, notice: 'Tcc was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tcc }
-      else
-        format.html { render :edit }
-        format.json { render json: @tcc.errors, status: :unprocessable_entity }
+       respond_to do |format|
+          if @tcc.update(tcc_params)
+              format.html { redirect_to @tcc, notice: 'Tcc Atualizado com sucesso' }
+              format.json { render :show, status: :ok, location: @tcc.palavras }
+          else
+            format.html { render :edit }
+            format.json { render json: @tcc.errors, status: :unprocessable_entity }
+          end
       end
-    end
   end
 
   # DELETE /tccs/1
   # DELETE /tccs/1.json
   def destroy
-    @tcc.destroy
-    respond_to do |format|
-      format.html { redirect_to tccs_url, notice: 'Tcc was successfully destroyed.' }
-      format.json { head :no_content }
+    if ! @tcc.agendad
+      @tcc.destroy
+      respond_to do |format|
+        format.html { redirect_to tccs_url, notice: 'Tcc removido com sucesso!.' }
+        format.json { head :no_content }
+      end
+    else
+      flash[:alert] = 'Tcc não pode ser removido devido ao angendamento ter sido realizado!'
+      redirect_to tccs_url
     end
   end
 
@@ -77,7 +91,7 @@ class TccsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tcc_params
-      params.require(:tcc).permit(:titulo, :periodo, :arquivo, :tema, :tipo)
+      params.require(:tcc).permit(:titulo, :periodo, :arquivo, :tema, :tipos)
     end
 
     def palavras_params
