@@ -1,0 +1,57 @@
+<%= form_for(tcc) do |f| %>
+  <% if tcc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tcc.errors.count, "error") %> prohibited this tcc from being saved:</h2>
+
+      <ul>
+      <% tcc.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if ! alert.blank? %>
+      <div>
+        <strong style="color:red">Erro! <%= alert %> </strong>
+      </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :arquivo %>
+    <%= f.file_field :arquivo %><strong style="color: red"> (Só serão permitidos arquivos pdf's)</strong>
+  </div>
+
+  <div class="field">
+    <%= f.label :titulo %>
+    <%= f.text_field :titulo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :periodo %>
+    <%= f.text_field :periodo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tema %>
+    <%= f.text_field :tema %>
+  </div>
+  <%= f.label "Tipo:" %>
+  <%= f.select :tipos, options_for_select(Tcc.tipos.keys) %>
+  <%= f.label "palavras-chaves" %>
+  <%= text_field_tag "palavras[]", "", :class => "class" %>
+  <%= f.label "palavras-chaves" %>
+  <%= text_field_tag "palavras[]","" ,:class => "class" %>
+  <%= f.label "palavras-chaves" %>
+  <%= text_field_tag "palavras[]","" ,:class => "class" %>
+  <br>
+  <span>Tcc agendado:</span>
+  <span>Sim</span><%= radio_button_tag 'agendado', true %>
+  <span>Não</span><%= radio_button_tag 'agendado', false %>
+
+
+  <div class="actions">
+    <%= f.submit "Salvar" %>
+  </div>
+<% end %>
