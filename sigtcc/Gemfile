@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+ruby "2.3.1"
+
 # Para jogar o PDF no banco de dados utilizar o paperclip
 gem "paperclip", "~> 5.0.0"
 gem "paperclip_database", "~> 2.0"
@@ -13,6 +15,8 @@ gem "paperclip_database", "~> 2.0"
 gem 'rails', '~> 5.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
