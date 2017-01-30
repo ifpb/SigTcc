@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+<h1>Meu TCC</h1>
+<p>
+  <strong>Titulo:</strong>
+  <%= @tcc.titulo %>
+</p>
+
+<p>
+  <strong>Periodo:</strong>
+  <%= @tcc.periodo %>
+</p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @tcc.tema %>
+</p>
+
+<p>
+  <strong>Tipos:</strong>
+  <%= @tcc.tipos %>
+</p>
+<p>
+  <strong>Palavras-Chaves:</strong>
+  <% @tcc.palavras.each do |palavra| %>
+     <%= palavra.nome %> |
+  <% end -%>
+</p>
+<p>
+  <strong>Agendado:</strong>
+  <%= @tcc.agendad %>
+</p>
+
+<%= link_to 'Voltar', tccs_path %> |
+<%= link_to 'Atualizar', edit_tcc_path(@tcc) %> |
+<%= link_to 'Visualizar arquivo TCC', @tcc.arquivo.url %>
