@@ -39,16 +39,16 @@
   </div>
   <%= f.label "Tipo:" %>
   <%= f.select :tipos, options_for_select(Tcc.tipos.keys) %>
-  <%= f.label "palavras-chaves" %>
-  <%= text_field_tag "palavras[]", "", :class => "class" %>
-  <%= f.label "palavras-chaves" %>
-  <%= text_field_tag "palavras[]","" ,:class => "class" %>
-  <%= f.label "palavras-chaves" %>
-  <%= text_field_tag "palavras[]","" ,:class => "class" %>
+  <%= f.label "palavras-chave" %>
+  <%= text_field_tag "palavras[]","",:id =>'palavra1', :class => "class" %>
+  <%= f.label "palavras-chave" %>
+  <%= text_field_tag "palavras[]","",:id =>'palavra2', :class => "class" %>
+  <%= f.label "palavras-chave" %>
+  <%= text_field_tag "palavras[]","",:id =>'palavra3', :class => "class" %>
   <br>
   <span>Tcc agendado:</span>
-  <span>Sim</span><%= radio_button_tag 'agendado', true %>
-  <span>Não</span><%= radio_button_tag 'agendado', false %>
+  <span>Sim</span><%= radio_button_tag 'agendadotrue', true %>
+  <span>Não</span><%= radio_button_tag 'agendadofalse', false %>
 
 
   <div class="actions">
