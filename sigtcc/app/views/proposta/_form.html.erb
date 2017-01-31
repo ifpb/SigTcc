@@ -1,0 +1,32 @@
+<%= form_for(propostum) do |f| %>
+  <% if propostum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(propostum.errors.count, "error") %> prohibited this propostum from being saved:</h2>
+
+      <ul>
+      <% propostum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %>
+    <%= f.text_field :titulo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipoTcc %>
+    <%= f.text_field :tipoTcc %>
+  </div>
+
+  <div class="field">
+    <%= f.label :orientador %>
+    <%= f.text_field :orientador %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

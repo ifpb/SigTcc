@@ -1,0 +1,2 @@
+module PropostaHelper
+end
