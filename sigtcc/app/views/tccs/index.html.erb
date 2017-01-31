@@ -6,7 +6,7 @@
 <% end %>
 <h1>Tccs</h1>
 
-<table>
+<table id= "tccs">
   <thead>
     <tr>
       <th>Titulo</th>
@@ -18,8 +18,8 @@
   <tbody>
     <% @tccs.each do |tcc| %>
       <tr>
-        <td><%= tcc.titulo %></td>
-        <td><%= tcc.periodo %></td>
+        <td ><%= tcc.titulo %></td>
+        <td ><%= tcc.periodo %></td>
         <td><%= link_to 'Expandir', tcc %></td>
         <td><%= link_to 'Editar', edit_tcc_path(tcc) %></td>
         <td><%= link_to 'Apagar', tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } %></td>
