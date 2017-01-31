@@ -4,7 +4,7 @@ class Tcc < ActiveRecord::Base
   belongs_to :aluno
   belongs_to :professor
   has_attached_file :arquivo, styles: {thumbnail: "60x60#"}
-  validates_attachment :arquivo, #presence:true,
+  validates_attachment :arquivo, presence:true,
                       content_type: { content_type: "application/pdf" }
   validates :titulo, :periodo, :tipos, :tema , presence: true
 

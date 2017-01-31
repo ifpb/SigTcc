@@ -18,7 +18,7 @@
   <tbody>
     <% @tccs.each do |tcc| %>
       <tr>
-        <td class="titulo"><%= tcc.titulo %></td>
+        <td ><%= tcc.titulo %></td>
         <td ><%= tcc.periodo %></td>
         <td><%= link_to 'Expandir', tcc %></td>
         <td><%= link_to 'Editar', edit_tcc_path(tcc) %></td>

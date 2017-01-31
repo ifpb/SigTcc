@@ -10,7 +10,6 @@ class TccsController < ApplicationController
   # GET /tccs/1
   # GET /tccs/1.json
   def show
-    @tcc = Tcc.find(params[:id])
   end
 
   # GET /tccs/new
@@ -92,7 +91,7 @@ class TccsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tcc_params
-      params.require(:tcc).permit(:titulo, :periodo, :tema, :tipos)
+      params.require(:tcc).permit(:titulo, :periodo, :arquivo, :tema, :tipos)
     end
 
     def palavras_params
