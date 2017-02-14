@@ -6,10 +6,15 @@ git_source(:github) do |repo_name|
 end
 
 
+# Para jogar o PDF no banco de dados utilizar o paperclip
+gem "paperclip", "~> 5.0.0"
+gem "paperclip_database", "~> 2.0"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -38,6 +43,8 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~>3.0'
+  gem 'capybara'
 end
 
 group :development do

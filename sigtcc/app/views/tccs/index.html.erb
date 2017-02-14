@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<% if ! alert.blank? %>
+    <div>
+      <strong style="color:red">Erro! <%= alert %> </strong>
+    </div>
+<% end %>
+<h1>Tccs</h1>
+
+<table id= "tccs">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Periodo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tccs.each do |tcc| %>
+      <tr>
+        <td ><%= tcc.titulo %></td>
+        <td ><%= tcc.periodo %></td>
+        <td><%= link_to 'Expandir', tcc %></td>
+        <td><%= link_to 'Editar', edit_tcc_path(tcc) %></td>
+        <td><%= link_to 'Apagar', tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Criar Tcc', new_tcc_path %>
