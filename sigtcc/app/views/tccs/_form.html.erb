@@ -33,10 +33,7 @@
     <%= f.text_field :periodo %>
   </div>
 
-  <div class="field">
-    <%= f.label :tema %>
-    <%= f.text_field :tema %>
-  </div>
+  
   <%= f.label "Tipo:" %>
   <%= f.select :tipos, options_for_select(Tcc.tipos.keys) %>
   <%= f.label "palavras-chave" %>

@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <!--Estou colocando o logout login aqui para ser implementado depois em algum header [Paulinho]
+  aqui ele estará em qualquer página -->
+     <% if logged_in? %>
+       <%= link_to "Profile", current_user %>
+       <%= link_to "Log out", logout_path, method: "delete" %>
+     <% else %>
+        <%= link_to "Log in", login_path %>
+     <% end %>
+
     <%= yield %>
   </body>
 </html>

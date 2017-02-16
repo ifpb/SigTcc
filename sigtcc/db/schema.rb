@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170211210951) do
+ActiveRecord::Schema.define(version: 20170213230534) do
 
   create_table "alunos", force: :cascade do |t|
     t.string   "matricula"
@@ -132,9 +132,10 @@ ActiveRecord::Schema.define(version: 20170211210951) do
     t.string   "nome"
     t.string   "user_type"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "sexo"
+    t.string   "password_digest"
     t.index ["user_type", "user_id"], name: "index_usuarios_on_user_type_and_user_id"
   end
 
