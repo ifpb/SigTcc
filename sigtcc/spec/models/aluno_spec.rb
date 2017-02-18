@@ -15,12 +15,12 @@ RSpec.describe Aluno, type: :model do
 
   it "Proposta TCC é válido" do
     aluno = Aluno.new(proposta_tcc: PropostaTcc.new)
-  expect(aluno).to be_valid
+    expect(aluno).to be_valid
   end
 
   it "Usuário de um aluno é válido" do
     aluno = Aluno.new(usuario: Usuario.new)
-  expect(aluno).to be_valid
+    expect(aluno).to be_valid
   end
 
   describe "Associações" do
