@@ -1,0 +1,19 @@
+
+<%= form_for(:session, url: perfil_path) do |f| %>
+<span>Com qual perfil deseja acessar o Sistema?</span>
+
+<div class="field">
+<%= f.label :perfil %>
+<%= f.label :perfil, "Coordenador", :value => "true" %>
+<%= f.radio_button :perfil, true , :checked => true %>
+<%= f.label :perfil, "Porfessor", :value => "false" %>
+<%= f.radio_button :perfil, false %>
+
+</div>
+
+<!--<span>Professor</span><%= radio_button_tag 'perfil','professor', true %>
+<span>Coordenador</span><%= radio_button_tag 'perfil', 'coordenador'  %>-->
+<div class="actions">
+  <%= f.submit "Escolher" %>
+</div>
+<% end %>
