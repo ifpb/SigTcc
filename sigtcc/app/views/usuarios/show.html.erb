@@ -8,3 +8,40 @@
 <p>Email:
   <strong><%= @usuario.email %> </strong>
 </p>
+<h2>Seus Tcss</h2>
+
+
+
+<% if @usuario.user.instance_of? Professor %>
+  <% if !@usuario.user.tccs.nil? %>
+    <table id= "tccs">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Periodo</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <% @usuario.user.tccs.each do |tcc| %>
+          <tr>
+            <td ><%= tcc.titulo %></td>
+            <td ><%= tcc.periodo %></td>
+            <% if tcc.agendad == true && tcc.banca.ata_defesa.nil? %>
+              <td><%= link_to 'Gerar ata de defesa', controller: "ata_defesas", action: "new", tcc: tcc.id %></td>
+            <%end%>
+            <% if !tcc.banca.ata_defesa.nil? %>
+              <td><%= link_to 'Editar ata de defesa', controller: "ata_defesas", action: "edit", tcc: tcc.id %></td>
+            <%end%>
+              <% if !tcc.banca.ata_defesa.nil? %>
+                <td><%= link_to 'Apagar', {controller: "ata_defesas",  action: "destroy", tcc: tcc.id, }, :method => :delete, data: { confirm: 'Tem certeza que deseja excluir a ata?' } %></td>
+              <td><%= link_to "Download PDF",  ata_defesa_download_path(tcc.banca.ata_defesa, format: "pdf"),  target: "_blank",  class: "download" %></td>
+              <%end%>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <%end%>
+<%end%>

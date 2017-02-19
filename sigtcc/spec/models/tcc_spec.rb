@@ -3,39 +3,43 @@ require 'rails_helper'
 RSpec.describe Tcc, type: :model do
   #pending "add some examples to (or delete) #{__FILE__}"
   it "Tcc é válido" do
-   expect(Tcc.new(aluno: Aluno.new, professor: Professor.new, proposta_tcc: PropostaTcc.new)).to be_valid
+   expect(Tcc.new( professor: Professor.new, proposta_tcc: PropostaTcc.new)).to be_valid
 
 
   end
   it "Titulo é válido" do
-    tcc = Tcc.new(aluno: Aluno.new, professor: Professor.new, proposta_tcc: PropostaTcc.new, titulo: "Descritor")
+    tcc = Tcc.new( professor: Professor.new, proposta_tcc: PropostaTcc.new, titulo: "Descritor")
   expect(tcc).to be_valid
   end
 
   it "Periodo é válido" do
-    tcc = Tcc.new(aluno: Aluno.new, professor: Professor.new, proposta_tcc: PropostaTcc.new, periodo: "2016.2")
+    tcc = Tcc.new( professor: Professor.new, proposta_tcc: PropostaTcc.new, periodo: "2016.2")
   expect(tcc).to be_valid
   end
 
   it "Nota é válida" do
-    tcc = Tcc.new(aluno: Aluno.new, professor: Professor.new, proposta_tcc: PropostaTcc.new, nota: 10.0 )
+    tcc = Tcc.new( professor: Professor.new, proposta_tcc: PropostaTcc.new, nota: 10.0 )
   expect(tcc).to be_valid
   end
   it "Status é válido" do
-    tcc = Tcc.new(aluno: Aluno.new, professor: Professor.new, proposta_tcc: PropostaTcc.new, status: "defendido")
+    tcc = Tcc.new( professor: Professor.new, proposta_tcc: PropostaTcc.new, status: "defendido")
   expect(tcc).to be_valid
   end
 
   it "Arquivo é válido" do
-    tcc = Tcc.new(aluno: Aluno.new, professor: Professor.new, proposta_tcc: PropostaTcc.new, arquivo: File.new(Rails.root + 'spec/test_upload/dadosabertos.pdf') )
+    tcc = Tcc.new( professor: Professor.new, proposta_tcc: PropostaTcc.new, arquivo: File.new(Rails.root + 'spec/test_upload/dadosabertos.pdf') )
+  expect(tcc).to be_valid
+  end
+
+
+
+  it "Tipo é válido" do
+    tcc = Tcc.new( tipos: "estagio", professor: Professor.new, proposta_tcc: PropostaTcc.new, arquivo: File.new(Rails.root + 'spec/test_upload/dadosabertos.pdf') )
   expect(tcc).to be_valid
   end
 
   describe "Associações" do
-    it "Pertence a um aluno" do
-      assc = described_class.reflect_on_association(:aluno)
-      expect(assc.macro).to eq :belongs_to
-    end
+
     it "Pertence a um professor" do
       assc = described_class.reflect_on_association(:professor)
       expect(assc.macro).to eq :belongs_to
