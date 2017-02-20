@@ -124,6 +124,7 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_layout (1.0.34)
     railties (5.0.1)
       actionpack (= 5.0.1)
       activesupport (= 5.0.1)
@@ -206,6 +207,7 @@ DEPENDENCIES
   paperclip_database (~> 2.0)
   puma (~> 3.0)
   rails (~> 5.0.1)
+  rails_layout
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   spring
