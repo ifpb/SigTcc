@@ -8,7 +8,7 @@
 <p>Email:
   <strong><%= @usuario.email %> </strong>
 </p>
-<h2>Seus Tcss</h2>
+<h2>Atas de defesa</h2>
 
 
 
@@ -37,7 +37,8 @@
             <%end%>
               <% if !tcc.banca.ata_defesa.nil? %>
                 <td><%= link_to 'Apagar', {controller: "ata_defesas",  action: "destroy", tcc: tcc.id, }, :method => :delete, data: { confirm: 'Tem certeza que deseja excluir a ata?' } %></td>
-              <td><%= link_to "Download PDF",  ata_defesa_download_path(tcc.banca.ata_defesa, format: "pdf"),  target: "_blank",  class: "download" %></td>
+              <td><%= link_to "Visuzalizar ata ata de defesa PDF",  ata_defesa_download_path(tcc.banca.ata_defesa, format: "pdf"),  target: "_blank",  class: "download" %></td>
+              <td><%= link_to 'Visualizar arquivo ata defesa', tcc.banca.ata_defesa.arquivo.url %></td>
               <%end%>
           </tr>
         <% end %>
