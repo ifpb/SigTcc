@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<h1>Ata de Defesa</h1>
+<p>
+  <strong>Data de Apresentação:</strong>
+  <%= @ata_defesa.data %>
+</p>
+
+<p>
+  <strong>Titulo do TCC:</strong>
+  <%= @ata_defesa.banca.tcc.titulo %>
+</p>
+<p>
+  <strong>Nota do TCC:</strong>
+  <%= @ata_defesa.banca.tcc.nota %>
+</p>
+<p>
+  <strong>Status: </strong>
+  <%= @ata_defesa.banca.tcc.status %>
+</p>
+
+
+
+<%= link_to 'Voltar', ata_defesas_path %> |
+<%= link_to 'Atualizar', edit_ata_defesas_path(@tcc) %> |
+<%= link_to 'Visualizar arquivo TCC', @ata_defesa.arquivo.url %>

@@ -17,7 +17,6 @@ class AlunosController < ApplicationController
     @aluno = Aluno.new
     @usuario = Usuario.new
     @aluno.usuario = @usuario
-    puts "##### #{@usuario} ########"
   end
 
   # GET /alunos/1/edit
@@ -27,7 +26,9 @@ class AlunosController < ApplicationController
   # POST /alunos
   # POST /alunos.json
   def create
+    @usuario = Usuario.new(usuario_params)
     @aluno = Aluno.new(aluno_params)
+    @aluno.usuario = @usuario
     
     respond_to do |format|
       if @aluno.save

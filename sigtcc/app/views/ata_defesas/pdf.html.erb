@@ -1,0 +1,19 @@
+
+<h1>Ata de Defesa</h1>
+<p>
+  <strong>Data de Apresentação:</strong>
+  <%= ata_defesa.data %>
+</p>
+
+<p>
+  <strong>Titulo do TCC:</strong>
+  <%= ata_defesa.banca.tcc.titulo %>
+</p>
+<p>
+  <strong>Nota do TCC:</strong>
+  <%= ata_defesa.banca.tcc.nota.to_s %>
+</p>
+<p>
+  <strong>Status: </strong>
+  <%= ata_defesa.banca.tcc.status %>
+</p>
