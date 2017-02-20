@@ -1,2 +1,0 @@
-class Propostum < ApplicationRecord
-end
