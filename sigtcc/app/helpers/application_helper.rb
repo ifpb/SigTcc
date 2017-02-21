@@ -1,7 +1,7 @@
 module ApplicationHelper
   def flash_message
     messages = ""
-    [:notice, :info, :warning, :error].each {|type|
+    [:notice, :info, :warning, :error, :alert].each {|type|
       if flash[type]
         messages += flash[type]
       end

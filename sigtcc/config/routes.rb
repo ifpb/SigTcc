@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
 
 
+    get '/consulta', to: 'consultas#index'
+    post '/consulta', to: 'consultas#consultar' 
 
 
-  
 
 
     get    '/login',   to: 'sessions#new'
