@@ -6,18 +6,41 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-    <!--Estou colocando o logout login aqui para ser implementado depois em algum header [Paulinho]
+    <!-- Estou colocando o logout login aqui para ser implementado depois em algum header [Paulinho]
   aqui ele estará em qualquer página -->
-     <% if logged_in? %>
-       <%= link_to "Profile", current_user %>
-       <%= link_to "Log out", logout_path, method: "delete" %>
-     <% else %>
-        <%= link_to "Log in", login_path %>
-     <% end %>
 
-    <%= yield %>
+    <% if logged_in? %>
+      <%= link_to "Profile", current_user %>
+      <%= link_to "Log out", logout_path, method: "delete" %>
+    <% else %>
+      <%= link_to "Log in", login_path %>
+    <% end %>
+
+    <div id="main-container" class="container">
+      <div class="row">
+        
+        <div class="col-xs-12" style="text-align:center">
+          <h3>SISTEMA CONTROLE DE TCC</h3>
+        </div>
+        
+        <div class="col-xs-12">
+          <ul class="breadcrumb">
+            <li><%= link_to 'Início', tccs_path %><span class="divider"></span></li>
+            <li><%= link_to '<Atual>', request.fullpath, class: "active" %></li>
+            <!-- Ajustar o Nome dos links de acordo com a página <Atual> [Jonathas]-->
+          </ul>
+
+          <div class="col-xs-12">
+            <%= yield %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </body>
 </html>

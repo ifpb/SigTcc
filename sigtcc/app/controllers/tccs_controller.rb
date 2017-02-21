@@ -33,9 +33,10 @@ class TccsController < ApplicationController
     @tcc.professor = Professor.create()
     @tcc.agendad = params[:agendado]
 
-      params[:palavras].each { |palavra|
+      arr = params[:palavras].split(',')
+      arr.each { |palavra|
         if palavra.blank?
-          flash[:alert] = 'Preencha todas as palavras-chaves!'
+          flash[:alert] = 'Preencha as palavras-chaves!'
           render template: "tccs/new"
           return ;
         end

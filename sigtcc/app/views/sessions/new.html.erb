@@ -1,12 +1,26 @@
-<% provide(:title, "Log in") %>
+<div class="content-row">
+	<% provide(:title, "Log in") %>
+	<div class="col-xs-4"></div>
+	
+	<div class="col-xs-4">
+		<div style="text-align:center"><h1>Login</h1></div>
+		<%= flash_message %>
+		<%= form_for(:session, url: login_path) do |f| %>
+		
+		<div class="form-group">
+			<%= f.label :email %>
+			<%= f.email_field :email, class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :password %>
+			<%= f.password_field :password, class: "form-control" %><br>
+		</div>
 
-<h1>Login</h1>
-<%= flash_message %>
-<%= form_for(:session, url: login_path) do |f| %>
-<%= f.label :email %>
-<%= f.email_field :email %>
-<%= f.label :password %>
-<%= f.password_field :password %><br>
-<%= f.submit "acessar" %>
+		<%= f.submit "acessar", class: "btn btn-block btn-info", style: "margin-top:1
+		em;"  %>
+	</div>
+	
+	<div class="col-xs-4"></div>
 
-<%end%>
+	<%end%>
+</div>

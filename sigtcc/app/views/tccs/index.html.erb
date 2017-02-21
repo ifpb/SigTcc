@@ -1,33 +1,45 @@
-<p id="notice"><%= notice %></p>
-<% if ! alert.blank? %>
-    <div>
-      <strong style="color:red">Erro! <%= alert %> </strong>
-    </div>
+<% if ! notice.blank? %>
+<div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong style="color:green" id="notice"><%= notice %></strong>
+</div>
 <% end %>
-<h1>Tccs</h1>
 
-<table id= "tccs">
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Periodo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% if ! alert.blank? %>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong style="color:red">Erro! <%= alert %> </strong>
+  </div>
+<% end %>
 
-  <tbody>
-    <% @tccs.each do |tcc| %>
+<div class="container-fluid">
+  <h1>TCCs Cadastrados</h1>
+
+  <table id= "tccs" class="table">
+    <thead>
       <tr>
-        <td ><%= tcc.titulo %></td>
-        <td ><%= tcc.periodo %></td>
-        <td><%= link_to 'Expandir', tcc %></td>
-        <td><%= link_to 'Editar', edit_tcc_path(tcc) %></td>
-        <td><%= link_to 'Apagar', tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } %></td>
+        <th>Titulo</th>
+        <th>Periodo</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @tccs.each do |tcc| %>
+        <tr>
+          <td class="col-xs-6"><%= tcc.titulo %></td>
+          <td class="col-xs-3"><%= tcc.periodo %></td>
+          <td class="col-xs-3">
+            <%= link_to 'Expandir', tcc, class: "btn btn-default" %>
+            <%= link_to 'Editar', edit_tcc_path(tcc), class: "btn btn-default" %>
+            <%= link_to 'Apagar', tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: "btn btn-default" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<%= link_to 'Criar Tcc', new_tcc_path %>
+<div class="container-fluid">
+  <%= link_to 'Novo TCC', new_tcc_path, class: "btn btn-info col-xs-2", style: "margin-top:4em;float:right;color:#fff"  %>
+</div>

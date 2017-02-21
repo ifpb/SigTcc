@@ -1,54 +1,82 @@
-<%= form_for(tcc) do |f| %>
-  <% if tcc.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tcc.errors.count, "error") %> prohibited this tcc from being saved:</h2>
 
+<%= form_for(tcc) do |f| %>
+  
+  <% if tcc.errors.any? %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong style="color:red">
+        <%= pluralize(tcc.errors.count, "error") %> prohibited this tcc from being saved:
+      </strong>
       <ul>
-      <% tcc.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% tcc.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
-    </div>
+    </div>  
   <% end %>
 
   <% if ! alert.blank? %>
-      <div>
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong style="color:red">Erro! <%= alert %> </strong>
       </div>
   <% end %>
 
-
-  <div class="field">
-    <%= f.label :arquivo %>
-    <%= f.file_field :arquivo %><strong style="color: red"> (Só serão permitidos arquivos pdf's)</strong>
-  </div>
-
-  <div class="field">
+  <div class="form-group col-xs-6">
     <%= f.label :titulo %>
-    <%= f.text_field :titulo %>
+    <%= f.text_field :titulo, class: "form-control" %> <!-- Inserir Título Retirado da Proposta Aqui -->
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-6">
     <%= f.label :periodo %>
-    <%= f.text_field :periodo %>
+    <%= f.text_field :periodo, class: "form-control" %>
   </div>
 
-  
-  <%= f.label "Tipo:" %>
-  <%= f.select :tipos, options_for_select(Tcc.tipos.keys) %>
-  <%= f.label "palavras-chave" %>
-  <%= text_field_tag "palavras[]","",:id =>'palavra1', :class => "class" %>
-  <%= f.label "palavras-chave" %>
-  <%= text_field_tag "palavras[]","",:id =>'palavra2', :class => "class" %>
-  <%= f.label "palavras-chave" %>
-  <%= text_field_tag "palavras[]","",:id =>'palavra3', :class => "class" %>
-  <br>
-  <span>Tcc agendado:</span>
-  <span>Sim</span><%= radio_button_tag 'agendadotrue', true %>
-  <span>Não</span><%= radio_button_tag 'agendadofalse', false %>
-
-
-  <div class="actions">
-    <%= f.submit "Salvar" %>
+  <div class="form-group col-xs-6">
+    <%= f.label "Tipo:" %>
+    <%= f.select :tipos, options_for_select(Tcc.tipos.keys), {}, {class: 'form-control'} %>
   </div>
+
+  <div class="form-group col-xs-6">
+    <%= f.label "Tcc agendado:" %></br>
+    <div class="btn-group" data-toggle="buttons">
+      
+      <!-- Verificar se agendad é true ou false e marcar no radio -->
+      <% if :agendad == true %><label class="btn btn-info active">
+      <% else %><label class="btn btn-info"><% end %>
+        <span>Sim</span><%= radio_button_tag 'agendadotrue', true %>
+      </label>
+
+      <% if :agendad == true %><label class="btn btn-default">
+      <% else %><label class="btn btn-default active"><% end %>
+        <span>Não</span><%= radio_button_tag 'agendadofalse', false %>
+      </label>
+
+    </div>
+  </div>
+
+  <div class="form-group col-xs-12">
+    <%= f.label "palavras-chave" %>
+    <%= text_field "palavras","", class: "tokenize", id: "input-palavras", placeholder: "Insira 3 palavras-chave separadas por , (Vírgula)" %>
+
+    <script type="text/javascript">
+      $('input.tokenize').tokenfield({
+        limit: 3,
+        delimiter: ',',
+        tokens: (':palavras') // verificar se existem palavras e adiciona-las
+      });
+    </script>
+
+  </div>
+
+  <div class="form-group col-xs-12">
+    <%= f.label :arquivo %>
+    <%= f.file_field :arquivo, class: "btn btn-block btn-default" %><p class="help-block"> Só serão permitidos arquivos com extensão .pdf</p>
+  </div>
+
+  <div class="form-group col-xs-12">
+    <%= f.submit "Salvar", class: "btn btn-info col-xs-2", style: "float:right;margin-left:1em" %>
+    <%= link_to 'Cancelar', tccs_path, class: "btn btn-default col-xs-2", style: "float:right" %>
+  </div>
+
 <% end %>
