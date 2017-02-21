@@ -1,0 +1,55 @@
+<%= form_for(ata_defesas) do |f| %>
+  <% if ata_defesas.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ata_defesas.errors.count, "error") %> prohibited this ata_defesa from being saved:</h2>
+
+      <ul>
+      <% ata_defesas.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if ! alert.blank? %>
+      <div>
+        <strong style="color:red">Erro! <%= alert %> </strong>
+      </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :arquivo %>
+    <%= f.file_field :arquivo %><strong style="color: red"> (Só serão permitidos arquivos pdf's)</strong>
+  </div>
+
+  <div class="field">
+    <%= f.label :data %>
+    <%= f.date_select :data, {:order => [:day, :month, :year]} %>
+  </div>
+
+  <!--<div class="field">
+
+  </div>-->
+
+
+
+       <div class="field">
+       <%= f.label "Status" %>
+       <%= label_tag(:status_aprovado, "Aprovado") %>
+       <%= radio_button_tag(:status, "aprovado", checked: true) %>
+       <%= label_tag(:status_reprovado, "Reprovado") %>
+       <%= radio_button_tag(:status, "reprovado") %>
+
+       </div>
+
+       <div class="field">
+         <%= label_tag(:nota, "Nota") %>
+         <%= text_field_tag :nota, ( ata_defesas.banca.tcc.nota ) %>
+       </div>
+       <%= hidden_field_tag :tcc, ata_defesas.banca.tcc.id %>
+
+  <div class="actions">
+    <%= f.submit "Salvar" %>
+  </div>
+<% end %>

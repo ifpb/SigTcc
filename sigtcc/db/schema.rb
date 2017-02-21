@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213230534) do
+ActiveRecord::Schema.define(version: 20170217212713) do
 
   create_table "alunos", force: :cascade do |t|
     t.string   "matricula"
@@ -110,7 +110,6 @@ ActiveRecord::Schema.define(version: 20170213230534) do
     t.string   "periodo"
     t.boolean  "agendad",              default: false
     t.integer  "tipos",                default: 1
-    t.integer  "aluno_id"
     t.integer  "professor_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
@@ -121,7 +120,6 @@ ActiveRecord::Schema.define(version: 20170213230534) do
     t.integer  "proposta_tcc_id"
     t.float    "nota"
     t.string   "status"
-    t.index ["aluno_id"], name: "index_tccs_on_aluno_id"
     t.index ["professor_id"], name: "index_tccs_on_professor_id"
     t.index ["proposta_tcc_id"], name: "index_tccs_on_proposta_tcc_id"
   end
