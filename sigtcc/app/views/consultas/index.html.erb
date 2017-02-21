@@ -1,0 +1,12 @@
+<h1>Consultar TCC</h1>
+<p id="notice"><%= notice %></p>
+
+<%= form_tag("/consulta", method:"post" ) do %>
+<%= label_tag(:professor, "Professor") %>
+  <%= text_field_tag(:professor) %>
+  <%= label_tag(:semestre, "Semestre") %>
+    <%= text_field_tag(:semestre) %>
+  <%= submit_tag("Consultar") %>
+
+
+<% end %>
