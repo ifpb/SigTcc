@@ -21,6 +21,7 @@ class AlunosController < ApplicationController
 
   # GET /alunos/1/edit
   def edit
+    @usuario = @aluno.usuario
   end
 
   # POST /alunos
