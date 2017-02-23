@@ -31,7 +31,8 @@ class AlunosController < ApplicationController
     @usuario.email = params[:usuario][:email]
     @usuario.nome = params[:usuario][:nome]
     @usuario.sexo = params[:usuario][:sexo]
-    @usuario.password_digest = params[:usuario][:password_digest]
+    @usuario.password = params[:usuario][:password]
+    @usuario.password_confirmation = params[:usuario][:password_confirmation]
     
     @aluno = Aluno.new()
     @aluno.matricula = params[:aluno][:matricula]
