@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sigtcc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Sigtcc" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Sigtcc" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-    <!--Estou colocando o logout login aqui para ser implementado depois em algum header [Paulinho]
-  aqui ele estará em qualquer página -->
-     <% if logged_in? %>
-       <%= link_to "Profile", current_user %>
-       <%= link_to "Log out", logout_path, method: "delete" %>
-     <% else %>
-        <%= link_to "Log in", login_path %>
-     <% end %>
-
-    <%= yield %>
+  <body><nav class="navbar"></nav>
+      <%= render 'layouts/navigation' %>
+    <main class="container" role="main">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </main>
   </body>
 </html>
