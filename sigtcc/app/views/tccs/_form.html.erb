@@ -18,38 +18,43 @@
   <% end %>
 
 
-  <div class="field">
-    <%= f.label :arquivo %>
-    <%= f.file_field :arquivo %><strong style="color: red"> (Só serão permitidos arquivos pdf's)</strong>
+<div class="form-group row">
+  <div class="col-md-4">
+    <div class="field">
+      <%= f.label :arquivo %>
+      <small style="color: red"> (Só serão permitidos arquivos pdf's)</small>
+      <%= f.file_field :arquivo , :class => 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :titulo %>
+      <%= f.text_field :titulo , :class => 'form-control'  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :periodo %>
+      <%= f.text_field :periodo , :class => 'form-control'  %>
+    </div>
+
+
+    <%= f.label "Tipo:" %>
+    <%= f.select(:tipos, options_for_select(Tcc.tipos.keys), {}, { :class => 'form-control'} ) %>
+
+    <%= f.label "palavras-chave" %>
+    <%= text_field_tag "palavras[]","",:id =>'palavra1', :class => "class form-control" %>
+    <%= f.label "palavras-chave" %>
+    <%= text_field_tag "palavras[]","",:id =>'palavra2', :class => "class form-control" %>
+    <%= f.label "palavras-chave" %>
+    <%= text_field_tag "palavras[]","",:id =>'palavra3', :class => "class form-control" %>
+    <br>
+    <span>Tcc agendado:</span>
+    <label>Sim <%= radio_button_tag 'agendadotrue', true %></label>
+    <label>Não <%= radio_button_tag 'agendadofalse', false %></label>
+
+
+    <div class="actions">
+      <%= f.submit "Salvar" , :class => 'btn btn-success'  %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :titulo %>
-    <%= f.text_field :titulo %>
-  </div>
-
-  <div class="field">
-    <%= f.label :periodo %>
-    <%= f.text_field :periodo %>
-  </div>
-
-
-  <%= f.label "Tipo:" %>
-  <%= f.select :tipos, options_for_select(Tcc.tipos.keys) %>
-
-  <%= f.label "palavras-chave" %>
-  <%= text_field_tag "palavras[]","",:id =>'palavra1', :class => "class" %>
-  <%= f.label "palavras-chave" %>
-  <%= text_field_tag "palavras[]","",:id =>'palavra2', :class => "class" %>
-  <%= f.label "palavras-chave" %>
-  <%= text_field_tag "palavras[]","",:id =>'palavra3', :class => "class" %>
-  <br>
-  <span>Tcc agendado:</span>
-  <span>Sim</span><%= radio_button_tag 'agendadotrue', true %>
-  <span>Não</span><%= radio_button_tag 'agendadofalse', false %>
-
-
-  <div class="actions">
-    <%= f.submit "Salvar" %>
-  </div>
+</div>
 <% end %>
