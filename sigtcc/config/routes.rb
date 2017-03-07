@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :plano_atividades
   resources :alunos
 
 
