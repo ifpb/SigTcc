@@ -10,6 +10,9 @@ end
 gem "paperclip", "~> 5.0.0"
 gem "paperclip_database", "~> 2.0"
 
+# Para internacionalizacao
+gem 'rails-i18n', '~> 5.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 gem 'pdfkit'
