@@ -12,4 +12,4 @@ Funcionalidade - As informações devem ser persistidas e uma mensagem de sucess
 - Nenhum campo pode ser nulo.
 - Sistema verifica se o membro já existe pelo nome.
 ###Protótipo
-![Tela de cadastro](assets/cadastroaluno.png)
+[Tela de cadastro](Prototipos/Modulo 2/cadastroaluno.png)
