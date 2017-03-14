@@ -9,5 +9,6 @@ Funcionalidade - Realiza a remoção do aluno no sistema, localizado pelo nome o
 ### Restrições
 - Coordenador/Administrador tem que está logado;
 - Sistema retorna para pagina de alunos cadastrados.
+
 ###Protótipo
 ![Tela de exclusao](assets/excluiraluno.png)

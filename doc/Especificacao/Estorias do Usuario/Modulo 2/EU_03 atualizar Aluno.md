@@ -9,5 +9,6 @@ Funcionalidade - As novas informações devem ser atualizadas.
 ### Restrições
 - O aluno deve habilitar o box correspondente ao campo que ele deseja alterar.
 - Aluno tem que está logado.
+
 ###Protótipo
 ![Tela de edicao](assets/editaraluno.png)
