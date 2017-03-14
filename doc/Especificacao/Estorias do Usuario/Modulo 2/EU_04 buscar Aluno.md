@@ -10,4 +10,4 @@ Funcionalidade - São apresentados os campos nome, matrícula. A aplicação exi
 - Aluno, professor deve está logado.
 
 ###Protótipo
-[Tela de busca Aluno](/doc/Especificacao/Prototipos/Modulo 2/buscaraluno.png)
+[Tela Pesquisar Aluno](/doc/Especificacao/Prototipos/Modulo 2/buscaraluno.png)

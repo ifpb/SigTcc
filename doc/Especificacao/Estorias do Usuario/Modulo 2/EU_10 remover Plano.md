@@ -10,4 +10,4 @@ Restrições
 -
 
 ###Protótipo
-[Tela de remoção](/doc/Especificacao/Prototipos/Modulo 2/removerplano.png)
+[Tela Remover Plano](/doc/Especificacao/Prototipos/Modulo 2/removerplano.png)

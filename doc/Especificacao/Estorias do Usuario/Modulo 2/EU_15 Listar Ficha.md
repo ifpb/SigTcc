@@ -11,4 +11,4 @@ Funcionalidade - Exibir uma lista de fichas(s) que possuem um dos dados selecion
 - Usuário estar logado.
 
 ### Protótipo
-[Tela Listar Ficha](/doc/Especificacao/Prototipos/Modulo 2/listarficha.png)
+[Tela Listar Fichas](/doc/Especificacao/Prototipos/Modulo 2/listarficha.png)

@@ -11,4 +11,4 @@ Funcionalidade - Possibilidade de localizar uma proposta pelos campos título, t
 
 
 ### Protótipo
-[Tela de Consulta](/doc/Especificacao/Prototipos/Modulo 2/buscarproposta.png)
+[Tela Consultar Proposta](/doc/Especificacao/Prototipos/Modulo 2/buscarproposta.png)

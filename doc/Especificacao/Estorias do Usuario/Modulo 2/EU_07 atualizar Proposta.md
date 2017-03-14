@@ -12,4 +12,4 @@ Funcionalidade - As solicitações devem ser aprovadas ou não pelo administrado
 
 
 ### Protótipo
-[Tela de edicao](/doc/Especificacao/Prototipos/Modulo 2/editarproposta.png)
+[Tela Edição de Proposta](/doc/Especificacao/Prototipos/Modulo 2/editarproposta.png)

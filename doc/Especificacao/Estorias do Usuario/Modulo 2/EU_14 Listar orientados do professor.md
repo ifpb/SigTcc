@@ -11,4 +11,4 @@ Funcionalidade - Exibir uma lista de Alunos que o professor está orientando.
 - Usuário estar logado.
 
 ### Protótipo
-[Tela de Listar Orientados](/doc/Especificacao/Prototipos/Modulo 2/listarorientadosdoprofessor.png)
+[Tela Listar Orientados](/doc/Especificacao/Prototipos/Modulo 2/listarorientadosdoprofessor.png)

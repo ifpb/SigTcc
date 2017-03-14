@@ -14,4 +14,4 @@ Funcionalidade - As informações devem ser persistidas e uma mensagem de sucess
 
 
 ### Protótipo
-[Tela de cadastro](/doc/Especificacao/Prototipos/Modulo 2/cadastroproposta.png)
+[Tela cadastrar Proposta](/doc/Especificacao/Prototipos/Modulo 2/cadastroproposta.png)

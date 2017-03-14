@@ -11,4 +11,4 @@ Funcionalidade - Realiza a remoção do aluno no sistema, localizado pelo nome o
 - Sistema retorna para pagina de alunos cadastrados.
 
 ###Protótipo
-[Tela de exclusao](/doc/Especificacao/Prototipos/Modulo 2/excluiraluno.png)
+[Tela de exclusão](/doc/Especificacao/Prototipos/Modulo 2/excluiraluno.png)

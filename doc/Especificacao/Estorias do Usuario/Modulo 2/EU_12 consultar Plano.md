@@ -11,4 +11,4 @@ Funcionalidade - São apresentadas os campos com informações sobre o plano e o
 
 
 ### Protótipo
-[Tela de consultar Plano](/doc/Especificacao/Prototipos/Modulo 2/buscarplanolocalizar.png)
+[Tela consultar Plano](/doc/Especificacao/Prototipos/Modulo 2/buscarplanolocalizar.png)

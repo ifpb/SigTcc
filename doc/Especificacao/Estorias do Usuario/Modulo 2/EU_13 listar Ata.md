@@ -11,4 +11,4 @@ Funcionalidade - Exibir uma lista de Ata(s) que possuem um dos dados selecionado
 - Usuário estar logado
 
 ### Protótipo
-[Tela Listar Ata](/doc/Especificacao/Prototipos/Modulo 2/listarta.png)
+[Tela Listar Atas](/doc/Especificacao/Prototipos/Modulo 2/listarta.png)
