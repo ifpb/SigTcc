@@ -11,5 +11,6 @@ Funcionalidade - As informações devem ser persistidas e uma mensagem de sucess
 - Cada aluno só poderá ter apenas um cadastro.
 - Nenhum campo pode ser nulo.
 - Sistema verifica se o membro já existe pelo nome.
+
 ###Protótipo
 [Tela de cadastro](Prototipos/Modulo 2/cadastroaluno.png)
