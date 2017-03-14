@@ -4,30 +4,38 @@
       <strong style="color:red">Erro! <%= alert %> </strong>
     </div>
 <% end %>
-<h1>Tccs</h1>
+ <div class="panel panel-default" style="padding: .1em 3em">
+  <div class="panel-header">
+    <h1>Tccs</h1>
+  </div>
+  <div class="panel-body">
 
-<table id="tccs"  class="table">
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Periodo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table id="tccs" class="table">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Periodo</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @tccs.each do |tcc| %>
-      <tr>
-        <td ><%= tcc.titulo %></td>
-        <td ><%= tcc.periodo %></td>
-        <td><%= link_to 'Expandir', tcc %></td>
-        <td><%= link_to 'Editar', edit_tcc_path(tcc) %></td>
-        <td><%= link_to 'Apagar', tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @tccs.each do |tcc| %>
+          <tr>
+            <td ><%= tcc.titulo %></td>
+            <td ><%= tcc.periodo %></td>
+            <td><%= link_to 'Expandir', tcc %></td>
+            <td><%= link_to 'Editar', edit_tcc_path(tcc) %></td>
+            <td><%= link_to 'Apagar', tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<br>
+  </div>
 
-<%= link_to 'Criar Tcc', new_tcc_path %>
+<div class="panel-footer text-right">
+<%= link_to new_tcc_path, class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %><i class="material-icons">add</i>
+<% end %>
+</div>
+</div>
