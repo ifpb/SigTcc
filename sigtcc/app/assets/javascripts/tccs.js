@@ -5,7 +5,8 @@ $(document).on('turbolinks:load', function() {
           '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></p>');
   });
 
-  $('span.glyphicon-remove').click(function(){
+  $('span.glyphicon-remove').click(function() {
+    console.log("chamou");
     $(this).parent().remove();
   })
 });

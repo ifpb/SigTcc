@@ -41,7 +41,7 @@
     <%= f.select(:tipos, options_for_select(Tcc.tipos.keys), {}, { :class => 'form-control'} ) %>
 
     <div class="form-group">
-    <%= f.label :palavras_chaves, class: "control-label" %>
+    <%= f.label :palavras_chave, class: "control-label" %>
     <% tcc.palavras.each do |palavra| %>
       <p>
         <input type="text" name="palavras[]" value="<%= palavra.nome %>">

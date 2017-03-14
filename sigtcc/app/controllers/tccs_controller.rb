@@ -29,19 +29,22 @@ class TccsController < ApplicationController
   # POST /tccs.json
   def create
     @tcc = Tcc.new(tcc_params)
-    @tcc.aluno = Aluno.create()
     @tcc.professor = Professor.create()
     @tcc.agendad = params[:agendado]
 
-      params[:palavras].each { |palavra|
-        if palavra.blank?
-          flash[:alert] = 'Preencha todas as palavras-chaves!'
-          render template: "tccs/new"
-          return ;
-        end
-        palavra_bd  = Palavra.find_or_create_by(nome: palavra)
-        @tcc.palavras << palavra_bd
-      }
+    params[:palavras].each do |palavra|
+      @tcc.palavras.tags << Palavra.find_or_create_by(nome: palavra) unless palavra.empty?
+    end
+
+#      params[:palavras].each { |palavra|
+#        if palavra.blank?
+#          flash[:alert] = 'Preencha todas as palavras-chaves!'
+#          render template: "tccs/new"
+#          return ;
+#        end
+#        palavra_bd  = Palavra.find_or_create_by(nome: palavra)
+#        @tcc.palavras << palavra_bd
+#      }
 
     respond_to do |format|
       if @tcc.save
@@ -91,7 +94,7 @@ class TccsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tcc_params
-      params.require(:tcc).permit(:titulo, :periodo, :arquivo, :tema, :tipos)
+      params.require(:tcc).permit(:titulo, :periodo, :arquivo, :tipos)
     end
 
     def palavras_params
