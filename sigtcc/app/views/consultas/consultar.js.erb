@@ -1,0 +1,5 @@
+
+
+
+document.getElementById('results').innerHTML = '';
+$("<%= escape_javascript(render 'consultar', tccs: @tccs) %>").appendTo("#results");
