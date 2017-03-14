@@ -3,9 +3,14 @@
 
     <p id="notice"><%= notice %></p>
 
-    <h3>Ola <%=@tipo%> <%=@usuario.nome%> </h3>
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Ola <%=@tipo%>(a) <strong><%=@usuario.nome%></strong> 
+    </div>
+
 
     <div class="input-group">
+      <span class="input-group-addon" id="basic-addon3"><i class="glyphicon glyphicon-user"></i></span>
       <span class="input-group-addon" id="basic-addon3"><%=@tipo%>(a) <strong><%=@usuario.nome%></strong></span>
       <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" disabled>
       <span class="input-group-addon" id="basic-addon3">Email:<strong><%= @usuario.email %></strong></span>
@@ -22,34 +27,71 @@
             <table id= "tccs" class="table">
               <thead>
                 <tr>
-                  <th>Titulo</th>
-                  <th>Periodo</th>
-                  <th colspan="3"></th>
+                  <th class="col-md-8">Titulo</th>
+                  <th class="col-md-3">Periodo</th>
+                  <th class="col-md-1" colspan="4"></th>
                 </tr>
               </thead>
 
               <tbody>
                 <% @usuario.user.tccs.each do |tcc| %>
                 <tr>
-                    <td ><%= tcc.titulo %></td>
-                    <td ><%= tcc.periodo %></td>
+                  <td ><%= tcc.titulo %></td>
+                  <td ><%= tcc.periodo %></td>
+
                   <% if tcc.agendad == true && tcc.banca.ata_defesa.nil? %>
-                    <td><%= link_to 'Gerar ata de defesa', controller: "ata_defesas", action: "new", tcc: tcc.id %></td>
+                    <td>
+                      <%= link_to 'Gerar ata de defesa', controller: "ata_defesas", action: "new", tcc: tcc.id do %>
+                        <button type="button" class="btn btn-default" title="Gerar ata de defesa">
+                          <span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green"></span>
+                        </button>
+                      <% end %>
+                    </td>
                   <%end%>
-                  <% if !tcc.banca.ata_defesa.nil? %>
-                    <td><%= link_to 'Editar ata de defesa', controller: "ata_defesas", action: "edit", tcc: tcc.id %></td>
-                  <%end%>
+                  
                   <% if !tcc.banca.ata_defesa.nil? %>
                     <td>
-                      <%= link_to 'Apagar', {controller: "ata_defesas",  action: "destroy", tcc: tcc.id, }, :method => :delete, data: { confirm: 'Tem certeza que deseja excluir a ata?' } %></td>
-                    <td><%= link_to "Visualizar ata de defesa PDF",  ata_defesa_download_path(tcc.banca.ata_defesa, format: "pdf"),  target: "_blank",  class: "download" %></td>
-                    <td><%= link_to 'Visualizar arquivo ata defesa', tcc.banca.ata_defesa.arquivo.url %></td>
+                      <%= link_to 'Editar ata de defesa', controller: "ata_defesas", action: "edit", tcc: tcc.id do %>
+                        <button type="button" class="btn btn-default" title="Editar">
+                          <span class="glyphicon glyphicon-edit" aria-hidden="true" style="color:cyan"></span>
+                        </button>
+                      <% end %>
+                    </td>
                   <%end%>
+                  
+                  <% if !tcc.banca.ata_defesa.nil? %>
+                    <td>
+                      <%= link_to "excluir", {controller: "ata_defesas",  action: "destroy", tcc: tcc.id, }, :method => :delete, data: { confirm: 'Tem certeza que deseja excluir a ata?' } do %>
+                        <button type="button" class="btn btn-default" title="Excluir">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red"></span>
+                        </button>
+                      <% end %>
+                    </td>
+                    
+                    <td>
+                      <%= link_to ata_defesa_download_path(tcc.banca.ata_defesa,  class: "download", format: "pdf"),  target: "_blank" do %>
+                        <button type="button" class="btn btn-default" title="Visualizar ata de defesa PDF">
+                          <span class="glyphicon glyphicon-file" aria-hidden="true" style="color:black"></span>
+                        </button>
+                      <% end %>
+                    </td>
+                    
+                    <td>
+                      <%= link_to tcc.banca.ata_defesa.arquivo.url do %>
+                        <button type="button" class="btn btn-default" title="Visualizar arquivo ata defesa">
+                          <span class="glyphicon glyphicon-paperclip" aria-hidden="true" style="color:black"></span>
+                        </button>
+                      <% end %>
+                    </td>
+                  <%end%>
+
                 </tr>
                 <% end %>
+
               </tbody>
             </table>
           <%end%>
+
         <%end%>
       </div>
 

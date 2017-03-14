@@ -24,18 +24,40 @@
           <tr>
             <td ><%= tcc.titulo %></td>
             <td ><%= tcc.periodo %></td>
-            <td><%= link_to 'Expandir', tcc %></td>
-            <td><%= link_to 'Editar', edit_tcc_path(tcc) %></td>
-            <td><%= link_to 'Apagar', tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } %></td>
+
+            <td>
+              <%= link_to tcc do %>
+                <button type="button" class="btn btn-default" title="Visualizar">
+                  <span class="glyphicon glyphicon-eye-open" aria-hidden="true" style="color:black"></span>
+                </button>
+              <% end %>
+            </td>
+
+            <td>
+              <%= link_to edit_tcc_path(tcc) do %>
+                <button type="button" class="btn btn-default" title="Editar">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true" style="color:cyan"></span>
+                </button>
+              <% end %>
+            </td>
+
+            <td>
+              <%= link_to tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } do %>
+              <button type="button" class="btn btn-default" title="Excluir">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red"></span>
+              </button>
+              <% end %>
+
+            </td>
           </tr>
         <% end %>
+
       </tbody>
     </table>
-
   </div>
 
-<div class="panel-footer text-right">
-<%= link_to new_tcc_path, class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %><i class="material-icons">add</i>
-<% end %>
 </div>
+<div>
+<%= link_to new_tcc_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-2", style: "float:right; text-decoration:none" do %><i class="material-icons"></i>Criar Novo TCC
+<% end %>
 </div>
