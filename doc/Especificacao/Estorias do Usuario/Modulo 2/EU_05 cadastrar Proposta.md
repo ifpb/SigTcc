@@ -12,5 +12,6 @@ Funcionalidade - As informações devem ser persistidas e uma mensagem de sucess
 - o arquivo deve ser do tipo PDF.
 - Cada aluno só poderá ter apenas uma proposta do TCC.
 
+
 ### Protótipo
-![Tela de cadastro](assets/cadastroproposta.png)
+[Tela de cadastro](/doc/Especificacao/Prototipos/Modulo 2/cadastroproposta.png)

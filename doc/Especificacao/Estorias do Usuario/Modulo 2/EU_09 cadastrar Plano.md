@@ -12,4 +12,4 @@ Funcionalidade - As informações devem ser persistidas e uma mensagem de sucess
 - O aluno deve estar logado no sistema.
 
 ### Protótipo
-![Tela de cadastro](assets/cadastroplano.png)
+[Tela de cadastro](/doc/Especificacao/Prototipos/Modulo 2/cadastroplano.png)

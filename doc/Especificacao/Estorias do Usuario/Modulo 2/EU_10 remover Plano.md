@@ -8,5 +8,6 @@ Funcionalidade - As informações sobre a plano de atividades do aluno devem ser
 
 Restrições
 -
+
 ###Protótipo
-![Tela de cadastro](assets/removerplano.png)
+[Tela de remoção](/doc/Especificacao/Prototipos/Modulo 2/removerplano.png)

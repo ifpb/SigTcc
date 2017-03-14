@@ -8,5 +8,6 @@ Funcionalidade - São apresentados os campos nome, matrícula. A aplicação exi
 
 ### Restrições
 - Aluno, professor deve está logado.
+
 ###Protótipo
-![Tela de busca Aluno](assets/buscaraluno.png)
+[Tela de busca Aluno](/doc/Especificacao/Prototipos/Modulo 2/buscaraluno.png)

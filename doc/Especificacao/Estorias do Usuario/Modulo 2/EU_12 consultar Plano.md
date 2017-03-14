@@ -9,5 +9,6 @@ Funcionalidade - São apresentadas os campos com informações sobre o plano e o
 ### Restrições
 -
 
+
 ### Protótipo
-![Tela de cadastro](assets/buscarplanolocalizar.png)
+[Tela de consultar Plano](/doc/Especificacao/Prototipos/Modulo 2/buscarplanolocalizar.png)

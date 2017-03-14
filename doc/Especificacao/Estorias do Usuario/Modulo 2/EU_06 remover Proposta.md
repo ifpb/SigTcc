@@ -11,4 +11,4 @@ Funcionalidade - As informações sobre a proposta de TCC do aluno devem ser rem
 
 
 ### Protótipo
-![Tela de cadastro](assets/removerproposta.png)
+[Tela de Remover Proposta](/doc/Especificacao/Prototipos/Modulo 2/removerproposta.png)

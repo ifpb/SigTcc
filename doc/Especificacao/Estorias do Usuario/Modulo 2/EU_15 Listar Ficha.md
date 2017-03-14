@@ -9,5 +9,6 @@ Funcionalidade - Exibir uma lista de fichas(s) que possuem um dos dados selecion
 
 ### Restrições
 - Usuário estar logado.
+
 ### Protótipo
-![Tela de cadastro](assets/listarficha.png)
+[Tela Listar Ficha](/doc/Especificacao/Prototipos/Modulo 2/listarficha.png)

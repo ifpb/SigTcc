@@ -11,4 +11,4 @@ Funcionalidade - As novas informações devem ser atualizadas.
 - Aluno tem que está logado.
 
 ###Protótipo
-![Tela de edicao](assets/editaraluno.png)
+[Tela de edicao](/doc/Especificacao/Prototipos/Modulo 2/editaraluno.png)

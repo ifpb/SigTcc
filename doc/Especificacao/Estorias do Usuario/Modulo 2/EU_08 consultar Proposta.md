@@ -9,5 +9,6 @@ Funcionalidade - Possibilidade de localizar uma proposta pelos campos título, t
 ### Restrições
 - Usuário logado no sistema.
 
+
 ### Protótipo
-![Tela de cadastro](assets/buscarproposta.png)
+[Tela de Consulta](/doc/Especificacao/Prototipos/Modulo 2/buscarproposta.png)

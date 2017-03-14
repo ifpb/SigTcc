@@ -11,4 +11,4 @@ Funcionalidade - As novas informações devem ser atualizadas.
 - Aluno deve estar logado no sistema.
 
 ### Protótipo
-![Tela de cadastro](assets/editarplano.png)
+[Tela de edição](/doc/Especificacao/Prototipos/Modulo 2/editarplano.png)
