@@ -1,6 +1,26 @@
-<h1>Editar Plano Atividade</h1>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
+		
+		<div class="panel panel-default">
+      <div class="panel-heading" style="padding: .1em 3em">
+        <h2>Editar Plano Atividade</h2>
+      </div>
+			<%= render 'form', plano_atividade: @plano_atividade %>
+		</div>
 
-<%= render 'form', plano_atividade: @plano_atividade %>
-
-<%= link_to 'Mostrar', @plano_atividade %> |
-<%= link_to 'Voltar', plano_atividades_path %>
+		<div>
+			<div>
+        <%= link_to plano_atividades_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", title: "Voltar", style: "float:left; margin-right:.5em; text-decoration:none" do %>
+          <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" style="color:black"></span>
+        <% end %>
+      </div>
+        
+      <div>
+        <%= link_to @plano_atividade, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored", title: "Mostrar", style: "float:left; text-decoration:none" do %>
+          <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+        <% end %>
+      </div>
+		</div>
+	
+	</div>
+</div>

@@ -1,13 +1,12 @@
 <%= form_for(tcc) do |f| %>
   <% if tcc.errors.any? %>
-    <div class="alert alert-warning alert-dismissible" id="error_explanation" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <div class="alert alert-danger alert-dismissible" id="error_explanation" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h2><%= pluralize(tcc.errors.count, "error") %> prohibited this tcc from being saved:</h2>
-
       <ul>
-      <% tcc.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% tcc.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -18,66 +17,80 @@
         <strong style="color:red">Erro! <%= alert %> </strong>
       </div>
   <% end %>
-
-
-<div class="form-group row">
-    <div class="form-group col-xs-6">
-      <%= f.label :titulo %>
-      <%= f.text_field :titulo, class: 'form-control'  %>
-    </div>
-
-    <div class="form-group col-xs-6">
-      <%= f.label :periodo %>
-      <%= f.text_field :periodo, class: 'form-control' %>
-    </div>
-
-    <div class="form-group col-xs-6">
-    <%= f.label "Tipo" %>
-    <%= f.select(:tipos, options_for_select(Tcc.tipos.keys), {}, { :class => 'form-control'} ) %>
-    </div>
-
-    <div class="form-group col-xs-6">
-      <%= f.label "Tcc agendado" %><br/>
-      <div class="btn-group" data-toggle="buttons">
-
-        <% if :agendad == true %>
-          <label class="btn btn-info active">
-        <% else %>
-          <label class="btn btn-info">
-        <% end %>
-            <span>Sim</span><%= radio_button_tag 'agendadotrue', true %>
-          </label>
-
-        <% if :agendad == true %>
-          <label class="btn btn-default">
-        <% else %>
-          <label class="btn btn-default active">
-        <% end %>
-            <span>Não</span><%= radio_button_tag 'agendadofalse', false %>
-          </label>
-
-      </div>
-    </div>
-
-    <div class="form-group col-xs-12">
-      <%= f.label "palavras-chave" %>
+  
+  <div class="panel-body" style="padding: .5em 3em">
+    <div class="form-group row">
       
-      <%= text_field_tag "palavras[]","",:id =>'palavra1', :class => "class form-control" %>
-      <%= f.label "palavras-chave" %>
-      <%= text_field_tag "palavras[]","",:id =>'palavra2', :class => "class form-control" %>
-      <%= f.label "palavras-chave" %>
-      <%= text_field_tag "palavras[]","",:id =>'palavra3', :class => "class form-control" %>
-    </div>
+      <div class="form-group col-xs-6">
+        <%= f.label :titulo %>
+        <%= f.text_field :titulo, class: 'form-control'  %>
+      </div>
 
-    <div class="form-group col-xs-12">
-      <%= f.label :arquivo %>
-      <%= f.file_field :arquivo, class: "btn btn-block btn-default" %><p class="help-block"> Só serão permitidos arquivos com extensão .pdf</p>
-    </div>
+      <div class="form-group col-xs-6">
+        <%= f.label :periodo %>
+        <%= f.text_field :periodo, class: 'form-control' %>
+      </div>
 
-    <div class="form-group col-xs-12">
-      <%= f.submit "Salvar", class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-2", style: "float:right;margin-left:1em" %>
-      <%= link_to 'Cancelar', tccs_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--accent col-xs-2", style: "float:right; text-decoration:none" %>
     </div>
+    <div class="form-group row">
 
-</div>
+      <div class="form-group col-xs-6">
+        <%= f.label "Tipo" %>
+        <%= f.select(:tipos, options_for_select(Tcc.tipos.keys), {}, { :class => 'form-control'} ) %>
+      </div>
+
+      <div class="form-group col-xs-6">
+        <%= f.label "Tcc agendado" %><br/>
+        <div class="btn-group" data-toggle="buttons">
+
+          <% if :agendad == true %>
+            <label class="btn btn-info active">
+          <% else %>
+            <label class="btn btn-info">
+          <% end %>
+              <span>Sim</span><%= radio_button_tag 'agendadotrue', true %>
+            </label>
+
+          <% if :agendad == false %>
+            <label class="btn btn-default">
+          <% else %>
+            <label class="btn btn-default active">
+          <% end %>
+              <span>Não</span><%= radio_button_tag 'agendadofalse', false %>
+            </label>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group row">
+
+      <div class="form-group col-xs-12">
+        <%= f.label "palavras-chave" %>
+        
+        <%= text_field_tag "palavras[]","",:id =>'palavra1', :class => "class form-control" %>
+        <%= f.label "palavras-chave" %>
+        <%= text_field_tag "palavras[]","",:id =>'palavra2', :class => "class form-control" %>
+        <%= f.label "palavras-chave" %>
+        <%= text_field_tag "palavras[]","",:id =>'palavra3', :class => "class form-control" %>
+      </div>
+
+    </div>
+    <div class="form-group row">
+
+      <div class="form-group col-xs-12">
+        <%= f.label :arquivo %>
+        <%= f.file_field :arquivo, class: "btn btn-block btn-default" %><p class="help-block"> Só serão permitidos arquivos com extensão .pdf</p>
+      </div>
+
+    </div>
+    <div class="form-group row">
+    
+      <div class="form-group col-xs-12">
+        <%= f.submit "Salvar", class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-2", style: "float:right;margin-left:1em" %>
+      </div>
+      
+    </div>
+  </div>
+      
 <% end %>

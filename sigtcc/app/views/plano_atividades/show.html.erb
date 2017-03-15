@@ -1,17 +1,54 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
 
-<p>
-  <strong>Título Tcc:</strong>
-  <%= @plano_atividade.tcc.titulo %>
-</p>
-<p>
-  <strong>Data da Entrega:</strong>
-  <%= @plano_atividade.dataEntrega %>
-</p>
-<p>
-  <strong>Aprovação:</strong>
-  <%= @plano_atividade.aprovacao %>
-</p>
+    <% if ! notice.blank? %>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong id="notice"><%= notice %></strong>
+      </div>
+    <% end %>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading" style="padding: .1em 3em">
+        <h2><strong> Plano de Atividade </strong></h2>
+      </div>
+      <div class="panel-body" style="padding: .5em 3em">
 
-<%= link_to 'Editar', edit_plano_atividade_path(@plano_atividade) %> |
-<%= link_to 'Voltar', plano_atividades_path %>
+      	<div class="col-md-12">
+          Titulo TCC:<h3><strong> <%= @plano_atividade.tcc.titulo %> </strong></h3>
+        </div>
+
+      	<div class="col-md-6">
+          Data da Entrega:<h5><strong> <%= @plano_atividade.dataEntrega.strftime('%d-%m-%Y') %> </strong></h5>
+        </div>
+
+        <div class="col-md-6">
+          Aprovacao:
+          <h5>
+          	<strong> 
+          		<% if @plano_atividade.aprovacao %> 
+                <string style="color:green"> APROVADO </strong>
+              <% else %> 
+                <string style="color:yellow"> NÃO APROVADO </strong>
+              <% end %> 
+           </strong>
+         </h5>
+        </div>
+      </div>
+    </div>
+		<div>
+      <div>
+        <%= link_to plano_atividades_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", title: "Voltar", style: "float:left; margin-right:.5em; text-decoration:none" do %>
+          <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" style="color:black"></span>
+        <% end %>
+      </div>
+        
+      <div>
+        <%= link_to edit_plano_atividade_path(@plano_atividade), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored", title: "Editar", style: "float:left; text-decoration:none" do %>
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

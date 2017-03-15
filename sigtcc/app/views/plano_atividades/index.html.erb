@@ -1,37 +1,80 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
 
-<h1>Plano Atividades</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Título TCC</th>
-      <th>Data de Entrega</th>
-      <th>Aprovação</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @plano_atividades.each do |plano_atividade| %>
-      <tr>
-        <td><%= plano_atividade.tcc.titulo %></td>
-        <td><%= plano_atividade.dataEntrega %></td>
-        <td>
-          <% if plano_atividade.aprovacao %> 
-            Sim 
-          <% else %> 
-            Não
-          <% end %> 
-        </td>
-        <td><%= link_to 'Mostrar', plano_atividade %></td>
-        <td><%= link_to 'Editar', edit_plano_atividade_path(plano_atividade) %></td>
-        <td><%= link_to 'Excluir', plano_atividade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% if ! notice.blank? %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong id="notice" > <%= notice %> </strong>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+    <div class="panel panel-default" style="padding: .1em 3em">
+      <div class="panel-header">
+        <h2>Plano Atividades</h2>
+      </div>
+      <div class="panel-body">
 
-<%= link_to 'Cadastrar Plano Atividade', new_plano_atividade_path %>
+        <table id="tccs" class="table">
+          <thead>
+            <tr>
+              <th>Título TCC</th>
+              <th>Data de Entrega</th>
+              <th>Aprovação</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @plano_atividades.each do |plano_atividade| %>
+              <tr>
+                <td><%= plano_atividade.tcc.titulo %></td>
+                <td><%= plano_atividade.dataEntrega.strftime('%d-%m-%Y') %></td>
+
+                <td>
+                  <% if plano_atividade.aprovacao %> 
+                    <string style="color:green"> APROVADO </strong>
+                  <% else %> 
+                    <string style="color:yellow"> NÃO APROVADO </strong>
+                  <% end %> 
+                </td>
+
+                <td>
+                  <%= link_to plano_atividade do %>
+                    <button type="button" class="btn btn-default" title="Mostrar" >
+                      <span class="glyphicon glyphicon-eye-open" aria-hidden="true" style="color:black"></span>
+                    </button>
+                  <% end %>
+                </td>
+
+                <td>
+                  <%= link_to edit_plano_atividade_path(plano_atividade) do %>
+                    <button type="button" class="btn btn-default" title="Editar" >
+                      <span class="glyphicon glyphicon-edit" aria-hidden="true" ></span>
+                    </button>
+                  <% end %>
+                </td>
+
+                <td>
+                  <%= link_to plano_atividade, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } do %>
+                    <button type="button" class="btn btn-default" title="Excluir" >
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red"></span>
+                    </button>
+                  <% end %>
+                </td>
+
+              </tr>
+            <% end %>
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div>
+    <%= link_to new_plano_atividade_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-3", style: "float:right; text-decoration:none" do %>Novo Plano Atividade
+    <% end %>
+    </div>
+
+  </div>
+<div>

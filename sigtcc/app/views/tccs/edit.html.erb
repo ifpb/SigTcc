@@ -1,6 +1,26 @@
-<h1>Editing Tcc</h1>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
+		
+		<div class="panel panel-default">
+      <div class="panel-heading" style="padding: .1em 3em">
+        <h2>Editar TCC</h2>
+      </div>
+      <%= render 'form', tcc: @tcc %>
+		</div>
 
-<%= render 'form', tcc: @tcc %>
-
-<%= link_to 'Expandir', @tcc %> |
-<%= link_to 'Voltar', tccs_path %>
+		<div>
+			<div>
+        <%= link_to tccs_path , class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", title: "Voltar", style: "float:left; margin-right:.5em; text-decoration:none" do %>
+          <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" style="color:black"></span>
+        <% end %>
+      </div>
+        
+      <div>
+        <%= link_to @tcc, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored", title: "Expandir", style: "float:left; text-decoration:none" do %>
+          <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+        <% end %>
+      </div>
+		</div>
+	
+	</div>
+</div>

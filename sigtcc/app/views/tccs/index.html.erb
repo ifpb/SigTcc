@@ -1,63 +1,73 @@
-<p id="notice"><%= notice %></p>
-<% if ! alert.blank? %>
-    <div>
-      <strong style="color:red">Erro! <%= alert %> </strong>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
+
+    <% if ! alert.blank? %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Erro! <%= alert %> </strong>
+      </div>
+    <% end %>
+
+     <div class="panel panel-default">
+      <div class="panel-heading" style="padding: .1em 3em">
+        <h2>Tccs</h2>
+      </div>
+      <div class="panel-body" style="padding: .5em 3em">
+
+        <table id="tccs" class="table">
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Periodo</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @tccs.each do |tcc| %>
+              <tr>
+                <td ><%= tcc.titulo %></td>
+                <td ><%= tcc.periodo %></td>
+
+                <td>
+                  <%= link_to tcc do %>
+                    <button type="button" class="btn btn-default" title="Expandir">
+                      <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </button>
+                  <% end %>
+                </td>
+
+                <td>
+                  <% if tcc.agendad == true %>
+                    <button id="popover" class="btn btn-default" title="TCC Fechado para Edicao" disabled="disabled"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+                  <% else %>
+                    <%= link_to edit_tcc_path(tcc) do %>
+                      <button type="button" class="btn btn-default" title="Editar">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                      </button>
+                    <% end %>
+                  <% end %>
+                </td>
+
+                <td>
+                  <%= link_to tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } do %>
+                  <button type="button" class="btn btn-default" title="Excluir">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red"></span>
+                  </button>
+                  <% end %>
+                </td>
+
+              </tr>
+            <% end %>
+
+          </tbody>
+        </table>
+      </div>
+
     </div>
-<% end %>
- <div class="panel panel-default" style="padding: .1em 3em">
-  <div class="panel-header">
-    <h1>Tccs</h1>
+    <div>
+    <%= link_to new_tcc_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-3", style: "float:right; text-decoration:none" do %>Criar Novo TCC
+    <% end %>
+    </div>
   </div>
-  <div class="panel-body">
-
-    <table id="tccs" class="table">
-      <thead>
-        <tr>
-          <th>Titulo</th>
-          <th>Periodo</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @tccs.each do |tcc| %>
-          <tr>
-            <td ><%= tcc.titulo %></td>
-            <td ><%= tcc.periodo %></td>
-
-            <td>
-              <%= link_to tcc do %>
-                <button type="button" class="btn btn-default" title="Visualizar">
-                  <span class="glyphicon glyphicon-eye-open" aria-hidden="true" style="color:black"></span>
-                </button>
-              <% end %>
-            </td>
-
-            <td>
-              <%= link_to edit_tcc_path(tcc) do %>
-                <button type="button" class="btn btn-default" title="Editar">
-                  <span class="glyphicon glyphicon-edit" aria-hidden="true" style="color:cyan"></span>
-                </button>
-              <% end %>
-            </td>
-
-            <td>
-              <%= link_to tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } do %>
-              <button type="button" class="btn btn-default" title="Excluir">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red"></span>
-              </button>
-              <% end %>
-
-            </td>
-          </tr>
-        <% end %>
-
-      </tbody>
-    </table>
-  </div>
-
-</div>
 <div>
-<%= link_to new_tcc_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-2", style: "float:right; text-decoration:none" do %><i class="material-icons"></i>Criar Novo TCC
-<% end %>
-</div>

@@ -1,32 +1,84 @@
-<p id="notice"><%= notice %></p>
-<h1>Meu TCC</h1>
-<p>
-  <strong>Titulo:</strong>
-  <%= @tcc.titulo %>
-</p>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
 
-<p>
-  <strong>Periodo:</strong>
-  <%= @tcc.periodo %>
-</p>
+    <% if ! notice.blank? %>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong id="notice"><%= notice %></strong>
+      </div>
+    <% end %>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading" style="padding: .1em 3em">
+        <h2>TCC - <strong> <%= @tcc.titulo %></strong></h2>
+      </div>
+      <div class="panel-body" style="padding: .5em 3em">
 
+        <div class="col-md-6">
+          Aluno:<h4><strong> <%= @tcc.proposta_tcc.aluno.usuario.nome %></strong></h4>
+        </div>
 
+        <div class="col-md-6">
+          Data de Apresentacao da Proposta:<h4><strong> <%= @tcc.proposta_tcc.dataApresentacao.strftime('%d/%m/%Y') %></strong></h4>
+        </div><br/>
 
-<p>
-  <strong>Tipos:</strong>
-  <%= @tcc.tipos %>
-</p>
-<p>
-  <strong>Palavras-Chaves:</strong>
-  <% @tcc.palavras.each do |palavra| %>
-     <%= palavra.nome %> |
-  <% end -%>
-</p>
-<p>
-  <strong>Agendado:</strong>
-  <%= @tcc.agendad %>
-</p>
+        <div class="col-md-6">
+          Periodo:<h5><strong> <%= @tcc.periodo %></strong></h5>
+        </div>
 
-<%= link_to 'Voltar', tccs_path %> |
-<%= link_to 'Atualizar', edit_tcc_path(@tcc) %> |
-<%= link_to 'Visualizar arquivo TCC', @tcc.arquivo.url %>
+        <div class="col-md-6">
+          Tipo:<h5><strong> <%= @tcc.tipos.upcase %></strong></h5>
+        </div><br/>
+
+        <div class="col-md-6">
+          Palavras-Chave:
+          <h6>
+            <strong>
+              <% @tcc.palavras.each do |palavra| %>
+                 <%= palavra.nome %> |
+              <% end -%>
+            </strong>
+          </h6>
+        </div>
+
+        <div class="col-md-6">
+          Agendado:
+          <h5>
+            <strong>
+              <% if @tcc.agendad == true %>
+                SIM
+              <% else %>
+                NÃO
+              <% end %>
+            </strong>
+          </h5>
+        </div><br/>
+
+      </div>
+    </div>
+    <div>
+      <div>
+        <%= link_to tccs_path , class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", title: "Voltar", style: "float:left; margin-right:.5em; text-decoration:none" do %>
+          <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" style="color:black"></span>
+        <% end %>
+      </div>
+        
+      <div>
+        <% if @tcc.agendad == true %>
+          <button id="popover" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" data-toggle="popover" title="TCC Fechado para Edicao" data-placement="right" data-content="O TCC já foi agendado!"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+          <script>$('#popover').popover()</script>
+        <% else %>
+          <%= link_to edit_tcc_path(@tcc) , class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored", title: "Editar", style: "float:left; text-decoration:none" do %>
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+          <% end %>
+        <% end %>
+      </div>
+        
+      <div>
+        <%= link_to @tcc.arquivo.url , class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-3", style: "float:right; text-decoration:none" do %>Visualizar arquivo TCC
+        <% end %>
+      </div>
+    </div> 
+  
+  </div>
+</div>
