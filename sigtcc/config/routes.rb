@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :plano_atividades
   resources :alunos
+  
+  #Adicionando rota root para página de logar#
+  root 'sessions#new'
 
 
 

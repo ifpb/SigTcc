@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1>Ola
+<h2>Olá
 
 
 <%=@tipo%> <%=@usuario.nome%> </h1>
@@ -9,10 +9,50 @@
   <strong><%= @usuario.email %> </strong>
 </p>
 
-<h2><%= link_to "Consultar TCCs", consulta_path %></h2>
-<h2>Atas de defesa</h2>
+<!--Caso o usuário logado seja um aluno, será exibida essas informações -->
 
+<% if @usuario.user.instance_of? Aluno %>
+  <% if current_user.user.proposta_tcc.nil? %>
+    <p>Você ainda não possui uma proposta de TCC cadastrada!</p> 
+    <h4>Próximos Etapas:</h4>
+    <input type="checkbox" name="status" value="proposta-TCC"  disabled> Cadastrar Proposta de TCC<br>
+    <input type="checkbox" name="status" value="orientador-TCC"  disabled> Definir OOrientador definido<br>
+    <input type="checkbox" name="status" value="planoat"  disabled> Plano de Atividades Cadastrado<br>
+    <input type="checkbox" name="status" value="cadastrado-TCC"  disabled> TCC Cadastrado<br>
+    <input type="checkbox" name="status" value="banca-agendada"  disabled> Banca Agendada<br>
+    <input type="checkbox" name="status" value="TCC-defendido"  disabled> TCC Defendido<br>
+    <%end%>
 
+<!--Caso o usuário logado já tenha uma proposta cadastrada, mas não tenha um orientador -->
+
+    <%if !current_user.user.proposta_tcc.nil?%>
+      <h4>Seu Status:</h4>
+      <input type="checkbox" name="status" value="proposta-TCC" checked disabled> Cadastrar Proposta de TCC<br> 
+        <%if !current_user.user.proposta_tcc.tcc.nil?%> 
+          <input type="checkbox" name="status" value="orientador-TCC" checked disabled> Definir Orientador<br>
+        <%else%>
+          <input type="checkbox" name="status" value="orientador-TCC"  disabled> Definir Orientador definido<br>
+        <% end %>
+        <%if !current_user.user.proposta_tcc.tcc.nil?%> 
+           <input type="checkbox" name="status" value="proposta-TCC" checked disabled> Cadastrar TCC<br>
+           <% if !current_user.user.proposta_tcc.tcc.plano_atividade.nil? %>
+            <input type="checkbox" name="status" value="proposta-TCC" checked disabled> Cadastrar Plano de Atividades<br>
+          <%else%>
+            <input type="checkbox" name="status" value="proposta-TCC" disabled> Cadastrar Plano de Atividades<br>
+          <% end %>
+        <%else%>
+          <input type="checkbox" name="status" value="proposta-TCC"  disabled> Cadastrar TCC<br>
+          <%if current_user.user.proposta_tcc.tcc.nil? or current_user.user.proposta_tcc.tcc.banca.nil?%> 
+            <input type="checkbox" name="status" value="proposta-TCC"  disabled> Banca Agendada<br>
+          <%else%>
+            <input type="checkbox" name="status" value="proposta-TCC" checked disabled> Banca Agendada<br>
+          <%end%>  
+        <%end%>    
+  <%else%>
+    <input type="checkbox" name="status" value="proposta-TCC"  disabled> TCC Defendido<br>
+  <%end%>
+
+<!--Caso o usuário logado seja um professor será exibida essas opções -->
 
 <% if @usuario.user.instance_of? Professor %>
   <% if !@usuario.user.tccs.nil? %>
@@ -48,3 +88,6 @@
     </table>
   <%end%>
 <%end%>
+<%end%>
+<h2><%= link_to "Consultar TCCs", consulta_path %></h2>
+<h2>Atas de defesa</h2>
