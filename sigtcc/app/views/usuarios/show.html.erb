@@ -34,23 +34,23 @@
           <input type="checkbox" name="status" value="orientador-TCC"  disabled> Definir Orientador definido<br>
         <% end %>
         <%if !current_user.user.proposta_tcc.tcc.nil?%> 
-           <input type="checkbox" name="status" value="proposta-TCC" checked disabled> Cadastrar TCC<br>
            <% if !current_user.user.proposta_tcc.tcc.plano_atividade.nil? %>
             <input type="checkbox" name="status" value="proposta-TCC" checked disabled> Cadastrar Plano de Atividades<br>
           <%else%>
             <input type="checkbox" name="status" value="proposta-TCC" disabled> Cadastrar Plano de Atividades<br>
           <% end %>
+            <%if !current_user.user.proposta_tcc.tcc.banca.nil?%>
+              <input type="checkbox" name="status" value="proposta-TCC" checked disabled> Cadastrar TCC<br>
+              <input type="checkbox" name="status" value="proposta-TCC" checked disabled> Banca Agendada<br>
+            <%else%>
+              <input type="checkbox" name="status" value="proposta-TCC"  disabled> Banca Agendada<br>
+            <%end%>
         <%else%>
           <input type="checkbox" name="status" value="proposta-TCC"  disabled> Cadastrar TCC<br>
-          <%if current_user.user.proposta_tcc.tcc.nil? or current_user.user.proposta_tcc.tcc.banca.nil?%> 
-            <input type="checkbox" name="status" value="proposta-TCC"  disabled> Banca Agendada<br>
-          <%else%>
-            <input type="checkbox" name="status" value="proposta-TCC" checked disabled> Banca Agendada<br>
-          <%end%>  
-        <%end%>    
-  <%else%>
-    <input type="checkbox" name="status" value="proposta-TCC"  disabled> TCC Defendido<br>
-  <%end%>
+        <%end%>  
+    <%end%>    
+<input type="checkbox" name="status" value="proposta-TCC"  disabled> TCC Defendido<br>
+
 
 <!--Caso o usuário logado seja um professor será exibida essas opções -->
 
