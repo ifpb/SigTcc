@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Plano Atividades</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Título TCC</th>
+      <th>Data de Entrega</th>
+      <th>Aprovação</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plano_atividades.each do |plano_atividade| %>
+      <tr>
+        <td><%= plano_atividade.tcc.titulo %></td>
+        <td><%= plano_atividade.dataEntrega %></td>
+        <td>
+          <% if plano_atividade.aprovacao %> 
+            Sim 
+          <% else %> 
+            Não
+          <% end %> 
+        </td>
+        <td><%= link_to 'Mostrar', plano_atividade %></td>
+        <td><%= link_to 'Editar', edit_plano_atividade_path(plano_atividade) %></td>
+        <td><%= link_to 'Excluir', plano_atividade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Cadastrar Plano Atividade', new_plano_atividade_path %>
