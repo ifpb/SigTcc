@@ -23,7 +23,7 @@ require 'rails_helper'
 		page.has_checked_field?('status-proposta')
 		page.has_checked_field?('status-plano')
 		page.has_checked_field?('status-banca')
-		page.has_checked_field?('status-defendido')
+		#page.has_checked_field?('status-defendido')
 	end
 	it 'Logando com um usuario que não possui nada cadastrado' do
 		rafael = Aluno.create(matricula: "20141370526")
@@ -53,7 +53,7 @@ require 'rails_helper'
 		page.has_checked_field?('status-proposta')
 		page.has_no_checked_field?('status-plano')
 		page.has_no_checked_field?('status-banca')
-		page.has_no_checked_field?('status-defendido')
+		#page.has_no_checked_field?('status-defendido')
 	end
 	#it 'Logando com um usuário que possui proposta e orientador cadastrados' do
 
@@ -124,7 +124,7 @@ require 'rails_helper'
 		page.has_checked_field?('status-proposta')
 		page.has_no_checked_field?('status-plano')
 		page.has_no_checked_field?('status-banca')
-		page.has_no_checked_field?('status-defendido')		
+		#page.has_no_checked_field?('status-defendido')		
 	end 
 	it 'Logando com um usuario que possui proposta, orientador,plano, banca e TCC cadastrados' do
 		mariana = Aluno.create(matricula: "20141370526")
@@ -150,7 +150,7 @@ require 'rails_helper'
 		page.has_checked_field?('status-proposta')
 		page.has_checked_field?('status-plano')
 		page.has_checked_field?('status-banca')
-		page.has_no_checked_field?('status-defendido')		
+		#page.has_no_checked_field?('status-defendido')		
 	end
 end
 
