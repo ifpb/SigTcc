@@ -13,7 +13,7 @@ require 'rails_helper'
 
 		Tcc.create(titulo: "TCC de Tiago", periodo: "2016.2", agendad: true, tipos: 2, professor: heremita, arquivo: File.new(Rails.root + 'spec/test_upload/dadosabertos.pdf'), nota: 10, status: "aprovado", proposta_tcc: tiago.proposta_tcc)
 
-		Banca.create(dataApresentacao: "24/05/2017", horario: Date.new, tcc: tiago.proposta_tcc.tcc)
+		Banca.create(dataApresentacao: "24/02/2017", horario: Date.new, tcc: tiago.proposta_tcc.tcc)
 		visit "/login"
 		fill_in 'Email', with: 'tiago@tiago.com'
 		fill_in 'Password', with: '1111'
@@ -23,7 +23,7 @@ require 'rails_helper'
 		page.has_checked_field?('status-proposta')
 		page.has_checked_field?('status-plano')
 		page.has_checked_field?('status-banca')
-		#page.has_checked_field?('status-defendido')
+		page.has_checked_field?('status-defendido')
 	end
 	it 'Logando com um usuario que não possui nada cadastrado' do
 		rafael = Aluno.create(matricula: "20141370526")
