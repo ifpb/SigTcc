@@ -48,3 +48,11 @@
     </table>
   <%end%>
 <%end%>
+
+ <% if @usuario.user.instance_of? Aluno %>
+    <p><%= link_to "Listar Professores para orientação", controller: "usuarios", action: "index", remote: true %></p>
+ <%end%>
+
+ <div id="results">
+
+ </div>

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  get 'orientacao/index'
+
   resources :plano_atividades
   resources :alunos
 
 
 
     get '/consulta', to: 'consultas#index'
-    post '/consulta', to: 'consultas#consultar' 
+    post '/consulta', to: 'consultas#consultar'
 
 
 
@@ -21,5 +23,6 @@ Rails.application.routes.draw do
   end
   resources :tccs
   resources :usuarios
+  get '/usuarios', to: 'usuarios#orientacao'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

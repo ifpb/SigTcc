@@ -1,9 +1,14 @@
 class ConsultasController < ApplicationController
 
+  ###
+  # Author: João Paulo Marques e Almeida
+  ###
+
+  #método para entrar na view de consulta
   def index
   end
 
-
+  #métdo que realiza a consulta
   def consultar
 
     consulta = "usuarios.nome like ? and palavras.nome like ? "
