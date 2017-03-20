@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h2>Olá
+<h2>Ola
 
 
 <%=@tipo%> <%=@usuario.nome%> </h1>
@@ -8,8 +8,9 @@
 <p>Email:
   <strong><%= @usuario.email %> </strong>
 </p>
-
 <!--Caso o usuário logado seja um aluno, será exibida essas informações -->
+<h2><%= link_to "Consultar TCCs", consulta_path %></h2>
+<h2>Atas de defesa</h2>
 
 <% if @usuario.user.instance_of? Aluno %>
   <% if current_user.user.proposta_tcc.nil? %>
@@ -98,6 +99,3 @@
     </table>
   <%end%>
 <%end%>
-
-<h2><%= link_to "Consultar TCCs", consulta_path %></h2>
-<h2>Atas de defesa</h2>
