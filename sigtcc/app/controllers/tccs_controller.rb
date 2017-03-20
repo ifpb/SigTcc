@@ -19,22 +19,17 @@ class TccsController < ApplicationController
 
   # GET /tccs/1/edit
   def edit
-    if @tcc.agendad
-      flash[:alert] = 'Tcc não pode ser editado devido ao angendamento ter sido realizado!'
-      redirect_to tccs_url
-    end
   end
 
   # POST /tccs
   # POST /tccs.json
   def create
     @tcc = Tcc.new(tcc_params)
-    @tcc.professor = Professor.create()
-    @tcc.agendad = params[:agendado]
+    usuario = Usuario.find(7)
+    @tcc.professor = Professor.find_by(nome: usuario.nome)
+    puts Professor.user.find_by(nome: params[:professor])
+    puts params[:professor]
 
-    params[:palavras].each do |palavra|
-      @tcc.palavras.tags << Palavra.find_or_create_by(nome: palavra) unless palavra.empty?
-    end
 
 #      params[:palavras].each { |palavra|
 #        if palavra.blank?
@@ -74,15 +69,11 @@ class TccsController < ApplicationController
   # DELETE /tccs/1
   # DELETE /tccs/1.json
   def destroy
-    if ! @tcc.agendad
       @tcc.destroy
       respond_to do |format|
         format.html { redirect_to tccs_url, notice: 'Tcc removido com sucesso!.' }
         format.json { head :no_content }
-      end
-    else
-      flash[:alert] = 'Tcc não pode ser removido devido ao angendamento ter sido realizado!'
-      redirect_to tccs_url
+
     end
   end
 

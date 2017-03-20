@@ -2,10 +2,11 @@ $(document).on('turbolinks:load', function() {
   $('#add_palavras').click(function(event){
     event.preventDefault();
     $(this).parent().before('<p><input type="text" name="palavras[]"> '+
-          '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></p>');
+          '<a id="teste">Remover</a>');
+
   });
 
-  $('span.glyphicon-remove').click(function() {
+  $('#teste').click(function() {
     console.log("chamou");
     $(this).parent().remove();
   })

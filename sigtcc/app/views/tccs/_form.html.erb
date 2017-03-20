@@ -36,6 +36,10 @@
       <%= f.text_field :periodo , :class => 'form-control'  %>
     </div>
 
+    <div class="field">
+      <%= f.label :professor %>
+      <%= f.text_field :professor , :class => 'form-control'  %>
+    </div>
 
     <%= f.label "Tipo:" %>
     <%= f.select(:tipos, options_for_select(Tcc.tipos.keys), {}, { :class => 'form-control'} ) %>
@@ -45,17 +49,14 @@
     <% tcc.palavras.each do |palavra| %>
       <p>
         <input type="text" name="palavras[]" value="<%= palavra.nome %>">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <a>Remover</a>
+        <!--<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>-->
       </p>
     <% end %>
     <p><a href="" id="add_palavras">Adicionar Palavra-Chave</a></p>
   </div>
 
     <br>
-    <span>Tcc agendado:</span>
-    <label>Sim <%= radio_button_tag 'agendadotrue', true %></label>
-    <label>Não <%= radio_button_tag 'agendadofalse', false %></label>
-
     <div class="actions">
       <%= f.submit "Salvar" , :class => 'btn btn-success'  %>
     </div>
