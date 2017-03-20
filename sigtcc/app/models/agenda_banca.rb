@@ -1,0 +1,2 @@
+class AgendaBanca < ApplicationRecord
+end

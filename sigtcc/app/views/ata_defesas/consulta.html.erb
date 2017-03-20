@@ -1,0 +1,24 @@
+<h1>Consultar Ata defesa</h1>
+<p id="notice"><%= notice %></p>
+
+<%= form_tag("/ata", method:"post", remote: true ) do %>
+
+<%= label_tag(:professor, "Orientador") %>
+  <%= text_field_tag(:professor) %>
+
+<%= label_tag(:aluno, "Aluno") %>
+  <%= text_field_tag(:aluno) %>
+
+<%= label_tag(:periodo, "Periodo") %>
+    <%= text_field_tag(:periodo) %>
+
+<%= submit_tag("Consultar") %>
+
+
+<% end %>
+<br><br>
+<div id="results">
+
+</div>
+
+<%=link_to "Voltar", current_user  %>

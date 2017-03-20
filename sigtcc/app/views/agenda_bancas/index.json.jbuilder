@@ -1,0 +1,1 @@
+json.array! @agenda_bancas, partial: 'agenda_bancas/agenda_banca', as: :agenda_banca

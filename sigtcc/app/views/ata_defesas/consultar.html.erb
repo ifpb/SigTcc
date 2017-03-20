@@ -1,0 +1,29 @@
+<h1>Resultado da Consulta</h1>
+
+<table id= "ata">
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Documentos</th>
+      <th>Aluno</th>
+      <th>Orientador</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+ <tbody>
+
+    <% @ata_defesa.each do |ata| %>
+      <tr>
+        <td > <%= ata.data %></td>
+        <td ><%= ata.arquivo.url%></td>
+        <td ><%= ata.banca.tcc.proposta_tcc.aluno.usuario.nome
+%></td>
+        <td ><%= ata.banca.tcc.professor.usuario.nome
+%></td>
+        <td ><%=link_to "Expandir", ata  %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+<%=link_to "Voltar", ata_path  %>

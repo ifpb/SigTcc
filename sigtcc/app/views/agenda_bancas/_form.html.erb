@@ -1,0 +1,27 @@
+<%= form_for(agenda_banca) do |f| %>
+  <% if agenda_banca.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(agenda_banca.errors.count, "error") %> prohibited this agenda_banca from being saved:</h2>
+
+      <ul>
+      <% agenda_banca.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data %>
+    <%= f.date_select :data %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hora %>
+    <%= f.time_select :hora %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
