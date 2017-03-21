@@ -1,1 +1,0 @@
-json.partial! "agenda_bancas/agenda_banca", agenda_banca: @agenda_banca
