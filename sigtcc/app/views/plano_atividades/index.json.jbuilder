@@ -1,0 +1,1 @@
+json.array! @plano_atividades, partial: 'plano_atividades/plano_atividade', as: :plano_atividade

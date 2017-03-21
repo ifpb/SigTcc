@@ -52,8 +52,19 @@ class AlunosController < ApplicationController
   # PATCH/PUT /alunos/1
   # PATCH/PUT /alunos/1.json
   def update
+    @usuario = Usuario.find_by(email:params[:usuario][:email])
+    @usuario.email = params[:usuario][:email]
+    @usuario.nome = params[:usuario][:nome]
+    @usuario.sexo = params[:usuario][:sexo]
+    @usuario.password = params[:usuario][:password]
+    @usuario.password_confirmation = params[:usuario][:password_confirmation]
+    @usuario.save
+    @aluno.matricula = params[:aluno][:matricula]
+    @aluno.usuario = @usuario
+    @aluno.save
+
     respond_to do |format|
-      if @aluno.update(aluno_params)
+      if @aluno.save
         format.html { redirect_to @aluno, notice: 'Aluno atualizado com sucesso' }
         format.json { render :show, status: :ok, location: @aluno }
       else
