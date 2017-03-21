@@ -1,0 +1,36 @@
+<%= form_for(proposta_tcc) do |f| %>
+  <% if proposta_tcc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(proposta_tcc.errors.count, "error") %> prohibited this proposta_tcc from being saved:</h2>
+
+      <ul>
+      <% proposta_tcc.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+   <div class="form-group row">
+     <div class="col-md-4">
+    <%= label_tag(:titulo, "Titulo da Proposta") %>
+    <%= text_field_tag :titulo, params[:titulo] %>
+    </div>
+  </div>
+
+
+
+ <div class="form-group row">
+   <div class="col-md-4">
+     <label for="">Data de Entrega</label>
+     <%= f.date_field :dataApresentacao , :class => 'form-control' %>
+   </div>
+ </div>
+
+  <div class="actions">
+    <%= f.submit "Salvar", :class => 'btn btn-success'  %>
+  </div>
+<% end %>

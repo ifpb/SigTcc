@@ -1,0 +1,1 @@
+json.array! @proposta_tccs, partial: 'proposta_tccs/proposta_tcc', as: :proposta_tcc

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Proposta Tccs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Data</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proposta_tccs.each do |proposta_tcc| %>
+      <tr>
+        <td><%= proposta_tcc.tcc.titulo %></td>
+        <td><%= proposta_tcc.dataApresentacao %></td>
+        <td><%= link_to 'Show', proposta_tcc %></td>
+        <td><%= link_to 'Edit', edit_proposta_tcc_path(proposta_tcc) %></td>
+        <td><%= link_to 'Destroy', proposta_tcc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Cadastrar Proposta Tcc', new_proposta_tcc_path %>

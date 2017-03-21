@@ -1,0 +1,1 @@
+json.partial! "proposta_tccs/proposta_tcc", proposta_tcc: @proposta_tcc
