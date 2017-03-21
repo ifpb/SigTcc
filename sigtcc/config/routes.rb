@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :alunos
 
 
+  get '/ata', to: 'ata_defesas#consulta'
+  post '/ata', to: 'ata_defesas#consultar'
+
 
     get '/consulta', to: 'consultas#index'
     post '/consulta', to: 'consultas#consultar'
