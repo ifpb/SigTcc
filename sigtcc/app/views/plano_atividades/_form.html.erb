@@ -32,19 +32,11 @@
         <%= f.label :aprovacao %>
         <div class="btn-group" data-toggle="buttons">
 
-          <% if :aprovacao == true %>
-            <label class="btn btn-info active">
-          <% else %>
             <label class="btn btn-info">
-          <% end %>
               <span>Sim</span><%= radio_button_tag(:aprovacao, true) %>
             </label>
 
-          <% if :aprovacao == false %>
             <label class="btn btn-default">
-          <% else %>
-            <label class="btn btn-default active">
-          <% end %>
               <span>Não</span><%= radio_button_tag(:aprovacao, false) %>
             </label>
 
