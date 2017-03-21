@@ -4,7 +4,7 @@ class TccsController < ApplicationController
   # GET /tccs
   # GET /tccs.json
   def index
-    @tccs = Tcc.all
+    @tcc = current_user.user.proposta_tcc.tcc
   end
 
   # GET /tccs/1
@@ -25,22 +25,11 @@ class TccsController < ApplicationController
   # POST /tccs.json
   def create
     @tcc = Tcc.new(tcc_params)
-    usuario = Usuario.find(7)
-    @tcc.professor = Professor.find_by(nome: usuario.nome)
-    puts Professor.user.find_by(nome: params[:professor])
-    puts params[:professor]
-
-
-#      params[:palavras].each { |palavra|
-#        if palavra.blank?
-#          flash[:alert] = 'Preencha todas as palavras-chaves!'
-#          render template: "tccs/new"
-#          return ;
-#        end
-#        palavra_bd  = Palavra.find_or_create_by(nome: palavra)
-#        @tcc.palavras << palavra_bd
-#      }
-
+    @tcc.professor = Professor.find(1)
+    @tcc.proposta_tcc = current_user.user.proposta_tcc
+    params[:palavras].each do |palavra|
+          @tcc.palavras << Palavra.find_or_create_by(nome: palavra) unless palavra.empty?
+        end
     respond_to do |format|
       if @tcc.save
         format.html { redirect_to @tcc, notice: 'Tcc cadastrado com sucesso!' }
@@ -86,9 +75,5 @@ class TccsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tcc_params
       params.require(:tcc).permit(:titulo, :periodo, :arquivo, :tipos)
-    end
-
-    def palavras_params
-      params.require(:tcc).permit(:palavra => [:nome])
     end
 end
