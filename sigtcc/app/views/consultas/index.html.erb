@@ -1,13 +1,43 @@
-<h1>Consultar TCC</h1>
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
 
-<%= form_tag("/consulta", method:"post" ) do %>
-<%= label_tag(:professor, "Professor") %>
-  <%= text_field_tag(:professor) %>
-  <%= label_tag(:semestre, "Semestre") %>
-    <%= text_field_tag(:semestre) %>
-  <%= submit_tag("Consultar") %>
+  	<% if ! notice.blank? %>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong id="notice"><%= notice %></strong>
+      </div>
+    <% end %>
 
+  	<div class="panel panel-default">
+      <div class="panel-heading" style="padding: .1em 3em">
+        <h2>Consultar TCC</h2>
+      </div>
+      <div class="panel-body" style="padding: .5em 3em">
+      	
+      	<div class="form-group row">
+				<%= form_tag("/consulta", method:"post" ) do %>
 
-<% end %>
-<%=link_to "Voltar", current_user  %>
+					<div class="form-group col-xs-6">
+						<%= label_tag(:professor, "Professor") %>
+			  		<%= text_field_tag(:professor), class: 'form-group' %>
+			  	</div>
+			  	<div class="form-group col-xs-6">
+			  		<%= label_tag(:semestre, "Semestre") %>
+			    	<%= text_field_tag(:semestre) %>
+			    </div>
+			    <div class="form-group col-xs-6">
+			  		<%= submit_tag("Consultar") %>
+			  	</div>
+			<% end %>
+			</div>
+		</div>
+		
+		<div>
+	    <%= link_to tccs_path , class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", title: "Voltar", style: "float:left; margin-right:.5em; text-decoration:none" do %>
+	      <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" style="color:black"></span>
+	    <% end %>
+	   </div>
+
+	</div>
+</div>
+
