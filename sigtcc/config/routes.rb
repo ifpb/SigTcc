@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
+  namespace :admin do
+    resources :tccs
+resources :alunos
+resources :ata_defesas
+resources :bancas
+resources :coordenadors
+resources :ficha_avaliacaos
+resources :palavras
+resources :plano_atividades
+resources :professors
+resources :proposta_tccs
+resources :usuarios
+
+    root to: "tccs#index"
+  end
+
   get 'orientacao/index'
 
   resources :plano_atividades
