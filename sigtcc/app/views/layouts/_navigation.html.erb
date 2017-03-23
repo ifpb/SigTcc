@@ -15,22 +15,22 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
-		<li><a href="/alunos">Alunos</a></li>
-		<li><a href="/tccs">Tccs</a></li>
+    <li><a href="/alunos">Alunos</a></li>
+    <li><a href="/tccs">Tccs</a></li>
     <li><a href="/ata_defesas">Atas de Defesa</a></li>
     <li><a href="/plano_atividades">Plano de Atividades</a></li>
     </ul>
       <ul class="nav navbar-nav navbar-right">
-	     <% if logged_in? %>
-	       <li class="pull-right">
+       <% if logged_in? %>
+         <li class="pull-right">
           <%= link_to logout_path, method: "delete", style: "font-size:22px" do %>
             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
           <% end %>
         </li>
         <li class="pull-right"><%= link_to "Perfil", current_user %></li>
-	     <% else %>
-	        <li class="pull-right"><%= link_to "Login", login_path %></li>
-	     <% end %>
+       <% else %>
+          <li class="pull-right"><%= link_to "Login", login_path %></li>
+       <% end %>
 
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -1,0 +1,4 @@
+
+
+document.getElementById('results').innerHTML = '';
+$("<%= escape_javascript(render 'orientacao', professores: @professores) %>").appendTo("#results");

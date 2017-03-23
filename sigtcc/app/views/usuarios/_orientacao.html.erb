@@ -1,0 +1,22 @@
+<% if !professores.nil? %>
+<table id= "professores">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>N. Orientandos</th>
+
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% professores.each do |professor| %>
+      <tr>
+        <td ><%= professor.usuario.nome %></td>
+        <td >     <%= professor.tccs.size %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+<% end %>

@@ -8,6 +8,7 @@
       </div>
     <% end %>
 
+
     <div class="alert alert-success alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       Ola <%=@tipo%>(a) <strong><%=@usuario.nome%></strong> 
@@ -17,17 +18,99 @@
       <span class="input-group-addon" id="basic-addon3"><i class="glyphicon glyphicon-user"></i></span>
       <span class="input-group-addon" id="basic-addon3"><%=@tipo%>(a) <strong><%=@usuario.nome%></strong></span>
       <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" disabled>
-      <span class="input-group-addon" id="basic-addon3">Email:<strong><%= @usuario.email %></strong></span>
+      <span class="input-group-addon" id="basic-addon3">Email: <strong><%= @usuario.email %></strong></span>
     </div><br/>
 
+    <!--Caso o usuário logado seja um aluno, será exibida essas informações -->
     <div class="panel text-center panel-default">
       <div class="panel-heading" style="padding: .1em 3em">
-        <h2>Atas de defesa</h2>
+        <h2>Atas de Defesa</h2>
       </div>
 
       <div class="panel-body col-md-offset-0 text-left" style="padding: .5em 3em">
-        <% if @usuario.user.instance_of? Professor %>
-          <% if !@usuario.user.tccs.nil? %>
+
+      <% if @usuario.user.instance_of? Aluno %>
+        <% if current_user.user.proposta_tcc.nil? %>
+          
+          <p>Você ainda não possui uma proposta de TCC cadastrada!</p><!-- Adicionar alert aqui -->
+          
+          <h3>Próximos Etapas:</h3>
+          <input type="checkbox" name="status" value="proposta-TCC"  disabled> Cadastrar Proposta de TCC<br>
+          <input type="checkbox" name="status" value="orientador-TCC"  disabled> Definir Orientador<br>
+          <input type="checkbox" name="status" value="planoat"  disabled> Plano de Atividades Cadastrado<br>
+          <input type="checkbox" name="status" value="cadastrado-TCC"  disabled> TCC Cadastrado<br>
+          <input type="checkbox" name="status" value="banca-agendada"  disabled> Banca Agendada<br>
+          <input type="checkbox" name="status" value="TCC-defendido"  disabled> TCC Defendido<br>
+
+        <%end%>
+        
+        <!--Caso o aluno logado já possua algum passo concluído -->
+        <!--Caso o aluno logado já possua algum uma proposta cadastrada -->
+        <%if !current_user.user.proposta_tcc.nil?%>
+          
+          <h3>Seu Status:</h3>
+          <input type="checkbox" name="status-proposta" value="proposta-TCC" checked disabled> <strong>Cadastrar Proposta de TCC</strong></br>
+          
+          <!--Caso o aluno logado já possua algum tcc, ele terá um orientador nesta versao. Deixo esse IF para implementacoes futuras de orientador isolado de tcc-->
+          <%if !current_user.user.proposta_tcc.tcc.nil?%> 
+            
+            <input type="checkbox" name="status-orientador" value="orientador-TCC" checked disabled> <strong>Definir Orientador</strong></br>
+            <input type="checkbox" name="status-tcc" value="proposta-TCC" checked disabled> <strong>Cadastrar TCC</strong></br>
+          
+          <%else%>
+          
+            <input type="checkbox" name="status-orientador" value="orientador-TCC"  disabled> Definir Orientador definido<br>
+            <input type="checkbox" name="status-tcc" value="proposta-TCC" disabled> Cadastrar TCC</br>
+
+          <% end %>
+
+        <% end %>
+
+        <!--Caso o aluno logado já possua algum tcc cadastrado, pois se sim ele terá um orientador-->
+        <%if !current_user.user.proposta_tcc.tcc.nil?%> 
+
+          <!--Caso o aluno logado tenha um plano de atividades cadastrado. O plano de atividades só existe se tiver um tcc cadastrado antes-->
+          <% if !current_user.user.proposta_tcc.tcc.plano_atividade.nil? %>
+          
+            <input type="checkbox" name="status-plano" value="proposta-TCC" checked disabled> <strong>Cadastrar Plano de Atividades</strong><br>
+
+          <%else%>
+          
+            <input type="checkbox" name="status-plano" value="proposta-TCC" disabled> Cadastrar Plano de Atividades<br>
+
+          <% end %>
+
+        <% end %>
+      
+        <!--Caso o aluno logado já possua alguma banca cadastrada-->
+        <%if !current_user.user.proposta_tcc.tcc.banca.nil?%>
+          
+          <input type="checkbox" name="status-banca" value="proposta-TCC" checked disabled> <strong>Banca Agendada</strong><br>
+      
+          <!--Verificando se o TCC já foi defendido ou não, de acordo com a data da banca-->
+          <% if current_user.user.proposta_tcc.tcc.banca.dataApresentacao <= Date.today %>
+      
+            <input type="checkbox" name="status-defendido" value="proposta-TCC" checked disabled> <strong>TCC Defendido</strong><br>
+      
+          <%else%>
+        
+            <input type="checkbox" name="status-defendido" value="proposta-TCC" disabled> TCC Defendido<br>
+        
+          <%end%>
+        
+        <%else%>
+      
+          <input type="checkbox" name="status-banca" value="proposta-TCC"  disabled> Banca Agendada<br>
+          <input type="checkbox" name="status-defendido" value="proposta-TCC" disabled> TCC Defendido<br>
+        
+        <%end%> 
+
+      <%end%> 
+
+      <!--Caso o usuário logado seja um professor será exibida essas opções -->
+      <% if @usuario.user.instance_of? Professor %>
+        
+        <% if !@usuario.user.tccs.nil? %>
             <table id= "tccs" class="table">
               <thead>
                 <tr>
@@ -94,15 +177,22 @@
 
               </tbody>
             </table>
-          <%end%>
-
         <%end%>
+      
+      <%end%>
+    </div><!-- panel -->
+    
+    <% if @usuario.user.instance_of? Aluno %>
+      <div class="col-xs-4" style="float:right; margin-top:1.3em; margin-right:-2em">
+      <%= link_to controller: "usuarios", action: "index", remote: true do %>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Listar Professores para orientação</button>
+      <% end %>
       </div>
+    <%end%>
 
-    </div>
-    <div>
-      <%= link_to "Consultar TCCs", consulta_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-2", style: "float:right; text-decoration:none" %>
-    </div>
+    <div><%= link_to "Consultar TCCs", consulta_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-2", style: "float:right; margin-top:1.3em; text-decoration:none" %></div>
+
+    <div id="results" class="col-xs-12" style="padding:2em 0;"></div>
 
   </div>
-</div>
+</div><!-- row -->

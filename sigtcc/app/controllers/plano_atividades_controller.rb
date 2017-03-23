@@ -4,7 +4,7 @@ class PlanoAtividadesController < ApplicationController
   # GET /plano_atividades
   # GET /plano_atividades.json
   def index
-    @plano_atividades = PlanoAtividade.all
+    @plano_atividades = PlanoAtividade.all.paginate :page => params[:page], :per_page => 5
   end
 
   # GET /plano_atividades/1

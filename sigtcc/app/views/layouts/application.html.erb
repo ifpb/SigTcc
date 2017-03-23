@@ -9,12 +9,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body><nav class="navbar"></nav>
       <%= render 'layouts/navigation' %>
     <main class="container" role="main">
       <%= render 'layouts/messages' %>
       <%= yield %>
     </main>
-    
   </body>
 </html>
