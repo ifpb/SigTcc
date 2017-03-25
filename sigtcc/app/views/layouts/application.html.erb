@@ -8,6 +8,19 @@
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
+    <style>
+      .pagination > li > a, .pagination > li > span{
+       color:black !Important;       
+      }
+      .pagination > .active, .pagination > .active > a{
+        background-color: #607d8b !Important;
+        border-color: #607d8b !Important;
+      }
+      .pagination > .active > a{
+       color:white !Important;       
+      }
+    </style>
+    
   </head>
   <body><nav class="navbar"></nav>
       <%= render 'layouts/navigation' %>

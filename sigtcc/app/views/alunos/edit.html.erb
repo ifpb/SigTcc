@@ -1,6 +1,26 @@
-<h1>Editar Aluno</h1>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em; margin-bottom: 5em;">
+		
+		<div class="panel panel-default">
+      <div class="panel-heading" style="padding: .1em 3em">
+        <h2>Editar Aluno</h2>
+      </div>
+      <%= render 'form', aluno: @aluno %>
+		</div>
 
-<%= render 'form', aluno: @aluno %>
-
-<%= link_to 'Mostrar', @aluno %> |
-<%= link_to 'Voltar', alunos_path %>
+		<div>
+			<div>
+        <%= link_to alunos_path , class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", title: "Voltar", style: "float:left; margin-right:.5em; text-decoration:none" do %>
+          <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" style="color:black"></span>
+        <% end %>
+      </div>
+        
+      <div>
+        <%= link_to @aluno, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored", title: "Expandir", style: "float:left; text-decoration:none" do %>
+          <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+        <% end %>
+      </div>
+		</div>
+	
+	</div>
+</div>

@@ -1,18 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
 
-<p>
-  <strong>Matricula:</strong>
-  <%= @aluno.matricula %>
-</p>
-<p>
-  <strong>Nome:</strong>
-  <%= @aluno.usuario.nome %>
-</p>
-<p>
-  <strong>E-mail:</strong>
-  <%= @aluno.usuario.email %>
-</p>
+    <% if ! notice.blank? %>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong id="notice"><%= notice %></strong>
+      </div>
+    <% end %>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading" style="padding: .1em 3em">
+      	<h3>Aluno - <strong> <%= @aluno.usuario.nome %></strong></h3>
+	    </div>
 
+	    <div class="panel-body" style="padding: .5em 3em">
 
-<%= link_to 'Edit', edit_aluno_path(@aluno) %> |
-<%= link_to 'Back', alunos_path %>
+	    	<div class="form-group row">
+					<div class="col-md-6">
+					  <strong>Matricula:</strong>
+					  <%= @aluno.matricula %>
+					</div>
+
+					<div class="col-md-6">
+					  <strong>E-mail:</strong>
+					  <%= @aluno.usuario.email %>
+					</div>
+				</div>
+				<div class="form-group row">
+
+					<div class="col-md-6">
+					  <strong>TCC:</strong>
+					  adiconar titulo do tcc caso exista
+					</div>
+
+					<div class="col-md-6">
+					  <strong>Orientador:</strong>
+					  adiconar nome do professor caso exista
+					</div>
+				</div>
+				
+			</div>
+    </div>
+    <div>
+			<div>
+        <%= link_to alunos_path , class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", title: "Voltar", style: "float:left; margin-right:.5em; text-decoration:none" do %>
+    	    <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" style="color:black"></span>
+        <% end %>
+      </div>
+      <div>
+      	<%= link_to edit_aluno_path(@aluno) , class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored", title: "Editar", style: "float:left; text-decoration:none" do %>
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        <% end %>
+      </div>
+    </div>
+	
+	</div>
+</div>

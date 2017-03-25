@@ -1,58 +1,67 @@
-<hr>
 <%= form_for (aluno) do |f| %>
+  
   <% if aluno.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-danger alert-dismissible" id="error_explanation" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h2><%= pluralize(aluno.errors.count, "error") %> prohibited this aluno from being saved:</h2>
-
       <ul>
-      <% aluno.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% aluno.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-  <%= fields_for (:usuario) do |u| %>
+
+  <div class="panel-body" style="padding: .5em 3em">
     <div class="form-group row">
-      <div class="col-md-4">
-        <%= u.label :email  %>
-        <%= u.text_field :email , :class => 'form-control' %>
+      <div class="form-group col-xs-4">
+        <%= f.label :matricula %>
+        <%= f.text_field :matricula , :class => 'form-control' %>
       </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-md-4">
+
+  <%= fields_for (:usuario) do |u| %>
+
+      <div class="form-group col-xs-8">
         <%= u.label :nome %>
         <%= u.text_field :nome , :class => 'form-control' %>
       </div>
+
     </div>
     <div class="form-group row">
-      <div class="col-md-4">
+
+      <div class="form-group col-xs-6"><!-- mudar por um radio button -->
         <%= u.label :sexo %>
         <%= u.text_field :sexo , :class => 'form-control' %>
       </div>
+
+      <div class="form-group col-xs-6"><!-- Adicionar filtro no email -->
+        <%= u.label :email  %>
+        <%= u.text_field :email , :class => 'form-control' %>
+      </div>
+
     </div>
+
     <div class="form-group row">
-      <div class="col-md-4">
+
+      <div class="form-group col-xs-6">
         <label for="">Senha</label>
         <%= u.password_field :password , :class => 'form-control' %>
       </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-md-4">
-        <label for="">Senha</label>
+
+      <div class="form-group col-xs-6">
+        <label for="">Confirmar Senha</label>
         <%= u.password_field :password_confirmation , :class => 'form-control' %>
       </div>
+
     </div>
 
   <% end %>
+  </div>
 
-  <div class="form-group row">
-    <div class="col-md-4">
-      <%= f.label :matricula %>
-      <%= f.text_field :matricula , :class => 'form-control' %>
+  <div class="form-group row" style="margin-bottom: -5em;">
+    <div class="form-group col-xs-12">
+      <%= f.submit "Salvar", class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-2", style: "float:right;margin-left:1em" %>
     </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Salvar", :class => 'btn btn-success' %>
-  </div>
 <% end %>

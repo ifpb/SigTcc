@@ -63,6 +63,26 @@
           </tbody>
         </table>
         <%= will_paginate @tccs %>
+        <script>
+          $(document).ready(function () {
+            $('.pagination .previous_page').text('«');
+            $('.pagination .next_page').text('»');
+
+            $('.pagination').each(function () {
+              var $bar = $(this);
+              $bar.find('a, .current, span').wrapAll('<ul>');
+              $bar.find('a, .current, span').wrap('<li>');
+
+              $bar.find('em').each(function () {
+                $(this).parent().addClass('active');
+                $(this).replaceWith('<a href="#">' + $(this).text() + '</a>');
+              });
+            });
+            $(".pagination ul").addClass('pagination');
+            $(".pagination ul li").css("color","black");
+            $(".pagination").replaceWith("<nav aria-label='Page navigation'>" + $('.pagination').html() + "</nav>");
+          });
+        </script>
       </div>
 
     </div>

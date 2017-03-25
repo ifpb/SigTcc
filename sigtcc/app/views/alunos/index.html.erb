@@ -1,32 +1,87 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
 
-<h1>Alunos</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Matrícula</th>
-      <th>Nome</th>
-      <th>E-mail</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @alunos.each do |aluno| %>
-      <tr>
-        <td><%= aluno.matricula %></td>
-        <td><%= aluno.usuario.nome %></td>
-        <td><%= aluno.usuario.email %></td>
-        <td><%= link_to 'Mostrar', aluno %></td>
-        <td><%= link_to 'Editar', edit_aluno_path(aluno) %></td>
-        <td><%= link_to 'Excluir', aluno, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } %></td>
-      </tr>
+    <% if ! notice.blank? %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong id="notice" > <%= notice %> </strong>
+      </div>
     <% end %>
-  </tbody>
-</table>
-<%= will_paginate @alunos %>
 
-<br>
+    <div class="panel panel-default" style="padding: .1em 3em">
+      <div class="panel-header">
+        <h2>Alunos</h2>
+      </div>
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Matrícula</th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-<%= link_to 'Cadastrar Aluno', new_aluno_path %>
+          <tbody>
+            <% @alunos.each do |aluno| %>
+              <tr>
+                <td><%= aluno.matricula %></td>
+                <td><%= aluno.usuario.nome %></td>
+                <td><%= aluno.usuario.email %></td>
+                <td>
+                  <%= link_to aluno do %>
+                    <button type="button" class="btn btn-default" title="Mostrar" >
+                      <span class="glyphicon glyphicon-eye-open" aria-hidden="true" style="color:black"></span>
+                    </button>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to edit_aluno_path(aluno) do %>
+                    <button type="button" class="btn btn-default" title="Editar" >
+                      <span class="glyphicon glyphicon-edit" aria-hidden="true" ></span>
+                    </button>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to aluno, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } do %>
+                    <button type="button" class="btn btn-default" title="Excluir" >
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red"></span>
+                    </button>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @alunos %>
+        <script>
+          $(document).ready(function () {
+            $('.pagination .previous_page').text('«');
+            $('.pagination .next_page').text('»');
+
+            $('.pagination').each(function () {
+              var $bar = $(this);
+              $bar.find('a, .current, span').wrapAll('<ul>');
+              $bar.find('a, .current, span').wrap('<li>');
+
+              $bar.find('em').each(function () {
+                $(this).parent().addClass('active');
+                $(this).replaceWith('<a href="#">' + $(this).text() + '</a>');
+              });
+            });
+            $(".pagination ul").addClass('pagination');
+            $(".pagination ul li").css("color","black");
+            $(".pagination").replaceWith("<nav aria-label='Page navigation'>" + $('.pagination').html() + "</nav>");
+          });
+        </script>
+      </div>
+    </div>
+
+    <div>
+    <%= link_to new_aluno_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-3", style: "float:right; text-decoration:none" do %>Cadastrar Aluno
+    <% end %>
+    </div>
+
+  </div>
+<div>
