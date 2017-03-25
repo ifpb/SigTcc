@@ -1,19 +1,34 @@
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
+  	<div class="panel panel-default">
+      
+      <div class="panel-heading" style="padding: .1em 3em">
+        <h4>Com qual perfil deseja acessar o Sistema?</h4>
+      </div>
 
-<%= form_for(:session, url: perfil_path) do |f| %>
-<span>Com qual perfil deseja acessar o Sistema?</span>
+      <div class="panel-body" style="padding: .5em 3em">
+			<%= form_for(:session, url: perfil_path) do |f| %>
 
-<div class="field">
-<%= f.label :perfil %>
-<%= f.label :perfil, "Coordenador", :value => "true" %>
-<%= f.radio_button :perfil, true , :checked => true %>
-<%= f.label :perfil, "Porfessor", :value => "false" %>
-<%= f.radio_button :perfil, false %>
+				<div class="field">
+				<%= f.label :perfil %><br/>
 
-</div>
+				<div class="btn-group" data-toggle="buttons" style="padding-bottom:2em">
+            <label class="btn btn-info">
+              <span>Coordenador</span><%= f.radio_button :perfil, true, :checked => true %>
+            </label>
+            <label class="btn btn-default">
+              <span>Porfessor</span><%= f.radio_button :perfil, false %>
+            </label>
+				</div>
+			</div>
 
-<!--<span>Professor</span><%= radio_button_tag 'perfil','professor', true %>
-<span>Coordenador</span><%= radio_button_tag 'perfil', 'coordenador'  %>-->
-<div class="actions">
-  <%= f.submit "Escolher" %>
-</div>
-<% end %>
+				<div class="form-group row" style="margin-bottom: -5em;margin-right: -4em;">
+			    <div class="form-group col-xs-12">
+			      <%= f.submit "Acessar", class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-2", style:"float:right" %>
+			    </div>
+			  </div>
+			<% end %>
+			
+		</div>
+	</div>
+</div

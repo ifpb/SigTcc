@@ -1,24 +1,55 @@
-<h1>Consultar TCC</h1>
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
 
-<%= form_tag("/consulta", method:"post", remote: true ) do %>
+  	<% if ! notice.blank? %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong id="notice" > <%= notice %> </strong>
+      </div>
+    <% end %>
+  	
+  	<div class="panel panel-default">
+      
+      <div class="panel-heading" style="padding: .1em 3em">
+        <h3>Consultar TCC</h3>
+      </div>
 
-<%= label_tag(:professor, "Professor") %>
-  <%= text_field_tag(:professor) %>
+      <div class="panel-body" style="padding: .5em 3em 2.1em 3em"><br/>
+			<%= form_tag("/consulta", method:"post", remote: true ) do %>
+				
+				<div class="form-group row">
+	      	<div class="form-group col-xs-4">
+						<%= label_tag(:professor, "Professor") %>
+						<%= text_field_tag :professor, "", class: 'form-control' %>
+					</div>
+					
+					<div class="form-group col-xs-4">
+						<%= label_tag(:semestre, "Semestre") %>
+						<%= text_field_tag :semestre, "", class: 'form-control' %>
+					</div>
+					
+					<div class="form-group col-xs-4">
+						<%= label_tag(:palavra, "Palavra Chave") %>
+						<%= text_field_tag :palavra, "", class: 'form-control' %>
+					</div>
+				</div>
 
-<%= label_tag(:semestre, "Semestre") %>
-  <%= text_field_tag(:semestre) %>
+				<div class="form-group row" style="margin-bottom: -7em;">
+					<div class="form-group col-xs-12">
+						<%= submit_tag "Consultar", class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored col-xs-2", style: "float:right;margin-right:-3em"   %>
+					</div>
+				</div>
 
-<%= label_tag(:palavra, "Palavra Chave") %>
-    <%= text_field_tag(:palavra) %>
-
-<%= submit_tag("Consultar") %>
-
-
-<% end %>
-<br><br>
-<div id="results">
-
+			<% end %>
+	</div>
 </div>
-
-<%=link_to "Voltar", current_user  %>
+<div class="row" style="margin-left:.1em; ">
+	<div>
+	  <%= link_to current_user, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", title: "Voltar", style: "float:left; margin-right:.5em; text-decoration:none" do %>
+	  <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" style="color:black"></span>
+		<% end %>
+	</div>
+</div>
+<div class="row" style="padding: 2em">
+	<div id="results" class="row"></div>
+</div>
