@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bancas
   get 'orientacao/index'
 
   resources :plano_atividades

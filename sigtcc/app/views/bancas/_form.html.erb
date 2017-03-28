@@ -1,0 +1,45 @@
+<%= form_for(banca) do |f| %>
+  <% if banca.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(banca.errors.count, "error") %> prohibited this banca from being saved:</h2>
+
+      <ul>
+      <% banca.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <div class="col-md-4">
+      <label for="">Data de Apresentação</label>
+      <%= f.date_field :dataApresentacao , :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-4">
+      <label for="">Horario</label>
+      <%= f.time_field :horario , :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-4">
+      <label for="">Sala</label>
+      <%= f.text_field   :sala , :class => 'form-control' %>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <div class="col-md-4">
+      <label for="">TCC</label>
+      <%= f.select(:tcc_id, Tcc.all.collect {|p| [ p.titulo, p.id ]} , { include_blank: 'Selecione um TCC' }, { :class => 'form-control'} ) %>
+    </div>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Salvar", :class => 'btn btn-success'  %>
+  </div>
+<% end %>

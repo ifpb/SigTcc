@@ -32,7 +32,8 @@ ActiveRecord::Schema.define(version: 20170217212713) do
 
   create_table "bancas", force: :cascade do |t|
     t.date     "dataApresentacao"
-    t.date     "horario"
+    t.string   "horario"
+    t.string   "sala"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "tcc_id"
