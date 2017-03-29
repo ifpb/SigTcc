@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bancas 
+<%= link_to 'Cadastrar Banca', new_banca_path, :class => "btn btn-sm btn-success pull-right" %>
+</h1>
+
+<table  class="table">
+  <thead>
+    <tr>
+      <th>Data Apresentação</th>
+      <th>Horário</th>
+      <th>TCC</th>
+      <th>Sala</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bancas.each do |banca| %>
+      <tr>
+        <td><%= banca.dataApresentacao.strftime('%d/%m/%Y') %></td>
+        <td><%= banca.horario %></td>
+        <td>
+            <% if banca.tcc != nil %>
+              <%= banca.tcc.titulo %>
+            <% else %>   
+              Sem TCC
+            <% end %> 
+        </td>
+        <td><%= banca.sala %></td>
+        <td>
+            <div class="btn-group pull-right">
+              <%= link_to 'Mostrar', banca, :class => "btn btn-sm btn-primary" %>
+              <%= link_to 'Excluir', banca, method: :delete, data: { confirm: 'Tem certeza que deseja apagar?' }, :class => "btn btn-sm btn-danger" %>
+            </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
