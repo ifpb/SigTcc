@@ -1,0 +1,18 @@
+<h1>Consultar Banca</h1>
+<p id="notice"><%= notice %></p>
+
+<%= form_tag("/consulta_banca", method:"post", remote: true ) do %>
+
+<%= label_tag(:sala, "Sala") %>
+  <%= text_field_tag(:sala) %>
+
+<%= submit_tag("Consultar") %>
+
+
+<% end %>
+<br><br>
+<div id="results">
+
+</div>
+
+<%=link_to "Voltar", current_user  %>
