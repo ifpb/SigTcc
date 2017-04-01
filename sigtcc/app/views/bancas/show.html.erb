@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h1>
+  <%= @banca.tcc.titulo %>
+  </h1>
+</p>
+<p>
+  <strong>Data da Apresentação:</strong>
+  <%= @banca.dataApresentacao %>
+</p>
+<p>
+  <strong>Horário:</strong>
+  <%= @banca.horario %>
+	&nbsp;&nbsp;
+  <strong>Sala:</strong>
+  <%= @banca.sala %>
+</p>
+
+<%= link_to 'Editar', edit_banca_path(@banca) %> |
+<%= link_to 'Voltar', bancas_path %>

@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Plano Atividades</h1>
+<h1>Plano Atividades
+<%= link_to 'Cadastrar Plano Atividade', new_plano_atividade_path, :class => "btn btn-sm btn-success pull-right" %>
+</h1>
 
 <table class="table">
   <thead>
@@ -16,7 +18,7 @@
     <% @plano_atividades.each do |plano_atividade| %>
       <tr>
         <td><%= plano_atividade.tcc.titulo %></td>
-        <td><%= plano_atividade.dataEntrega %></td>
+        <td><%= plano_atividade.dataEntrega.strftime('%d/%m/%Y') %></td>
         <td>
           <% if plano_atividade.aprovacao %> 
             Sim 
@@ -24,9 +26,12 @@
             Não
           <% end %> 
         </td>
-        <td><%= link_to 'Mostrar', plano_atividade %></td>
-        <td><%= link_to 'Editar', edit_plano_atividade_path(plano_atividade) %></td>
-        <td><%= link_to 'Excluir', plano_atividade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div class="btn-group pull-right">
+            <%= link_to 'Mostrar', plano_atividade, :class => "btn btn-sm btn-primary" %>
+            <%= link_to 'Editar', edit_plano_atividade_path(plano_atividade), :class => "btn btn-sm btn-primary" %>
+            <%= link_to 'Excluir', plano_atividade, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %></td>
+          </div>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +39,3 @@
 
 <br>
 
-<%= link_to 'Cadastrar Plano Atividade', new_plano_atividade_path %>

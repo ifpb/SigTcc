@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   ActiveAdmin.routes(self)
   namespace :admin do
     resources :tccs
@@ -15,6 +16,9 @@ resources :usuarios
 
     root to: "tccs#index"
   end
+
+
+  resources :bancas
 
   get 'orientacao/index'
 
@@ -41,6 +45,7 @@ resources :usuarios
   resources :ata_defesas do
     resource :download, only: [:show]
   end
+  
   resources :tccs
   resources :usuarios
   get '/usuarios', to: 'usuarios#orientacao'
