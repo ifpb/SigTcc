@@ -19,6 +19,15 @@ gem 'wkhtmltopdf-binary'
 gem 'bcrypt',         '3.1.11'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'will_paginate'
+
+gem 'activeadmin', '~> 1.0.0.pre4' # as of now
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'devise'
+gem 'cancan' # or cancancan
+gem 'draper', github: 'audionerd/draper', branch: 'rails5' 
+gem 'pundit'
+gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

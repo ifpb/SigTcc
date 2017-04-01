@@ -23,7 +23,7 @@ class UsuariosController < ApplicationController
   def index
 
     @professores = Professor.joins(:tccs).distinct
-    @professors
+    @professores= @professores.paginate :page => params[:page], :per_page => 2
     respond_to do |format|
       format.html{redirect_to usuario_path(current_user), action: "show", notice: "Resultado"}
       format.js
