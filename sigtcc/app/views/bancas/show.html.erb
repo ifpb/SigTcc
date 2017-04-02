@@ -16,6 +16,18 @@
   <strong>Sala:</strong>
   <%= @banca.sala %>
 </p>
+<p>
+  <strong>Ata de Defesa:</strong>
+  <%= @banca.ata_defesa.arquivo_file_name %>
+</p>
+
+<p>
+  <strong>ficha_avaliacaos:</strong>
+  <% @banca.ficha_avaliacaos.each do |fica| %>
+    <%= fica.arquivo_file_name %> |
+     <%= fica.professor.usuario.nome %> |
+  <% end -%>
+</p>
 
 <%= link_to 'Editar', edit_banca_path(@banca) %> |
 <%= link_to 'Voltar', bancas_path %>

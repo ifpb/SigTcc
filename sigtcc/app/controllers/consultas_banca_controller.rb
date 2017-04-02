@@ -11,12 +11,15 @@ class ConsultasBancaController < ApplicationController
   #métdo que realiza a consulta
   def consultar_banca
 
-    #consulta = "usuarios.nome like ? and palavras.nome like ? "
-    #professor = "%"+params[:professor]+"%"
-    #palavra = "%"+params[:palavra]+"%"
-    consulta = "sala = ? "
-    sala = params[:sala]
-    @bancas = Banca.where(consulta, sala)
+
+    if !params[:sala].empty?
+      consulta = "sala = ?"
+      @bancas = Banca.where(consulta, params[:sala])
+    elsif !params[:dataApresentacao].empty?
+      consulta = "dataApresentacao = ?"
+      @bancas = Banca.where(consulta, params[:dataApresentacao])
+    end
+
 
     #if !params[:semestre].empty?
       #consulta += " and periodo = ?"
