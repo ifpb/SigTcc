@@ -1,32 +1,54 @@
 <p id="notice"><%= notice %></p>
+
 <h1>Meu TCC</h1>
+<div   typeof="ugw:TCC" about=<%=tcc_path(@tcc)%> >
+
 <p>
+
   <strong>Titulo:</strong>
-  <%= @tcc.titulo %>
+  <%= rdfa_title @tcc.titulo %>
 </p>
 
 <p>
   <strong>Periodo:</strong>
-  <%= @tcc.periodo %>
+  <%= rdfa_ov_semester @tcc.periodo %>
 </p>
 
 
 
 <p>
   <strong>Tipos:</strong>
-  <%= @tcc.tipos %>
+  <span
+      <% if @tcc.tipos == 'pesquisa' %>
+      resource="ugw:Pesquisa"
+     <% end %>
+    <% if @tcc.tipos == 'trabalho' %>
+      resource="ugw:Trabalho"
+     <% end %>
+    <% if @tcc.tipos == 'estagio' %>
+      resource="ugw:Estagio"
+    <% end %>
+    <% if @tcc.tipos == 'extensao' %>
+      resource="ugw:Extensao"
+     <% end %>
+      property="ugw:temTipo" > <%=@tcc.tipos%></span>
 </p>
 <p>
   <strong>Palavras-Chaves:</strong>
   <% @tcc.palavras.each do |palavra| %>
-     <%= palavra.nome %> |
+     <%= rdfa_dcat_keyword palavra.nome %> |
   <% end -%>
 </p>
 <p>
   <strong>Agendado:</strong>
-  <%= @tcc.agendad %>
+  <%= rdfa_ugw_propostaaprovada @tcc.agendad %>
+</p>
+<p>
+  <strong>Nota:</strong>
+  <%= rdfa_dbo_grades @tcc.nota %>
 </p>
 
 <%= link_to 'Voltar', tccs_path %> |
 <%= link_to 'Atualizar', edit_tcc_path(@tcc) %> |
-<%= link_to 'Visualizar arquivo TCC', @tcc.arquivo.url %>
+<%= rdfa_link_to_dbo_fileurl 'Visualizar arquivo TCC', @tcc.arquivo.url %>
+</div>

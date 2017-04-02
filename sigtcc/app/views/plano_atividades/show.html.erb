@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
-
-<p>
+<div typeof="ugw:PlanoAtividade" about=<%=plano_atividades_path(@plano_atividade) %>>
+<p resource=<%=plano_atividades_path(@plano_atividade)%> property="ugw:temPlanoAtividades" about=<%=tcc_path(@plano_atividade.tcc)%>>
   <strong>Título Tcc:</strong>
-  <%= @plano_atividade.tcc.titulo %>
+  <%= rdfa_title @plano_atividade.tcc.titulo %>
 </p>
 <p>
   <strong>Data da Entrega:</strong>
-  <%= @plano_atividade.dataEntrega %>
+  <%= rdfa_dbo_releasedate @plano_atividade.dataEntrega %>
 </p>
 <p>
   <strong>Aprovação:</strong>
@@ -15,3 +15,4 @@
 
 <%= link_to 'Editar', edit_plano_atividade_path(@plano_atividade) %> |
 <%= link_to 'Voltar', plano_atividades_path %>
+<div>

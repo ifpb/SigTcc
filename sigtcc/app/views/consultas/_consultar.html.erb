@@ -21,11 +21,11 @@
   <tbody>
 
     <% tccs.each do |tcc| %>
-      <tr>
-        <td > <%= tcc.titulo %></td>
-        <td ><%= tcc.periodo %></td>
-        <td ><%= tcc.proposta_tcc.aluno.usuario.nome %></td>
-        <td ><%= tcc.professor.usuario.nome %></td>
+      <tr typeof="ugw:TCC" about=<%=tcc_path(tcc)%>>
+        <td > <%= rdfa_title tcc.titulo %></td>
+        <td ><%= rdfa_ov_semester tcc.periodo %></td>
+        <td resource=<%=aluno_path(tcc.proposta_tcc.aluno)%> property="ugw:possuiAutor">  <%= rdfa_name tcc.proposta_tcc.aluno.usuario.nome %></td>
+        <td resource=<%=usuario_path(tcc.professor.usuario)%> property="ugw:possuiOrientador"><%= rdfa_name tcc.professor.usuario.nome %></td>
         <td ><%=link_to "Expandir", tcc  %></td>
       </tr>
     <%end%>

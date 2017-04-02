@@ -1,21 +1,22 @@
 <p id="notice"><%= notice %></p>
-
-<p>
+<div typeof="ugw:Banca" about=<%=banca_path(@banca)%> >
+<p resource=<%=banca_path(@banca)%> property="ugw:temBanca"  about=<%=tcc_path(@banca.tcc)%>>
   <h1>
-  <%= @banca.tcc.titulo %>
+  <%= rdfa_title @banca.tcc.titulo %>
   </h1>
 </p>
 <p>
   <strong>Data da Apresentação:</strong>
-  <%= @banca.dataApresentacao %>
+  <%= rdfa_date @banca.dataApresentacao %>
 </p>
 <p>
   <strong>Horário:</strong>
-  <%= @banca.horario %>
+  <%= rdfa_schema_scheduletime @banca.horario %>
 	&nbsp;&nbsp;
   <strong>Sala:</strong>
-  <%= @banca.sala %>
+  <%= rdfa_teach_room @banca.sala %>
 </p>
 
 <%= link_to 'Editar', edit_banca_path(@banca) %> |
 <%= link_to 'Voltar', bancas_path %>
+</div>
