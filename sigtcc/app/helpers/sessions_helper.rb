@@ -1,5 +1,7 @@
 module SessionsHelper
-
+  ###
+  #author: João Paulo Marques e Almeida
+  ##
   def log_in(usuario)
     session[:usuario_id] = usuario.id
   end
@@ -7,7 +9,7 @@ module SessionsHelper
   def log_coord(perfil)
     session[:perfil] = perfil
   end
-
+  
   def current_user
     @current_user ||= Usuario.find_by(id: session[:usuario_id])
   end
