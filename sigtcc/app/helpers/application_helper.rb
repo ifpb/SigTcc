@@ -7,6 +7,10 @@ module ApplicationHelper
       end
     }
 
+    #método do RDFa
+    Rdfa.register_rdfa_namespace 'sioc', 'http://rdfs.org/sioc/ns#'
+
+
     messages
   end
 end

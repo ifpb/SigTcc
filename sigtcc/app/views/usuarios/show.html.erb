@@ -1,18 +1,32 @@
 <p id="notice"><%= notice %></p>
-<h2>Ola
+
+<div
+<% if @usuario.user.instance_of? Aluno%>
+  typeof="ugw:UndergraduateStudent"
+<% end %>
+<% if @usuario.user.instance_of? Professor%>
+  typeof="teach:Teacher"
+<% end %>
+  about= <%=usuario_path(@usuario)%> >
+<h1>Ola
+
+<%=@tipo%> <%= rdfa_name(@usuario.nome)%> </h1>
 
 
-<%=@tipo%> <%=@usuario.nome%> </h1>
+
+
 
 
 <p>Email:
-  <strong><%= @usuario.email %> </strong>
+  <strong><%= rdfa_schema_email @usuario.email %> </strong>
 </p>
 <!--Caso o usuário logado seja um aluno, será exibida essas informações -->
 <h2><%= link_to "Consultar TCCs", consulta_path %></h2>
+
 <h2>Atas de defesa</h2>
 
 <% if @usuario.user.instance_of? Aluno %>
+
   <% if current_user.user.proposta_tcc.nil? %>
     <p>Você ainda não possui uma proposta de TCC cadastrada!</p>
     <h4>Próximos Etapas:</h4>
@@ -88,7 +102,7 @@
                 <%end%>
 
                 <% if !tcc.banca.ata_defesa.nil? %>
-                  <td><%= link_to 'Editar ata de defesa', controller: "ata_defesas", action: "edit", tcc: tcc.id %></td>
+                  <td><%= rdfa_link_to_ugw_tematadefesa 'Editar ata de defesa', controller: "ata_defesas", action: "edit", tcc: tcc.id %></td>
                 <%end%>
                   <% if !tcc.banca.ata_defesa.nil? %>
                     <td><%= link_to 'Apagar', {controller: "ata_defesas",  action: "destroy", tcc: tcc.id, }, :method => :delete, data: { confirm: 'Tem certeza que deseja excluir a ata?' } %></td>
@@ -106,7 +120,6 @@
  <% if @usuario.user.instance_of? Aluno %>
     <p><%= link_to "Listar Professores para orientação", controller: "usuarios", action: "index", remote: true %></p>
  <%end%>
-
+</div>
  <div id="results">
-
  </div>

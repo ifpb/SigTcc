@@ -1,17 +1,20 @@
 <p id="notice"><%= notice %></p>
 <h1>Ata de Defesa</h1>
-<p>
-  <strong>Data de Apresentação:</strong>
-  <%= @ata_defesa.data %>
-</p>
+
+<div typeof="ugw:AtaDefesa" about=<%=ata_defesa_path(@ata_defesa)%> >
 
 <p>
-  <strong>Titulo do TCC:</strong>
-  <%= @ata_defesa.banca.tcc.titulo %>
+  <strong>Data de Apresentação:</strong>
+  <%= rdfa_ugw_dataapresentacao @ata_defesa.data %>
 </p>
-<p>
+
+<p resource=<%=ata_defesa_path(@ata_defesa)%> property="ugw:temAtaDefesa"  about=<%=tcc_path(@ata_defesa.banca.tcc)%>>
+
+  <strong>Titulo do TCC:</strong>
+  <%= rdfa_title @ata_defesa.banca.tcc.titulo %>
+<br/>
   <strong>Nota do TCC:</strong>
-  <%= @ata_defesa.banca.tcc.nota %>
+  <%= rdfa_dbo_grades @ata_defesa.banca.tcc.nota %>
 </p>
 <p>
   <strong>Status: </strong>
@@ -21,5 +24,6 @@
 
 
 <%= link_to 'Voltar', ata_defesas_path %> |
-<%= link_to 'Atualizar', edit_ata_defesas_path(@tcc) %> |
-<%= link_to 'Visualizar arquivo ata defesa', @ata_defesa.arquivo.url %>
+<%= link_to 'Atualizar', edit_ata_defesa_path(@ata_defesa) %> |
+<%= rdfa_link_to_dbo_fileurl 'Visualizar arquivo ata defesa', @ata_defesa.arquivo.url %>
+</div>
