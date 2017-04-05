@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
 
   end
-
+  #Método para logar o usuário e iniciar a session
   def create
     usuario = Usuario.find_by(email: params[:session][:email])
     if usuario && usuario.authenticate(params[:session][:password])

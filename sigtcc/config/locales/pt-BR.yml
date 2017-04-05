@@ -14,4 +14,6 @@ pt-BR:
         password: Senha
         password_confirmation: Confirmação da Senha
 
-  
+      layouts:
+        navigation:
+          aluno: Aluno
