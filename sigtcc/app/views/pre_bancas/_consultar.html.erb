@@ -1,0 +1,42 @@
+<% if !pre_bancas.nil? %>
+  <table id="pre_bancas" class="table">
+    <thead>
+      <tr>
+        <th><%= t(:aluno) %></th>
+        <th><%= t(:professor) %></th>
+        <th><%= t(:periodo) %></th>
+        <th><%= t(:data) %></th>
+        <th><%= t(:horario) %></th>
+        <th><%= t(:tituloProposta) %></th>
+        <th><%= t(:sala) %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% pre_bancas.each do |pre_banca| %>
+        <tr>
+          <td><%= pre_banca.proposta_tcc.aluno.usuario.nome %></td>
+          <td><%= pre_banca.proposta_tcc.tcc.professor.usuario.nome %></td>
+          <td><%= pre_banca.proposta_tcc.tcc.periodo %></td>
+          <td><%= pre_banca.dataApresentacao.strftime('%d/%m/%Y') %></td>
+          <td><%= pre_banca.horario%></td>
+          <td>
+              <% if pre_banca.proposta_tcc.tcc.id!= nil %>
+                <%= pre_banca.proposta_tcc.tcc.titulo %>
+              <% else %>
+                Sem Proposta TCC
+              <% end %>
+          </td>
+          <td><%= pre_banca.sala %></td>
+          <td>
+              <div class="btn-group pull-right">
+                  <%= link_to t(:mostrar), pre_banca, :class => "btn btn-sm btn-primary" %>
+                  <%= link_to t(:editar), edit_pre_banca_path(pre_banca), :class => "btn btn-sm btn-warning"%>
+                  <%= link_to t(:excluir), pre_banca, method: :delete, data: { confirm: 'Tem certeza que deseja apagar?' }, :class => "btn btn-sm btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

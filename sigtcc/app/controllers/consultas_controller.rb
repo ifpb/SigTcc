@@ -20,11 +20,7 @@ class ConsultasController < ApplicationController
 
       @tccs = Tcc.joins(professor: :usuario).joins(:palavras).where(consulta, professor, palavra, params[:semestre]).distinct
     else
-
-
       @tccs = Tcc.joins(professor: :usuario).joins(:palavras).where(consulta, professor, palavra).distinct
-
-
     end
     @tccs = @tccs.paginate :page => params[:page], :per_page => 5
 

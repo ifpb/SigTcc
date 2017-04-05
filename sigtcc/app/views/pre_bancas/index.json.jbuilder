@@ -1,0 +1,1 @@
+json.array! @pre_bancas, partial: 'pre_bancas/pre_banca', as: :pre_banca
