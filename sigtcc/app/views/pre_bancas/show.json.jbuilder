@@ -1,0 +1,1 @@
+json.partial! "pre_bancas/pre_banca", pre_banca: @pre_banca

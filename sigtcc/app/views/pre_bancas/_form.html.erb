@@ -1,0 +1,43 @@
+<%= form_for(pre_banca) do |f| %>
+  <% if pre_banca.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pre_banca.errors.count, "error") %> prohibited this pre_banca from being saved:</h2>
+
+      <ul>
+      <% pre_banca.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form-group row">
+  <div class="col-md-4">
+      <label for=""> <%= t(:dataDaApresentacao)%></label>
+      <%= f.date_field :dataApresentacao , :class => 'form-control' %>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-md-4">
+      <label for="">Horario</label>
+      <%= f.time_field :horario , :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-4">
+      <label for="">Sala</label>
+      <%= f.text_field :sala , :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-4">
+      <label for="">TCC</label>
+      <%= f.select :proposta_tcc_id, PropostaTcc.all.collect {|p| [ p.tcc.titulo, p.tcc.id ]}%>
+    </div>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Salvar", :class => 'btn btn-success'%>
+  </div>
+<% end %>
