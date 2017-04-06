@@ -1,0 +1,22 @@
+<h1>Consultar Pré Bancas</h1>
+<p id="notice"><%= notice %></p>
+
+<%= form_tag("/consulta_pre_bancas", method:"post", remote: true ) do %>
+
+<%= label_tag(:buscaId, "Filtro de Busca: ") %>
+<%= select_tag(:buscaId, options_for_select(['Aluno', 'Orientador', 'Período', 'Data Apresentação'])) %>
+<br/>
+<%= label_tag(:termoBusca, "Termo de Busca: ") %>
+<%= text_field_tag(:termoBusca) %>
+
+<%= submit_tag("Consultar") %>
+
+
+<% end %>
+<br/><br/>
+<div id="results">
+
+</div>
+
+
+<%=link_to "Voltar", pre_bancas_url  %>

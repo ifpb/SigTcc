@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Data Apresentação</th>
+      <th>Horário</th>
+      <th>Título da proposta</th>
+      <th>Sala</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @pre_banca.dataApresentacao.strftime('%d/%m/%Y') %></td>
+      <td><%= @pre_banca.horario %></td>
+      <td>
+        <% if @pre_banca.proposta_tcc.tcc.id!= nil %>
+        <%= @pre_banca.proposta_tcc.tcc.titulo %>
+        <% else %>
+          Sem Proposta TCC
+        <% end %>
+      </td>
+        <td><%= @pre_banca.sala %></td>
+      </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_pre_banca_path(@pre_banca), :class => "btn btn-sm btn-warning" %>
+<%= link_to 'Back', pre_bancas_path, :class => "btn btn-sm btn-primary" %>

@@ -6,7 +6,10 @@ class UsuariosController < ApplicationController
 
   # método para setar o usuário logado
   def show
+
+
     @usuario = Usuario.find(params[:id])
+  
     @tipo = ""
 
     flag = session[:perfil]

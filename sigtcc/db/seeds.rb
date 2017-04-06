@@ -107,6 +107,20 @@ Banca.create(dataApresentacao: "10/07/2017", horario: Time.now.strftime("%H:%M")
 
 Banca.create(dataApresentacao: "01/07/2017", horario: Time.now.strftime("%H:%M"), sala: "10" , tcc: sergio.proposta_tcc.tcc)
 
+###############################################################
+
+#inserindo Pre bancas
+
+PreBanca.create(dataApresentacao: "24/06/2017", horario: Time.now.strftime("%H:%M"), sala: "10" , proposta_tcc: pulin.proposta_tcc)
+
+PreBanca.create(dataApresentacao: "22/06/2017", horario: Time.now.strftime("%H:%M"), sala: "12" , proposta_tcc: bruno.proposta_tcc)
+
+PreBanca.create(dataApresentacao: "15/03/2017", horario: Time.now.strftime("%H:%M"), sala: "05" , proposta_tcc: samyra.proposta_tcc)
+
+PreBanca.create(dataApresentacao: "10/07/2017", horario: Time.now.strftime("%H:%M"), sala: "10" , proposta_tcc: matheus.proposta_tcc)
+
+PreBanca.create(dataApresentacao: "01/07/2017", horario: Time.now.strftime("%H:%M"), sala: "10" , proposta_tcc: sergio.proposta_tcc)
+
 #inserindo ata_defesas
 
 AtaDefesa.create(data: "30/09/2016", banca: pulin.proposta_tcc.tcc.banca, arquivo: nil)

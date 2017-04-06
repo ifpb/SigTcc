@@ -14,5 +14,7 @@ module Sigtcc
 #Respc configuration
 #config.generators do |g|
 #  g.test_framework :rspec
+    I18n.available_locales = [:en, :"pt-BR"]
+    I18n.default_locale = :"pt-BR"
   end
 end
