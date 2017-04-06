@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <%= yield %>
+    <h1>Olá, <%= @usuario.nome %></h1>
+    <p>
+      Login Efetuado com email: <%= @usuario.login %>.<br>
+    </p>
+    <p>
+      Para efetuar login, clique no link: <%= @url %>.
+    </p>
+    <p>Logged!</p>
+  </body>
+</html>

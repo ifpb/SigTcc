@@ -33,13 +33,14 @@ class AlunosController < ApplicationController
     @usuario.sexo = params[:usuario][:sexo]
     @usuario.password = params[:usuario][:password]
     @usuario.password_confirmation = params[:usuario][:password_confirmation]
-    
+
     @aluno = Aluno.new()
     @aluno.matricula = params[:aluno][:matricula]
     @aluno.usuario = @usuario
-    
+
     respond_to do |format|
       if @aluno.save
+        UserMailer.enviar_email(@usuario).deliver_later
         format.html { redirect_to @aluno, notice: 'Aluno cadastrado com sucesso.' }
         format.json { render :show, status: :created, location: @aluno }
       else
