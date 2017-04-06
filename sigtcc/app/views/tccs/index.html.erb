@@ -1,37 +1,94 @@
-<p id="notice"><%= notice %></p>
-<% if ! alert.blank? %>
-    <div>
-      <strong style="color:red">Erro! <%= alert %> </strong>
-    </div>
-<% end %>
-<h1>Tccs
-<%= link_to 'Criar Tcc', new_tcc_path, :class => "btn btn-sm btn-success pull-right" %>
-</h1>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:1em">
 
-<table id="tccs"  class="table">
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Periodo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tccs.each do |tcc| %>
-      <tr>
-        <td ><%= tcc.titulo %></td>
-        <td ><%= tcc.periodo %></td>
-        <td>
-          <div class="btn-group pull-right">
-            <%= link_to 'Expandir', tcc, :class => "btn btn-sm btn-primary" %>
-            <%= link_to 'Editar', edit_tcc_path(tcc), :class => "btn btn-sm btn-primary" %>
-            <%= link_to 'Apagar', tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, :class => "btn btn-sm btn-danger" %>
-          </div>
-        </td>
-      </tr>
+    <% if ! alert.blank? %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Erro! <%= alert %> </strong>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+     <div class="panel panel-default">
+      <div class="panel-heading" style="padding: .1em 3em">
+        <h2>Tccs</h2>
+      </div>
+      <div class="panel-body" style="padding: .5em 3em">
+
+        <table id="tccs" class="table">
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Periodo</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @tccs.each do |tcc| %>
+              <tr>
+                <td ><%= tcc.titulo %></td>
+                <td ><%= tcc.periodo %></td>
+
+                <td>
+                  <%= link_to tcc do %>
+                    <button type="button" class="btn btn-default" title="Expandir">
+                      <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </button>
+                  <% end %>
+                </td>
+
+                <td>
+                  <% if tcc.agendad == true %>
+                    <button id="popover" class="btn btn-default" title="TCC Fechado para Edicao" disabled="disabled"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+                  <% else %>
+                    <%= link_to edit_tcc_path(tcc) do %>
+                      <button type="button" class="btn btn-default" title="Editar">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                      </button>
+                    <% end %>
+                  <% end %>
+                </td>
+
+                <td>
+                  <%= link_to tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } do %>
+                  <button type="button" class="btn btn-default" title="Excluir">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red"></span>
+                  </button>
+                  <% end %>
+                </td>
+
+              </tr>
+            <% end %>
+
+          </tbody>
+        </table>
+        <%= will_paginate @tccs %>
+        <script>
+          $(document).ready(function () {
+            $('.pagination .previous_page').text('«');
+            $('.pagination .next_page').text('»');
+
+            $('.pagination').each(function () {
+              var $bar = $(this);
+              $bar.find('a, .current, span').wrapAll('<ul>');
+              $bar.find('a, .current, span').wrap('<li>');
+
+              $bar.find('em').each(function () {
+                $(this).parent().addClass('active');
+                $(this).replaceWith('<a href="#">' + $(this).text() + '</a>');
+              });
+            });
+            $(".pagination ul").addClass('pagination');
+            $(".pagination ul li").css("color","black");
+            $(".pagination").replaceWith("<nav aria-label='Page navigation'>" + $('.pagination').html() + "</nav>");
+          });
+        </script>
+      </div>
+
+    </div>
+    <div>
+    <%= link_to new_tcc_path, class: "btn btn-default col-xs-3", style: "float:right; text-decoration:none" do %>Criar Novo TCC
+    <% end %>
+    </div>
+  </div>
+<div>

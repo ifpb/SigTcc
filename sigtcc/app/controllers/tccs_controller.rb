@@ -4,7 +4,7 @@ class TccsController < ApplicationController
   # GET /tccs
   # GET /tccs.json
   def index
-    @tccs = Tcc.all
+    @tccs = Tcc.all.paginate :page => params[:page], :per_page => 5
   end
 
   # GET /tccs/1

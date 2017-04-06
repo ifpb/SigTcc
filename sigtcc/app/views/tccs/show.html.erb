@@ -1,54 +1,105 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:5em">
 
-<h1>Meu TCC</h1>
-<div   typeof="ugw:TCC" about=<%=tcc_path(@tcc)%> >
-
-<p>
-
-  <strong>Titulo:</strong>
-  <%= rdfa_title @tcc.titulo %>
-</p>
-
-<p>
-  <strong>Periodo:</strong>
-  <%= rdfa_ov_semester @tcc.periodo %>
-</p>
-
-
-
-<p>
-  <strong>Tipos:</strong>
-  <span
-      <% if @tcc.tipos == 'pesquisa' %>
-      resource="ugw:Pesquisa"
-     <% end %>
-    <% if @tcc.tipos == 'trabalho' %>
-      resource="ugw:Trabalho"
-     <% end %>
-    <% if @tcc.tipos == 'estagio' %>
-      resource="ugw:Estagio"
+    <% if ! notice.blank? %>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong id="notice"><%= notice %></strong>
+      </div>
     <% end %>
-    <% if @tcc.tipos == 'extensao' %>
-      resource="ugw:Extensao"
-     <% end %>
-      property="ugw:temTipo" > <%=@tcc.tipos%></span>
-</p>
-<p>
-  <strong>Palavras-Chaves:</strong>
-  <% @tcc.palavras.each do |palavra| %>
-     <%= rdfa_dcat_keyword palavra.nome %> |
-  <% end -%>
-</p>
-<p>
-  <strong>Agendado:</strong>
-  <%= rdfa_ugw_propostaaprovada @tcc.agendad %>
-</p>
-<p>
-  <strong>Nota:</strong>
-  <%= rdfa_dbo_grades @tcc.nota %>
-</p>
+    
+    <div>
+      <div style="display:inline-block">
+        <%= link_to tccs_path , class: "btn btn-default", title: "Voltar" do %>
+          <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" style="font-size:20pt"></span>
+        <% end %>
+      </div>
+      <div style="display:inline-block">
+        <% if @tcc.agendad == true %>
+          <button id="popover" class="btn btn-default" data-toggle="popover" title="TCC Fechado para Edicao" data-placement="right" data-content="O TCC já foi agendado!"><span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size:20pt"></span></button>
+          <script>$('#popover').popover()</script>
+        <% else %>
+          <%= link_to edit_tcc_path(@tcc) , class: "btn btn-default", title: "Editar" do %>
+            <span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size:20pt"></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
-<%= link_to 'Voltar', tccs_path %> |
-<%= link_to 'Atualizar', edit_tcc_path(@tcc) %> |
-<%= rdfa_link_to_dbo_fileurl 'Visualizar arquivo TCC', @tcc.arquivo.url %>
+    <div class="panel panel-default">
+      <div class="panel-heading" style="padding: .1em 3em" typeof="ugw:TCC" about=<%=tcc_path(@tcc)%> >
+        <h2>TCC - <strong> <%= rdfa_title @tcc.titulo %></strong></h2>
+      </div>
+      <div class="panel-body" style="padding: .5em 3em">
+
+        <div class="col-md-6">
+          Aluno:<h4><strong> <%= @tcc.proposta_tcc.aluno.usuario.nome %></strong></h4>
+        </div>
+
+        <div class="col-md-6">
+          Data de Apresentacao da Proposta:<h4><strong> <%= @tcc.proposta_tcc.dataApresentacao.strftime('%d/%m/%Y') %></strong></h4>
+        </div>
+
+        <div class="col-md-12" style="padding-top:2em">
+          <div class="col-md-4">
+            Periodo:<h5><strong> <%= rdfa_ov_semester @tcc.periodo %></strong></h5>
+          </div>
+
+          <div class="col-md-4">
+            Nota:
+              <h5><strong><%= rdfa_dbo_grades @tcc.nota %></strong></h5>
+          </div>
+
+          <div class="col-md-4">
+            Tipo:<h5><strong 
+              <% if @tcc.tipos == 'pesquisa' %>
+                resource="ugw:Pesquisa"
+              <% end %>
+              <% if @tcc.tipos == 'trabalho' %>
+                resource="ugw:Trabalho"
+              <% end %>
+              <% if @tcc.tipos == 'estagio' %>
+                resource="ugw:Estagio"
+              <% end %>
+              <% if @tcc.tipos == 'extensao' %>
+                resource="ugw:Extensao"
+              <% end %>
+                property="ugw:temTipo"> <%= @tcc.tipos.upcase %></strong></h5>
+          </div>
+
+          <div class="col-md-4">
+            Palavras-Chave:
+            <h5>
+              <strong>
+                <% @tcc.palavras.each do |palavra| %>
+                  <%= rdfa_dcat_keyword palavra.nome %> |
+                <% end -%>
+              </strong>
+            </h5>
+          </div>
+
+          <div class="col-md-4">
+            Agendado:
+            <h5>
+              <strong>
+                <% if @tcc.agendad == true %>
+                  <%= rdfa_ugw_propostaaprovada @tcc.agendad %>
+                <% else %>
+                  <%= rdfa_ugw_propostaaprovada @tcc.agendad %>
+                <% end %>
+              </strong>
+            </h5>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div>
+        
+      <div style="float:right">
+        <strong>Visualizar arquivo TCC: </strong><%= rdfa_link_to_dbo_fileurl @tcc.arquivo.url %>
+      </div>
+    </div> 
+  
+  </div>
 </div>

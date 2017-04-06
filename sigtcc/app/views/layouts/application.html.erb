@@ -12,6 +12,25 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
+    <style>
+      .pagination > li > a, .pagination > li > span{
+        color:black !Important;       
+        background-color: #888 !Important;
+        border-color: #888 !Important;
+      }
+      .pagination > li > a:hover, .pagination > li > span:hover{
+        color:white !Important;       
+        background-color: #222 !Important;
+        border-color: #222 !Important;
+      }
+      .pagination > .active, .pagination > .active > a{
+        background-color: #222 !Important;
+        border-color: #222 !Important;
+      }
+      .pagination > .active > a{
+       color:white !Important;       
+      }
+    </style>
   </head>
   <body><nav class="navbar"></nav>
       <%= render 'layouts/navigation' %>

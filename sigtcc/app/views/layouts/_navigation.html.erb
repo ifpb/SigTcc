@@ -23,13 +23,13 @@
     </ul>
       <ul class="nav navbar-nav navbar-right">
 		<li><%= link_to "en", locale: "en" %></li>
-        	<li><%= link_to "pt", locale: "pt-BR" %></li>
-	     <% if logged_in? %>
-	       <li class="pull-right"><%= link_to "Profile", current_user %></li>
-	       <li class="pull-right"><%= link_to "Log out", logout_path, method: "delete" %></li>
-	     <% else %>
-	        <li class="pull-right"><%= link_to "Login", login_path %></li>
-	     <% end %>
+    <li><%= link_to "pt", locale: "pt-BR" %></li>
+	  <% if logged_in? %>
+    <li class="pull-right"><%= link_to logout_path, method: "delete", title: "Logout" do %><span class="glyphicon glyphicon-off" aria-hidden="true"></span><% end %></li>
+	    <li class="pull-right"><%= link_to current_user, title: "Profile" do %><span class="glyphicon glyphicon-user" aria-hidden="true"></span><% end %></li>
+	  <% else %>
+	    <li class="pull-right"><%= link_to "Login", login_path %></li>
+	  <% end %>
 
       </ul>
     </div><!-- /.navbar-collapse -->

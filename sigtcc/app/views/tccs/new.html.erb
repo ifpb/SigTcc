@@ -1,6 +1,20 @@
-<h1>Cadastrar Tcc</h1>
+<div class="row">
+  <div class="col-xs-12" style="margin-top:1em; margin-bottom: 5em;">
+		
+		<div>
+			<div>
+	      <%= link_to tccs_path , class: "btn btn-default", title: "Voltar" do %>
+	        <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" style="font-size:20pt"></span>
+	      <% end %>
+	    </div>
+		</div>
 
-
-<%= render 'form', tcc: @tcc %>
-
-<%= link_to 'Voltar', tccs_path %>
+		<div class="panel panel-default">
+      <div class="panel-heading" style="padding: .1em 3em">
+        <h2>Cadastrar TCC</h2>
+      </div>
+			<%= render 'form', tcc: @tcc %>
+		</div>
+	
+	</div>
+</div>
