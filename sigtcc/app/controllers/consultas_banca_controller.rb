@@ -11,27 +11,16 @@ class ConsultasBancaController < ApplicationController
   #métdo que realiza a consulta
   def consultar_banca
 
-
-    if !params[:sala].empty?
-      consulta = "sala = ?"
-      @bancas = Banca.where(consulta, params[:sala])
-    elsif !params[:dataApresentacao].empty?
-      consulta = "dataApresentacao = ?"
-      @bancas = Banca.where(consulta, params[:dataApresentacao])
+    if !params[:buscaId].empty?
+      if    params[:buscaId] == 'Sala'
+        @bancas = Banca.where(sala: params[:termoBusca]).distinct
+      elsif params[:buscaId] == 'Data Apresentação'
+        @bancas = Banca.where(dataApresentacao: params[:termoBusca]).distinct
+      end
+    else
+      @bancas = Banca.all
     end
 
-
-    #if !params[:semestre].empty?
-      #consulta += " and periodo = ?"
-
-      #@bancas = Banca.joins(professor: :usuario).joins(:palavras).where(consulta, professor, palavra, params[:semestre])
-    #else
-
-
-      #@bancas = Tcc.joins(professor: :usuario).joins(:palavras).where(consulta, professor, palavra)
-
-
-    #end
     @bancas
 
     respond_to do |format|

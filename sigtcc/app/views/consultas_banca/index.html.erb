@@ -3,13 +3,11 @@
 
 <%= form_tag("/consulta_banca", method:"post", remote: true ) do %>
 
-<%= label_tag(:sala, "Sala") %>
-  <%= text_field_tag(:sala) %>
-
-  <%= label_tag(:dataApresentacao, "Data de Apresentacao") %>
-    <%= text_field_tag(:dataApresentacao) %>
-
-  
+<%= label_tag(:buscaId, "Filtro de Busca: ") %>
+<%= select_tag(:buscaId, options_for_select(['Sala', 'Data Apresentação'])) %>
+<br/>
+<%= label_tag(:termoBusca, "Termo de Busca: ") %>
+<%= text_field_tag(:termoBusca) %>  
 
 <%= submit_tag("Consultar") %>
 
