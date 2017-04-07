@@ -5,8 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Titulo</th>
-      <th>Data</th>
+      <th>Aluno</th>
+      <th>Data de Apresentaçao</th>
+      <th>Aprovação</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +15,15 @@
   <tbody>
     <% @proposta_tccs.each do |proposta_tcc| %>
       <tr>
-        <td><%= proposta_tcc.tcc.titulo %></td>
+        <td><%= proposta_tcc.aluno.usuario.nome%></td>
         <td><%= proposta_tcc.dataApresentacao %></td>
+        <td>
+          <% if proposta_tcc.aprovacao %>
+            Sim
+          <% else %>
+            Não
+          <% end %>
+        </td>
         <td><%= link_to 'Show', proposta_tcc %></td>
         <td><%= link_to 'Edit', edit_proposta_tcc_path(proposta_tcc) %></td>
         <td><%= link_to 'Destroy', proposta_tcc, method: :delete, data: { confirm: 'Are you sure?' } %></td>

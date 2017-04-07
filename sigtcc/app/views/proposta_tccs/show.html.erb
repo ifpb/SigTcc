@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Titulo:</strong>
-  <%= @proposta_tcc.tcc.titulo %>
+  <strong>Aluno:</strong>
+  <%= @proposta_tcc.aluno.usuario.nome %>
 </p>
 
 <p>
-  <strong>Data:</strong>
+  <strong>Data da Apresentaçao:</strong>
   <%= @proposta_tcc.dataApresentacao %>
 </p>
+<p>
+  <strong>Aprovação:</strong>
+  <%= @proposta_tcc.aprovacao %>
+</p>
+
 
 <%= link_to 'Edit', edit_proposta_tcc_path(@proposta_tcc) %> |
 <%= link_to 'Back', proposta_tccs_path %>
