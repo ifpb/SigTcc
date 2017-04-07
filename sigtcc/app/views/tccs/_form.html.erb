@@ -35,17 +35,16 @@
       <%= f.label :periodo %>
       <%= f.text_field :periodo , :class => 'form-control'  %>
     </div>
-    
+
     <%= f.label "Tipo:" %>
     <%= f.select(:tipos, options_for_select(Tcc.tipos.keys), {}, { :class => 'form-control'} ) %>
 
     <div class="form-group">
     <%= f.label :palavras_chave, class: "control-label" %>
     <% tcc.palavras.each do |palavra| %>
-      <p>
+      <p id="remove">
         <input type="text" name="palavras[]" value="<%= palavra.nome %>">
-        <a>Remover</a>
-        <!--<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>-->
+        <span onclick="removerInput()"class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       </p>
     <% end %>
     <p><a href="" id="add_palavras">Adicionar Palavra-Chave</a></p>
