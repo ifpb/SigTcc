@@ -21,9 +21,13 @@
 
 <p>
   <h3> <strong>Ata de Defesa:</strong> </h3>
-  <%= link_to 'Visualizar Ata', @banca.ata_defesa.arquivo.url %>
-</p>
+  <% if @banca.ata_defesa != nil %>
+    <%= link_to 'Visualizar Ata', @banca.ata_defesa.arquivo.url %>
+  <% else %>
+    Sem Ata
+  <% end %>
 
+</p>
 
 <h3><strong>Membros:</strong> </br></h3>
 <table class='table'>

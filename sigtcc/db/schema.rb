@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217212713) do
+ActiveRecord::Schema.define(version: 20170322234235) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.string   "author_type"
+    t.integer  "author_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
 
   create_table "alunos", force: :cascade do |t|
     t.string   "matricula"
@@ -38,6 +52,13 @@ ActiveRecord::Schema.define(version: 20170217212713) do
     t.datetime "updated_at",       null: false
     t.integer  "tcc_id"
     t.index ["tcc_id"], name: "index_bancas_on_tcc_id"
+  end
+
+  create_table "bancas_professors", id: false, force: :cascade do |t|
+    t.integer "banca_id"
+    t.integer "professor_id"
+    t.index ["banca_id"], name: "index_bancas_professors_on_banca_id"
+    t.index ["professor_id"], name: "index_bancas_professors_on_professor_id"
   end
 
   create_table "coordenadors", force: :cascade do |t|
@@ -91,6 +112,12 @@ ActiveRecord::Schema.define(version: 20170217212713) do
     t.string   "siape"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "professors_bancas", id: false, force: :cascade do |t|
+    t.integer "banda_id",     null: false
+    t.integer "professor_id", null: false
+    t.index ["banda_id", "professor_id"], name: "index_professors_bancas_on_banca_id_and_professor_id"
   end
 
   create_table "proposta_tccs", force: :cascade do |t|
