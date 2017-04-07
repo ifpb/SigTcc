@@ -27,3 +27,15 @@ pt-BR:
   layouts:
     navigation:
       aluno: Aluno
+      tcc: TCC
+      planoAtividades: Plano de Atividades
+      bancas: Bancas
+      preBancas: Pre-Bancas
+      perfil: Perfil
+      sair: Sair
+
+  tccs:
+    index:
+      bt_NovoTCC: Criar Novo TCC
+      tb_titulo: Titulo
+      tb_periodo: Periodo

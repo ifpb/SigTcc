@@ -1,16 +1,38 @@
 <% provide(:title, "Log in") %>
 
 <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-		<h1>Login</h1>
-		<%= flash_message %>
-		<%= form_for(:session, url: login_path) do |f| %>
-		<%= f.label :email %>
-		<%= f.email_field :email , :class => 'form-control' %>
-		<%= f.label :password %>
-		<%= f.password_field :password , :class => 'form-control' %><br>
-		<%= f.submit "Acessar" , :class => 'btn btn-primary' %>
-    </div>
+    <div class="col-xs-4 col-md-offset-4" style="top:10em">
+	    <div class="panel text-center panel-default">
+
+	  		<div class="panel-header">
+				<h1>Login</h1>
+			</div>
+
+			<div class="panel-body col-md-offset-0 text-left">
+				<div class="input-group col-md-10 col-md-offset-1">
+					<%= flash_message %>
+				</div>
+				<%= form_for(:session, url: login_path) do |f| %>
+
+				<div class="input-group col-md-10 col-md-offset-1">
+					<%= f.label :email %>
+					<%= f.email_field :email , class: 'form-control' %>
+				</div><br/>
+				
+				<div class="input-group col-md-10 col-md-offset-1">
+					<%= f.label :password %>
+					<%= f.password_field :password , class: 'form-control' %>
+				</div>
+				<div class="input-group col-md-10 col-md-offset-1">
+					<small>Esqueci a senha</small>
+				</div><br/>
+				<div class="input-group col-md-10 col-md-offset-1">
+					<%= f.submit "Acessar" , class: 'btn btn-info btn-lg btn-block' %>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </div>
 
 <%end%>

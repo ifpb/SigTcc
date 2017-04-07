@@ -16,7 +16,7 @@
       </div>
       <div style="display:inline-block">
         <% if @tcc.agendad == true %>
-          <button id="popover" class="btn btn-default" data-toggle="popover" title="TCC Fechado para Edicao" data-placement="right" data-content="O TCC já foi agendado!"><span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size:20pt"></span></button>
+          <button id="popover" class="btn btn-default" data-toggle="popover" title="TCC Fechado para Edicao" data-placement="top" data-content="O TCC já foi agendado!"><span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size:20pt"></span></button>
           <script>$('#popover').popover()</script>
         <% else %>
           <%= link_to edit_tcc_path(@tcc) , class: "btn btn-default", title: "Editar" do %>

@@ -27,3 +27,15 @@ en:
   layouts:
     navigation:
       aluno: Student
+      tcc: CCW
+      planoAtividades: Activities plan
+      bancas: Stalls
+      preBancas: Pre
+      perfil: profile
+      sair: logout
+
+  tccs:
+    index:
+      bt_NovoTCC: Create New
+      tb_titulo: Title
+      tb_periodo: Semester
