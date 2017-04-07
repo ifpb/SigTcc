@@ -10,6 +10,9 @@ end
 gem "paperclip", "~> 5.0.0"
 gem "paperclip_database", "~> 2.0"
 
+# para rodar RDFa na aplicação
+gem 'rdfa'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 gem 'pdfkit'
@@ -19,6 +22,15 @@ gem 'wkhtmltopdf-binary'
 gem 'bcrypt',         '3.1.11'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'will_paginate'
+
+gem 'activeadmin', '~> 1.0.0.pre4' # as of now
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'devise'
+gem 'cancan' # or cancancan
+gem 'draper', github: 'audionerd/draper', branch: 'rails5'
+gem 'pundit'
+gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

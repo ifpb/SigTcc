@@ -2,7 +2,10 @@
 
 <h1>Proposta Tccs</h1>
 
-<table>
+<%= link_to 'Cadastrar Proposta Tcc', new_proposta_tcc_path ,:class => "btn btn-sm btn-success pull-right"%>
+
+
+<table class="table">
   <thead>
     <tr>
       <th>Aluno</th>
@@ -16,7 +19,7 @@
     <% @proposta_tccs.each do |proposta_tcc| %>
       <tr>
         <td><%= proposta_tcc.aluno.usuario.nome%></td>
-        <td><%= proposta_tcc.dataApresentacao %></td>
+        <td><%= proposta_tcc.dataApresentacao.strftime('%d/%m/%Y') %></td>
         <td>
           <% if proposta_tcc.aprovacao %>
             Sim
@@ -24,14 +27,15 @@
             Não
           <% end %>
         </td>
-        <td><%= link_to 'Show', proposta_tcc %></td>
-        <td><%= link_to 'Edit', edit_proposta_tcc_path(proposta_tcc) %></td>
-        <td><%= link_to 'Destroy', proposta_tcc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>
+        <div class="btn-group pull-right">
+            <%= link_to 'Show', proposta_tcc, :class => "btn btn-sm btn-primary"%>
+            <%= link_to 'Edit', edit_proposta_tcc_path(proposta_tcc), :class => "btn btn-sm btn-primary" %>
+            <%= link_to 'Destroy', proposta_tcc, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %></td>
+        </div>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'Cadastrar Proposta Tcc', new_proposta_tcc_path %>

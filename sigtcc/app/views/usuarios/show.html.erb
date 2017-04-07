@@ -1,22 +1,87 @@
 <p id="notice"><%= notice %></p>
+
+<div
+<% if @usuario.user.instance_of? Aluno%>
+  typeof="ugw:UndergraduateStudent"
+<% end %>
+<% if @usuario.user.instance_of? Professor%>
+  typeof="teach:Teacher"
+<% end %>
+  about= <%=usuario_path(@usuario)%> >
 <h1>Ola
 
+<%=@tipo%> <%= rdfa_name(@usuario.nome)%> </h1>
 
-<%=@tipo%> <%=@usuario.nome%> </h1>
+
+
+
 
 
 <p>Email:
-  <strong><%= @usuario.email %> </strong>
+  <strong><%= rdfa_schema_email @usuario.email %> </strong>
 </p>
-
+<!--Caso o usuário logado seja um aluno, será exibida essas informações -->
 <h2><%= link_to "Consultar TCCs", consulta_path %></h2>
+
 <h2>Atas de defesa</h2>
 
+<% if @usuario.user.instance_of? Aluno %>
 
+  <% if current_user.user.proposta_tcc.nil? %>
+    <p>Você ainda não possui uma proposta de TCC cadastrada!</p>
+    <h4>Próximos Etapas:</h4>
+    <input type="checkbox" name="status" value="proposta-TCC"  disabled> Cadastrar Proposta de TCC<br>
+    <input type="checkbox" name="status" value="orientador-TCC"  disabled> Definir OOrientador definido<br>
+    <input type="checkbox" name="status" value="planoat"  disabled> Plano de Atividades Cadastrado<br>
+    <input type="checkbox" name="status" value="cadastrado-TCC"  disabled> TCC Cadastrado<br>
+    <input type="checkbox" name="status" value="banca-agendada"  disabled> Banca Agendada<br>
+    <input type="checkbox" name="status" value="TCC-defendido"  disabled> TCC Defendido<br>
+    <%end%>
+
+  <!--Caso o aluno logado já possua algum passo concluído -->
+
+  <!--Caso o aluno logado já possua algum uma proposta cadastrada -->
+    <%if !current_user.user.proposta_tcc.nil?%>
+      <h4>Seu Status:</h4>
+      <input type="checkbox" name="status-proposta" value="proposta-TCC" checked disabled> Cadastrar Proposta de TCC<br>
+      <!--Caso o aluno logado já possua algum tcc, ele terá um orientador nesta versao. Deixo esse IF para implementacoes futuras de orientador isolado de tcc-->
+      <%if !current_user.user.proposta_tcc.tcc.nil?%>
+        <input type="checkbox" name="status-orientador" value="orientador-TCC" checked disabled> Definir Orientador<br>
+        <input type="checkbox" name="status-tcc" value="proposta-TCC" checked disabled> Cadastrar TCC<br>
+      <%else%>
+        <input type="checkbox" name="status-orientador" value="orientador-TCC"  disabled> Definir Orientador definido<br>
+        <input type="checkbox" name="status-tcc" value="proposta-TCC" disabled> Cadastrar TCC<br>
+      <% end %>
+      <!--Caso o aluno logado já possua algum tcc cadastrado, pois se sim ele terá um orientador-->
+      <%if !current_user.user.proposta_tcc.tcc.nil?%>
+      <!--Caso o aluno logado tenha um plano de atividades cadastrado. O plano de atividades só existe se tiver um tcc cadastrado antes-->
+        <% if !current_user.user.proposta_tcc.tcc.plano_atividade.nil? %>
+          <input type="checkbox" name="status-plano" value="proposta-TCC" checked disabled> Cadastrar Plano de Atividades<br>
+        <%else%>
+          <input type="checkbox" name="status-plano" value="proposta-TCC" disabled> Cadastrar Plano de Atividades<br>
+        <% end %>
+      <!--Caso o aluno logado já possua alguma banca cadastrada-->
+        <%if !current_user.user.proposta_tcc.tcc.banca.nil?%>
+          <input type="checkbox" name="status-banca" value="proposta-TCC" checked disabled> Banca Agendada<br>
+      <!--Verificando se o TCC já foi defendido ou não, de acordo com a data da banca-->
+          <% if current_user.user.proposta_tcc.tcc.banca.dataApresentacao <= Date.today %>
+            <input type="checkbox" name="status-defendido" value="proposta-TCC" checked disabled> TCC Defendido<br>
+          <%else%>
+            <input type="checkbox" name="status-defendido" value="proposta-TCC" disabled> TCC Defendido<br>
+          <%end%>
+        <%else%>
+          <input type="checkbox" name="status-banca" value="proposta-TCC"  disabled> Banca Agendada<br>
+          <input type="checkbox" name="status-defendido" value="proposta-TCC" disabled> TCC Defendido<br>
+        <%end%>
+      <%end%>
+  <%end%>
+<%end%>
+
+<!--Caso o usuário logado seja um professor será exibida essas opções -->
 
 <% if @usuario.user.instance_of? Professor %>
   <% if !@usuario.user.tccs.nil? %>
-    <table id= "tccs">
+    <table id= "tccs" class="table">
       <thead>
         <tr>
           <th>Titulo</th>
@@ -31,17 +96,20 @@
           <tr>
             <td ><%= tcc.titulo %></td>
             <td ><%= tcc.periodo %></td>
-            <% if tcc.agendad == true && tcc.banca.ata_defesa.nil? %>
-              <td><%= link_to 'Gerar ata de defesa', controller: "ata_defesas", action: "new", tcc: tcc.id %></td>
+              <% if !tcc.banca.nil? %>
+                <% if tcc.agendad == true && tcc.banca.ata_defesa.nil? %>
+                  <td><%= link_to 'Gerar ata de defesa', controller: "ata_defesas", action: "new", tcc: tcc.id %></td>
+                <%end%>
+
+                <% if !tcc.banca.ata_defesa.nil? %>
+                  <td><%= rdfa_link_to_ugw_tematadefesa 'Editar ata de defesa', controller: "ata_defesas", action: "edit", tcc: tcc.id %></td>
+                <%end%>
+                  <% if !tcc.banca.ata_defesa.nil? %>
+                    <td><%= link_to 'Apagar', {controller: "ata_defesas",  action: "destroy", tcc: tcc.id, }, :method => :delete, data: { confirm: 'Tem certeza que deseja excluir a ata?' } %></td>
+                  <td><%= link_to "Visualizar ata de defesa PDF",  ata_defesa_download_path(tcc.banca.ata_defesa, format: "pdf"),  target: "_blank",  class: "download" %></td>
+                  <td><%= link_to 'Visualizar arquivo ata defesa', tcc.banca.ata_defesa.arquivo.url %></td>
+                <%end%>
             <%end%>
-            <% if !tcc.banca.ata_defesa.nil? %>
-              <td><%= link_to 'Editar ata de defesa', controller: "ata_defesas", action: "edit", tcc: tcc.id %></td>
-            <%end%>
-              <% if !tcc.banca.ata_defesa.nil? %>
-                <td><%= link_to 'Apagar', {controller: "ata_defesas",  action: "destroy", tcc: tcc.id, }, :method => :delete, data: { confirm: 'Tem certeza que deseja excluir a ata?' } %></td>
-              <td><%= link_to "Visualizar ata de defesa PDF",  ata_defesa_download_path(tcc.banca.ata_defesa, format: "pdf"),  target: "_blank",  class: "download" %></td>
-              <td><%= link_to 'Visualizar arquivo ata defesa', tcc.banca.ata_defesa.arquivo.url %></td>
-              <%end%>
           </tr>
         <% end %>
       </tbody>
@@ -52,7 +120,6 @@
  <% if @usuario.user.instance_of? Aluno %>
     <p><%= link_to "Listar Professores para orientação", controller: "usuarios", action: "index", remote: true %></p>
  <%end%>
-
+</div>
  <div id="results">
-
  </div>

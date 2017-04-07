@@ -1,0 +1,2 @@
+document.getElementById('results').innerHTML = '';
+$("<%= escape_javascript(render 'consultar', pre_bancas: @pre_bancas) %>").appendTo("#results");

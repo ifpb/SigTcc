@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+<div typeof="ugw:Banca" about=<%=banca_path(@banca)%> >
+<p resource=<%=banca_path(@banca)%> property="ugw:temBanca"  about=<%=tcc_path(@banca.tcc)%>>
+  <h1>
+  <%= rdfa_title @banca.tcc.titulo %>
+  </h1>
+</p>
+<p>
+  <strong>Data da Apresentação:</strong>
+  <%= rdfa_date @banca.dataApresentacao %>
+</p>
+<p>
+  <strong>Horário:</strong>
+  <%= rdfa_schema_scheduletime @banca.horario %>
+	&nbsp;&nbsp;
+  <strong>Sala:</strong>
+  <%= rdfa_teach_room @banca.sala %>
+</p>
+<%= link_to 'Agendar', @banca, :class => "btn btn-sm btn-primary" %> <!-- ficha.professor-->
+
+
+<p>
+  <h3> <strong>Ata de Defesa:</strong> </h3>
+  <% if @banca.ata_defesa != nil %>
+    <%= link_to 'Visualizar Ata', @banca.ata_defesa.arquivo.url %>
+  <% else %>
+    Sem Ata
+  <% end %>
+
+</p>
+
+<h3><strong>Membros:</strong> </br></h3>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>
+        Nome
+      </th>
+      <th>Ficha de Avaliação</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @banca.ficha_avaliacaos.each do |ficha| %>
+    <tr>
+       <td><%= ficha.professor.usuario.nome %> </td>
+
+       <td>
+           <%= link_to 'Visualizar Ficha de Avaliação', ficha.arquivo.url %> </br>
+       </td>
+
+       <td>
+         <div class="btn-group pull-right">
+           <%= link_to 'Alterar membro ', @banca, :class => "btn btn-sm btn-primary" %> <!-- ficha.professor-->
+         </div>
+       </td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<%= link_to 'Editar', edit_banca_path(@banca) %> |
+<%= link_to 'Voltar', bancas_path %>
+</div>

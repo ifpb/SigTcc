@@ -1,18 +1,19 @@
 <p id="notice"><%= notice %></p>
-
+<div typeof='vivo:UndergraduateStudent' about=<%=aluno_path(@aluno)%>>
 <p>
   <strong>Matricula:</strong>
   <%= @aluno.matricula %>
 </p>
 <p>
   <strong>Nome:</strong>
-  <%= @aluno.usuario.nome %>
+  <%= rdfa_name @aluno.usuario.nome %>
 </p>
 <p>
   <strong>E-mail:</strong>
-  <%= @aluno.usuario.email %>
+  <%=  rdfa_schema_email @aluno.usuario.email %>
 </p>
 
 
 <%= link_to 'Edit', edit_aluno_path(@aluno) %> |
 <%= link_to 'Back', alunos_path %>
+</div>
