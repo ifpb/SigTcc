@@ -1,0 +1,1 @@
+json.partial! "bancas/banca", banca: @banca

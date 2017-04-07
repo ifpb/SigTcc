@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top navbar-inverse">
+<nav class="navbar navbar-fixed-top navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -15,12 +15,15 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
-		<li><a href="/alunos">Alunos</a></li>
+		<li><a href="/alunos"> <%= t('.aluno') %> </a></li>
 		<li><a href="/tccs">Tccs</a></li>
-    <li><a href="/ata_defesas">Atas de Defesa</a></li>
     <li><a href="/plano_atividades">Plano de Atividades</a></li>
+    <li><a href="/bancas">Bancas</a></li>
+    <li><a href="/pre_bancas">Pré Bancas</a></li>
     </ul>
       <ul class="nav navbar-nav navbar-right">
+		<li><%= link_to "en", locale: "en" %></li>
+        	<li><%= link_to "pt", locale: "pt-BR" %></li>
 	     <% if logged_in? %>
 	       <li class="pull-right"><%= link_to "Profile", current_user %></li>
 	       <li class="pull-right"><%= link_to "Log out", logout_path, method: "delete" %></li>

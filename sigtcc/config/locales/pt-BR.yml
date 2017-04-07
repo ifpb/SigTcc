@@ -1,0 +1,29 @@
+pt-BR:
+  mostrar: Mostrar
+  editar: Editar
+  excluir: Excluir
+  dataDaApresentacao: Data Apresentação
+  data: Data
+  horario: Horário
+  tituloProposta: Título da proposta
+  sala: Sala
+  professor: Professor
+  periodo: Perido
+
+  activerecord:
+    models:
+      usuario:
+        one: Usuario
+        other: Usuarios
+    attributes:
+      usuario:
+        nome: nome
+        sexo: sexo
+        email: email
+        ativo: ativo
+        password: Senha
+        password_confirmation: Confirmação da Senha
+
+  layouts:
+    navigation:
+      aluno: Aluno

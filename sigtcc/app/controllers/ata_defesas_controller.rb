@@ -1,5 +1,11 @@
 class AtaDefesasController < ApplicationController
     before_action :set_ata_defesa, only: [ :create, :edit, :update, :destroy, :show]
+
+    ###
+    # Author: João Paulo Marques e Almeida
+    ###
+
+    # metódo para pegar a banca de um tcc e associar uma nova ata de defesa
   def new
     banca = Tcc.find(params[:tcc]).banca
     @ata_defesa = AtaDefesa.new(banca: banca)
@@ -7,6 +13,7 @@ class AtaDefesasController < ApplicationController
 
   end
 
+  # método para criar uma nova ata de defesa
   def create
     tcc = Tcc.find(params[:tcc])
     @ata_defesa = AtaDefesa.new(banca: tcc.banca)
@@ -35,6 +42,8 @@ class AtaDefesasController < ApplicationController
 
   end
 
+
+  #deletar uma nova ata de defesa
   def destroy
 
     @ata_defesa.destroy
@@ -53,9 +62,9 @@ class AtaDefesasController < ApplicationController
     end
   end
 
-
+  #método para atualizar uma nova ata de defesa
   def update
-      print "Aqui uma ata de defesa valida no update #{@ata_defesa.data}"
+
 
     @ata_defesa.banca.tcc.nota = params[:nota]
     @ata_defesa.banca.tcc.status = params[:status]
