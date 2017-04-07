@@ -37,7 +37,7 @@
     </div>
 
     <%= f.label "Tipo:" %>
-    <%= f.select(:tipos, options_for_select(Tcc.tipos.keys), {}, { :class => 'form-control'} ) %>
+    <%= f.select(:tipos, options_for_select(Tcc.tipos.keys, @tcc.tipos), {}, { :class => 'form-control'} ) %>
 
     <div class="form-group">
     <%= f.label :palavras_chave, class: "control-label" %>

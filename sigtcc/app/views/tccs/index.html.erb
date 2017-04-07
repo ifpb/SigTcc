@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <% if ! alert.blank? %>
     <div>
       <strong style="color:red">Erro! <%= alert %> </strong>
@@ -20,13 +19,9 @@
       <tr>
         <td ><%= @tcc.titulo %></td>
         <td ><%= @tcc.periodo %></td>
-        <td><%= link_to 'Expandir', @tcc %></td>
+        <td><%= link_to 'Visualizar', @tcc %></td>
         <td><%= link_to 'Editar', edit_tcc_path(@tcc) %></td>
         <td><%= link_to 'Apagar', @tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } %></td>
       </tr>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'Criar Tcc', new_tcc_path %>

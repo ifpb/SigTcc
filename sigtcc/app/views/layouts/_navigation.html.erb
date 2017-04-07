@@ -14,12 +14,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-
-		<li><a href="/alunos"> <%= t('.aluno') %> </a></li>
-		<li><a href="/tccs">Tccs</a></li>
-    <li><a href="/plano_atividades">Plano de Atividades</a></li>
-    <li><a href="/bancas">Bancas</a></li>
+    <% if current_user %>
+		  <li><a href="/alunos"> <%= t('.aluno') %> </a></li>
+      <li><a href="/tccs">Tccs</a></li>
+      <li><a href="/plano_atividades">Plano de Atividades</a></li>
+      <li><a href="/bancas">Bancas</a></li>
     <li><a href="/pre_bancas">Pré Bancas</a></li>
+    <% end %>
     </ul>
       <ul class="nav navbar-nav navbar-right">
 		<li><%= link_to "en", locale: "en" %></li>
