@@ -8,16 +8,13 @@ rvm:
 - 2.2.4
 - 2.1.1
 bundler_args: --jobs=2
-script:
+
 script:
   - bundle exec rake db:setup
   - bundle exec rake spec
 cache: bundler
 #Não há instalação de dependências
 install: true
-#Durante Deploy,isso evita que todas as alterações feitas sejam excluídas "get stash --all"
-deploy:
-  skip_cleanup: true
 #Mantendo atualizado RubyGems
 before_install:
   - gem update --system
