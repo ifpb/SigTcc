@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <% if ! alert.blank? %>
     <div>
       <strong style="color:red">Erro! <%= alert %> </strong>
@@ -6,7 +5,7 @@
 <% end %>
 <h1>Tccs
 <%= link_to 'Criar Tcc', new_tcc_path, :class => "btn btn-sm btn-success pull-right" %>
-</h1>
+</h1><h1>Meu TCC</h1>
 
 <table id="tccs"  class="table">
   <thead>
@@ -16,22 +15,13 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @tccs.each do |tcc| %>
       <tr>
-        <td ><%= tcc.titulo %></td>
-        <td ><%= tcc.periodo %></td>
-        <td>
-          <div class="btn-group pull-right">
-            <%= link_to 'Expandir', tcc, :class => "btn btn-sm btn-primary" %>
-            <%= link_to 'Editar', edit_tcc_path(tcc), :class => "btn btn-sm btn-primary" %>
-            <%= link_to 'Apagar', tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, :class => "btn btn-sm btn-danger" %>
-          </div>
-        </td>
+        <td ><%= @tcc.titulo %></td>
+        <td ><%= @tcc.periodo %></td>
+        <td><%= link_to 'Visualizar', @tcc %></td>
+        <td><%= link_to 'Editar', edit_tcc_path(@tcc) %></td>
+        <td><%= link_to 'Apagar', @tcc, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } %></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
-
-<br>

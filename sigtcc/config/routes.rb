@@ -34,6 +34,10 @@ Rails.application.routes.draw do
 
     get  '/consulta', to: 'consultas#index'
     post '/consulta', to: 'consultas#consultar'
+  
+    get '/consulta_banca', to: 'consultas_banca#index'
+    post '/consulta_banca', to: 'consultas_banca#consultar_banca'
+  
     post '/consulta_pre_bancas', to: 'pre_bancas#consultar'
     get  '/consulta_pre_bancas_index', to: 'pre_bancas#consulta_pre_bancas_index'
 

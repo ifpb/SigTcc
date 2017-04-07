@@ -1,0 +1,26 @@
+<h1>Resultado da Consulta</h1>
+
+<table id= "bancas">
+  <thead>
+    <tr>
+      <th>sala</th>
+      <th>horario</th>
+      <!-- <th>titulo</th>
+      <th>Orientador</th> -->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @bancas.each do |banca| %>
+      <tr>
+        <td > <%= banca.sala %></td>
+        <td ><%= banca.horario %></td>
+      <!--  <td ><%= banca.tcc.titulo %></td> -->
+        <td ><%=link_to "Expandir", tcc  %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+<%=link_to "Voltar", consulta_path  %>
