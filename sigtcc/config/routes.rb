@@ -24,7 +24,7 @@ resources :usuarios
 
   resources :plano_atividades
   resources :alunos
-  
+
   #Adicionando rota root para página de logar#
   root 'sessions#new'
 
@@ -32,6 +32,9 @@ resources :usuarios
 
     get '/consulta', to: 'consultas#index'
     post '/consulta', to: 'consultas#consultar'
+
+    get '/consulta_banca', to: 'consultas_banca#index'
+    post '/consulta_banca', to: 'consultas_banca#consultar_banca'
 
 
 

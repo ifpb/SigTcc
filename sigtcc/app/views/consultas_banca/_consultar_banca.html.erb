@@ -1,0 +1,34 @@
+
+<% if !bancas.nil? %>
+<table class='table' id= "bancas">
+  <thead>
+    <tr>
+      <th> Titulo</th>
+      <th>Aluno</th>
+      <th>Orientador</th>
+      <th> Data de Apresentacao</th>
+      <th>Sala </th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% bancas.each do |banca| %>
+      <tr>
+        <td ><%= banca.tcc.titulo %></td>
+        <td ><%= banca.tcc.proposta_tcc.aluno.usuario.nome %></td>
+        <td ><%= banca.tcc.professor.usuario.nome%></td>
+        <td ><%= banca.dataApresentacao.strftime('%d/%m/%Y') %></td> 
+        <td > <%= banca.sala %></td>
+        <td>
+            <div class="btn-group pull-right">
+              <%= link_to 'Mostrar', banca, :class => "btn btn-sm btn-primary" %>
+              <%= link_to 'Excluir', banca, method: :delete, data: { confirm: 'Tem certeza que deseja apagar?' }, :class => "btn btn-sm btn-danger" %>
+            </div>
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+<% end %>
