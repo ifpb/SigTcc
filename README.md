@@ -1,4 +1,11 @@
-# Bem vindo ao SigTcc
+
+![IFPB Logo](https://academico.ifpb.edu.br/qacademico//lib/customizacoes/logo_ifpb.gif)
+
+# Bem vindo ao SIGTCC
+
+Este projeto foi elaborado em parceria com três disciplinas: Tópicos Especiais, Desenvolvimento Ágil com Ferramenta RAD e Desenvolvimento e Exe. de Software, supervisionado pelos professores Luiz Carlos, Damires Yluska e Nadja Rodrigues. O mesmo foi criado utilizando-se de Ruby on Rails, WebSemântica (com RDFa e uma ontologia criada para o projeto) em quatro Releases, com alternância de papés entre a equipe. Informações da equipe mais abaixo.
+
+# Sobre o SIGTCC
 
 O Sistema de gerenciamento de trabalho de conclusão de curso, denominado *SigTcc*, foi construido devido à necessidade de automatizar o gerenciamento dos Tcc's que acontecia de forma arcáica com a utilização de uma planilha compartilhada para a realização deste gerenciamento. Desta forma, nos foi solicitado a criação desta ferramenta que possibilite a segurança dos dados, o fácil acesso e controle de permissões.
 # Requisitos
@@ -27,6 +34,39 @@ $ rails db:seed
 $ rails server
 ```
 # Funcionalidades
+
+ ### Cadatro/alteração/remoção/visualização:
+ 
+ * Professor
+ * Aluno
+ * Proposta de TCC
+ * Plano de Atividades
+ * TCC
+ * Pré-bancas
+ * Banca
+ * Ata de Defesa
+ 
+### Listagens:
+
+ * Listagem de Professores para orientação (com número de orientandos)
+ * Listagem de TCC
+ * Listagem de Bancas
+ * Listagem de Pré-banca
+ * Listagem de Professores
+ * Listagem de Alunos
+ * Listagem de Plano de Atividades
+ * Listagem de Status do TCC
+ * Listagem de Ata de Defesa
+ 
+### Consultas
+
+* Consulta de TCC por: professor, semestre, palavra-chave
+* Consulta de Pré-Bancas: Data de apresentação, Aluno, Orientador, Período
+* Consulta de Banca: Sala, Data de Apresentação
+ 
+ 
+ 
+
 ### Descrições
 # Getting Started
 
