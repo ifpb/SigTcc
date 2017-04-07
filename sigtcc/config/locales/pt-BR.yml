@@ -17,13 +17,14 @@ pt-BR:
         other: Usuarios
     attributes:
       usuario:
-        nome: nome
-        sexo: sexo
-        email: email
+        nome: Nome
+        sexo: Sexo
+        email: Email
         ativo: ativo
         password: Senha
-        password_confirmation: Confirmação da Senha
+        password_confirmation: Confirmar da Senha
 
   layouts:
     navigation:
       aluno: Aluno
+      professor: Professor

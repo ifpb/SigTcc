@@ -27,3 +27,4 @@ en:
   layouts:
     navigation:
       aluno: Student
+      professor: Teacher
