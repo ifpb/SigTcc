@@ -1,13 +1,27 @@
 language: ruby
 rvm:
+- 2.4.1
+- 2.4.0
+- 2.3.4
 - 2.3.0
+- 2.2.7
 - 2.2.4
+- 2.1.1
 bundler_args: --jobs=2
 script:
 script:
   - bundle exec rake db:setup
   - bundle exec rake spec
 cache: bundler
+#Não há instalação de dependências
+install: true
+#Durante Deploy,isso evita que todas as alterações feitas sejam excluídas "get stash --all"
+deploy:
+  skip_cleanup: true
+#Mantendo atualizado RubyGems
+before_install:
+  - gem update --system
+  - gem --version
 services:
   - postgresql
 addons:
