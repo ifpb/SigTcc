@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  Professores
+  <%= link_to 'Cadastrar Professor', new_professor_path, :class => "btn btn-sm btn-success pull-right" %>
+</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>SIAPE</th>
+      <th>Nome</th>
+      <th>E-mail</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @professors.each do |professor| %>
+      <tr>
+        <td><%= professor.siape %></td>
+        <td><%= professor.usuario.nome %></td>
+        <td><%= professor.usuario.email %></td>
+        <td>
+          <div class="btn-group pull-right">
+            <%= link_to 'Mostrar', professor, :class => "btn btn-sm btn-primary" %>
+            <%= link_to 'Editar', edit_professor_path(professor), :class => "btn btn-sm btn-primary" %>
+            <%= link_to 'Excluir', professor, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, :class => "btn btn-sm btn-danger" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  <%= will_paginate @professors%>
+
+<br>
+<br>
+

@@ -29,7 +29,7 @@ Rdfa.register_rdfa_namespace   'dbo'  , 'http://dbpedia.org/ontology/'
 
 #Carrega propriedades
 Rdfa.register_rdfa_properties 'schema', ['email', 'scheduleTime']
-Rdfa.register_rdfa_properties 'ugw', ['temAtaDefesa', 'temTipo', 'propostaAprovada','dataApresentacao', 'temProposta']
+Rdfa.register_rdfa_properties 'ugw', ['temAtaDefesa', 'temTipo', 'propostaAprovada','dataApresentacao', 'temProposta',  'siape']
 Rdfa.register_rdfa_properties 'ov', ['semester']
 Rdfa.register_rdfa_properties 'dcat', ['keyword']
 Rdfa.register_rdfa_properties 'dbo', ['fileURL', 'grades', 'releaseDate']

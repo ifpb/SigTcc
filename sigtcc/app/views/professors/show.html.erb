@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<div>
+<div typeof='teach:Teacher' about=<%=professor_path(@professor)%>>
+
+<p>
+  <strong>SIAPE:</strong>
+  <%= rdfa_ugw_siape @professor.siape %>
+</p>
+<p>
+  <strong>Nome:</strong>
+  <%= rdfa_name @professor.usuario.nome %>
+</p>
+<p>
+  <strong>E-mail:</strong>
+  <%= rdfa_schema_email @professor.usuario.email %>
+</p>
+
+
+<%= link_to 'Editar', edit_professor_path(@professor) %> |
+<%= link_to 'Voltar', professors_path %>
+</div>

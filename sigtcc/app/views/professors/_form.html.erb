@@ -1,0 +1,58 @@
+<hr>
+<%= form_for (professor) do |f| %>
+  <% if professor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(professor.errors.count, "error") %> prohibited this professor from being saved:</h2>
+
+      <ul>
+      <% professor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= fields_for (:usuario) do |u| %>
+    <div class="form-group row">
+      <div class="col-md-4">
+        <%= u.label :email  %>
+        <%= u.text_field :email , :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-4">
+        <%= u.label :nome %>
+        <%= u.text_field :nome , :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-4">
+        <%= u.label :sexo %>
+        <%= u.text_field :sexo , :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-4">
+        <label for="">Senha</label>
+        <%= u.password_field :password , :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-4">
+        <label for="">Confirmar Senha</label>
+        <%= u.password_field :password_confirmation , :class => 'form-control' %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <div class="form-group row">
+    <div class="col-md-4">
+      <%= f.label :siape %>
+      <%= f.text_field :siape , :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Salvar", :class => 'btn btn-success' %>
+  </div>
+<% end %>
