@@ -38,6 +38,27 @@
     </div>
   </div>
 
+  <div class="form-group row">
+    <div class="col-md-4">
+      <label for="">Membros</label>
+      </br>
+      <% 3.times do %>
+        <% professores_array = Professor.all.collect { |p| [ p.usuario.nome, p.id ] } %>
+        <select name="membros[]">
+          <% professores_array.each do |p|%>
+          <option value="<%= p[1] %>">"<%= p[0] %>"</option>
+          <% end %>
+        </select>
+    </br>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+
+
   <div class="actions">
     <%= f.submit "Salvar", :class => 'btn btn-success'  %>
   </div>

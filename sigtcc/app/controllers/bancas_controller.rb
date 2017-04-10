@@ -29,6 +29,12 @@ class BancasController < ApplicationController
     @banca.tcc_id = params[:banca][:tcc_id]
     @banca.horario = params[:banca][:horario]
 
+    
+      params[:membros].each do |p|
+            FichaAvaliacao.find_or_create_by(banca_id: next_id, professor_id: p.id)
+          end
+
+
     respond_to do |format|
       if @banca.save
         format.html { redirect_to @banca, notice: 'Banca foi criada com sucesso.' }
@@ -38,6 +44,7 @@ class BancasController < ApplicationController
         format.json { render json: @banca.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /bancas/1

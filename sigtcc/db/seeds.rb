@@ -98,29 +98,15 @@ t.palavras<<palavra
 #inserindo bancas
 
 b = Banca.create(dataApresentacao: "24/06/2017", horario: Time.now.strftime("%H:%M"), sala: "10" , tcc: pulin.proposta_tcc.tcc)
-b.professors<<nadja
-b.professors<<valeria
-b.professors<<fred
 
 b = Banca.create(dataApresentacao: "22/06/2017", horario: Time.now.strftime("%H:%M"), sala: "12" , tcc: bruno.proposta_tcc.tcc)
-b.professors<<nadja
-b.professors<<valeria
-b.professors<<fred
 
 b = Banca.create(dataApresentacao: "15/03/2017", horario: Time.now.strftime("%H:%M"), sala: "05" , tcc: samyra.proposta_tcc.tcc)
-b.professors<<nadja
-b.professors<<valeria
-b.professors<<fred
 
 b = Banca.create(dataApresentacao: "10/07/2017", horario: Time.now.strftime("%H:%M"), sala: "10" , tcc: matheus.proposta_tcc.tcc)
-b.professors<<nadja
-b.professors<<valeria
-b.professors<<fred
 
 b = Banca.create(dataApresentacao: "01/07/2017", horario: Time.now.strftime("%H:%M"), sala: "10" , tcc: sergio.proposta_tcc.tcc)
-b.professors<<nadja
-b.professors<<valeria
-b.professors<<fred
+
 
 ###############################################################
 

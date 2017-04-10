@@ -54,13 +54,6 @@ ActiveRecord::Schema.define(version: 20170402183255) do
     t.index ["tcc_id"], name: "index_bancas_on_tcc_id"
   end
 
-  create_table "bancas_professors", id: false, force: :cascade do |t|
-    t.integer "banca_id"
-    t.integer "professor_id"
-    t.index ["banca_id"], name: "index_bancas_professors_on_banca_id"
-    t.index ["professor_id"], name: "index_bancas_professors_on_professor_id"
-  end
-
   create_table "coordenadors", force: :cascade do |t|
     t.date     "dataInicio"
     t.date     "dataFim"
@@ -122,12 +115,6 @@ ActiveRecord::Schema.define(version: 20170402183255) do
     t.string   "siape"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "professors_bancas", id: false, force: :cascade do |t|
-    t.integer "banda_id",     null: false
-    t.integer "professor_id", null: false
-    t.index ["banda_id", "professor_id"], name: "index_professors_bancas_on_banca_id_and_professor_id"
   end
 
   create_table "proposta_tccs", force: :cascade do |t|

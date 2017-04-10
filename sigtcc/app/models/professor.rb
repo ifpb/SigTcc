@@ -6,8 +6,5 @@ class Professor < ApplicationRecord
 
 
   #validates_numericality_of :siape, message: 'deve ser um número'
- 
-  has_and_belongs_to_many :bancas
 
 end
-
