@@ -4,7 +4,7 @@ class PropostaTccsController < ApplicationController
   # GET /proposta_tccs
   # GET /proposta_tccs.json
   def index
-    @proposta_tccs = PropostaTcc.all
+    @proposta_tccs = PropostaTcc.all.paginate :page => params[:page], :per_page => 3
   end
 
   # GET /proposta_tccs/1

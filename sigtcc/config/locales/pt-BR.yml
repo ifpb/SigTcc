@@ -9,21 +9,19 @@ pt-BR:
   sala: Sala
   professor: Professor
   periodo: Perido
+  aluno_id : Aluno
+
 
   activerecord:
     models:
-      usuario:
-        one: Usuario
-        other: Usuarios
+      proposta_tcc:
+
     attributes:
-      usuario:
-        nome: nome
-        sexo: sexo
-        email: email
-        ativo: ativo
-        password: Senha
-        password_confirmation: Confirmação da Senha
+      proposta_tcc:
+        dataApresentacao: Data de Apresentação
+        aluno: Aluno
 
   layouts:
     navigation:
       aluno: Aluno
+      proposta_tccs: Proposta Tcc

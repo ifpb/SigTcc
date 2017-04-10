@@ -10,6 +10,8 @@ en:
   professor: Teacher
   periodo: Period ?
 
+
+
   activerecord:
     models:
       usuario:
@@ -24,6 +26,20 @@ en:
         password: Password
         password_confirmation: Password Confirmation
 
+
+
+    activerecord:
+      models:
+        proposta_tcc:
+        
+      attributes:
+        proposta_tcc:
+          dataApresentacao: date presentation
+          aluno: Student
+
+
+
   layouts:
     navigation:
       aluno: Student
+      proposta_tccs: Proposal Tcc
